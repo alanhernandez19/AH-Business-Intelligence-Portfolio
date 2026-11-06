@@ -1,6 +1,6 @@
 # Estructura estándar de los casos
 
-Este esquema describe el **objetivo de los nuevos repositorios**, no un conjunto de archivos que ya exista o que sea obligatorio producir artificialmente.
+Esta estructura de referencia organiza los repositorios individuales de Business Intelligence. Cada caso adopta únicamente los componentes que aportan valor y facilitan su reproducción.
 
 ```text
 nombre-del-caso/
@@ -28,9 +28,9 @@ nombre-del-caso/
 - Separar exploración y ETL cuando mejora claridad y reproducción; usar un solo script en casos pequeños si está justificado.
 - Mantener fuentes, parámetros, rutas relativas y requerimientos de ejecución documentados.
 - Los KPI se derivan de datos y reglas verificadas; registrar supuestos de cualquier simulación.
-- Documentar problemas, mejoras y resultados sin confundir el material histórico con la nueva solución.
+- Documentar decisiones técnicas, resultados y mejoras, manteniendo separados los datos de entrada y los artefactos procesados.
 - El README debe responder de inmediato: problema, datos, tecnología, KPI, hallazgos, validación, limitaciones y cómo ejecutarlo.
-- Nunca subir credenciales, rutas personales, archivos privados, exámenes originales ni datasets sin revisar derechos y privacidad.
+- Evitar credenciales, rutas personales, datos confidenciales y recursos sin permisos de redistribución.
 
 ## Complemento diferenciador
 
@@ -38,4 +38,4 @@ Cada caso **podrá** incorporar una mejora concreta (automatización, simulació
 
 ## Publicación incremental
 
-Crear un repositorio individual únicamente cuando exista contenido nuevo, verificable y útil; no publicar 13 repositorios vacíos ni anunciar como finalizado un proyecto en preparación.
+Cada repositorio individual se incorpora al catálogo cuando contiene documentación, artefactos útiles y evidencias suficientes para comprender su alcance.
