@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Reconstruir cada caso como **proyecto profesional nuevo** alineado con un perfil **Senior BI técnico-funcional**, incluso cuando su origen histórico haya sido una prueba de Data Science o Data Engineering. No se trata de reutilizar mecánicamente la solución previa ni de cumplir tecnologías ajenas al perfil por obligación.
+Desarrollar soluciones de **Business Intelligence con enfoque técnico-funcional**, ajustando las herramientas y el nivel de profundidad analítica al problema empresarial. La metodología permite comparar casos, comunicar decisiones y reutilizar prácticas sin imponer una arquitectura única.
 
 **Principio rector:** simplicidad a través de la elegancia. La metodología es común; el grado de implementación depende del problema, la calidad de los datos y el valor empresarial.
 
@@ -10,7 +10,7 @@ Reconstruir cada caso como **proyecto profesional nuevo** alineado con un perfil
 
 | Etapa | Pregunta / tarea | Evidencia esperada |
 | --- | --- | --- |
-| 1. Contexto | ¿Qué se solicitó históricamente y qué problema de negocio vale la pena abordar hoy? | Alcance, objetivo, preguntas y distinción entre histórico y reconstrucción |
+| 1. Contexto | ¿Qué problema de negocio y qué decisiones se busca apoyar? | Alcance, objetivo, preguntas y criterios de éxito |
 | 2. Investigación | ¿Existen proyectos comparables, estándares o buenas prácticas? | Fuentes, ideas aprovechables y decisiones propias; sin copiar soluciones |
 | 3. Comprensión de datos | ¿Cuáles son las fuentes, variables, granularidad, calidad y límites? | Diccionario, perfilado y reglas iniciales |
 | 4. Oportunidades analíticas | ¿Qué puede responder **cada variable** y qué KPI o segmentos resultan útiles? | Matriz variable → KPI/pregunta → decisión → dato requerido |
@@ -22,7 +22,7 @@ Reconstruir cada caso como **proyecto profesional nuevo** alineado con un perfil
 | 10. Resultados | ¿Qué se observó, qué es hipótesis y qué recomendamos? | Resumen ejecutivo, decisiones, supuestos y siguientes pasos |
 | 11. Publicación | ¿Puede alguien entenderlo y reproducirlo lícitamente? | README, archivos autorizados, control de versiones y guía de ejecución |
 
-La revisión de variables debe ser **sistemática**: no significa inventar cien indicadores, sino no perder oportunidades analíticas relevantes por concentrarse exclusivamente en el enunciado original.
+La revisión de variables debe ser **sistemática**: no significa inventar cien indicadores, sino priorizar oportunidades analíticas relevantes según el problema empresarial.
 
 ## KPI y análisis de negocio
 
@@ -42,9 +42,9 @@ Para cada KPI registrar **definición, fórmula, granularidad, fuente, filtros, 
 
 **Complementos posibles:** simulador, análisis SQL, automatización, validación adicional, RLS, drill-through, análisis RFM o modelo ML explicable. Cada complemento debe justificar qué decisión o validación mejora. No forzar ML, Apache, Spark, Airflow, Docker o servicios cloud si el caso no lo necesita.
 
-## Referencias y alcance
+## Transferibilidad
 
-Este método se nutre de experiencia profesional en reporting, modernización, automatización y proyectos analíticos previos. Los nuevos desarrollos serán **soluciones AH independientes**: no se atribuyen certificaciones históricas a proyectos nuevos ni se presentan como implementadas etapas que todavía no se hayan ejecutado. La revisión sistemática de variables y la matriz KPI–decisión son requisitos explícitos de las nuevas soluciones.
+La metodología reúne prácticas de reporting, modernización, automatización y análisis. La revisión sistemática de variables y la matriz KPI–decisión facilitan trasladar la solución a distintas tecnologías con los ajustes correspondientes.
 
 ## Criterio de cierre
 
