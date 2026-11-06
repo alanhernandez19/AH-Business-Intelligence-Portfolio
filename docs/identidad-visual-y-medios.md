@@ -1,6 +1,6 @@
 # Identidad AH, web y medios del portafolio
 
-Este documento establece **cómo presentaremos los nuevos casos**. No implica que los archivos históricos del autor ya estén publicados aquí.
+Esta guía establece la identidad visual y los formatos usados para presentar los proyectos de Business Intelligence AH.
 
 ## Diseño
 
@@ -16,7 +16,7 @@ La identidad web AH emplea una variante **oscura** (fondo `#071323`, superficies
 
 | Formato | Visualización prevista |
 | --- | --- |
-| **HTML/CSS/JS** | Portal navegable, publicado posteriormente con GitHub Pages |
+| **HTML/CSS/JS** | Perfil interactivo y Laboratorio BI publicados con GitHub Pages |
 | **PDF** | Vista de dashboards y resúmenes ejecutivos dentro del navegador |
 | **PNG/JPG** | Infografías y capturas dentro de README, galerías y página web |
 | **Notebook** | Código, exploraciones y resultados legibles en GitHub |
@@ -29,10 +29,13 @@ Para el futuro sitio web se preferirá **HTML, CSS y JavaScript sencillos**, reu
 
 - La galería mostrará únicamente casos y materiales **revisados y autorizados**.
 - Los PDF e infografías deben ser legibles, accesibles y coherentes con el análisis documentado.
-- Los materiales de referencia privados permanecen **fuera de este repositorio público**. Aquí se incorporarán únicamente soluciones y recursos AH revisados para difusión.
+- Los recursos con datos sensibles o derechos restringidos no se incorporan al repositorio público.
 - No prometer dashboards interactivos desde PDF; Power BI embebido requerirá una evaluación separada de privacidad y licencias.
-- La web se publicará solo cuando tenga contenido real, enlaces probados y revisión de derechos.
+- Cada actualización web conserva navegación, enlaces y consistencia visual con la identidad AH.
 
-## Próxima fase
+## Estructura web
 
-Mantener la página AH en `docs/index.html` con secciones **Perfil, Misión y visión, Metodología, Proyectos, Evidencias visuales y Contacto**. La activación de GitHub Pages se realizará tras revisar la versión de lanzamiento; no debe confundirse la existencia de archivos web con un despliegue público activo.
+- [`index.html`](index.html): perfil, experiencia, mapa profesional, demostraciones y contacto.
+- [`laboratorio-bi.html`](laboratorio-bi.html): metodología, evidencias, proyectos, herramientas y criterios de calidad.
+
+Ambas páginas comparten identidad AH y navegación cruzada.
