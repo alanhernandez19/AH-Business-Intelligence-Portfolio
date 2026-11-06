@@ -1,7 +1,7 @@
 # AH | Business Intelligence Portfolio
 
 **Alan Arturo Hernández Gutiérrez**  
-**Senior Business Intelligence · BI Reporting · Data Analytics · Modernización y automatización · IA generativa aplicada**
+**Senior Business Intelligence · BI Reporting · Data Analytics · Modernización y automatización**
 
 > **Simplicidad a través de la elegancia.** La complejidad debe estar justificada por el problema; el valor se demuestra con información confiable, análisis comprensibles y decisiones de negocio.
 
@@ -51,24 +51,22 @@ Los KPI se definen por su utilidad, disponibilidad de datos y reglas de cálculo
 | --- | --- |
 | **Python / Jupyter / pandas** para exploración, ETL y validación | SQL, BigQuery, KNIME, Power Query y otras soluciones ETL |
 | **Power BI / DAX** para modelos, reportes e interacción | Tableau, Cognos Analytics, TM1 / Planning Analytics |
-| **Git / GitHub** para código, documentación y versiones | IA generativa supervisada; ML sencillo solo cuando agregue valor |
+| **Git / GitHub** para código, documentación y versiones | Control de versiones, auditoría de resultados y reproducibilidad |
 
-## Sobre el origen de los casos
+## Proyectos AH
 
-Algunos problemas provienen de ejercicios históricos recibidos a lo largo de mi trayectoria. **Este portafolio no publica los exámenes originales ni intenta reproducir literalmente entregas de otros momentos**: desarrolla **soluciones nuevas con enfoque BI**, identidad AH y criterio profesional actual. La historia sirve de contexto, no como sustituto del trabajo nuevo.
-
-Solo se compartirán datos, imágenes y otros materiales cuando exista fundamento suficiente para hacerlo y se hayan revisado privacidad, derechos y atribución.
+Los casos de analítica se abordan con identidad propia, objetivos empresariales claros y metodología reproducible. Cada solución reúne contexto, transformación, indicadores, visualización y controles de calidad, con documentación útil para su evaluación técnica.
 
 ## Dos experiencias complementarias
 
 - **[Perfil interactivo AH — fuente HTML](docs/index.html):** extensión navegable de mi CV, con trayectoria, experiencia, mapa profesional, proyectos, demostraciones y PDF integrados. Se conserva el portal original con su diseño e interactividad.
 - **[Laboratorio BI AH — fuente HTML](docs/laboratorio-bi.html):** complemento técnico para comprender el método end-to-end, los criterios de calidad, las evidencias y las primeras líneas de proyectos.
 
-Ambas páginas están conectadas entre sí. Cuando se habilite **GitHub Pages** desde `main` y `/docs`, estarán disponibles como sitio web. **Los archivos fuente ya existen, pero su presencia en GitHub no confirma todavía el despliegue de Pages.**
+**[Abrir portafolio profesional](https://alanhernandez19.github.io/AH-Business-Intelligence-Portfolio/)** · **[Explorar Laboratorio BI](https://alanhernandez19.github.io/AH-Business-Intelligence-Portfolio/laboratorio-bi.html)**
 
-## Estado actual
+## Líneas de proyectos
 
-**Etapa: preparación visual y documental del entorno.** Los primeros espacios son **Analítica de Clientes** e **Integración y Reporting**, ambos pendientes de revisión y publicación. No se presentan como proyectos finalizados ni se comparten todavía sus datasets o entregables.
+**Analítica de Clientes** e **Integración y Reporting** son las primeras aplicaciones de la metodología AH; sus materiales técnicos se irán integrando en sus fichas de proyecto.
 
 ## Contacto
 
