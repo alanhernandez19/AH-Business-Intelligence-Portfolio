@@ -59,9 +59,13 @@ Algunos problemas provienen de ejercicios históricos recibidos a lo largo de mi
 
 Solo se compartirán datos, imágenes y otros materiales cuando exista fundamento suficiente para hacerlo y se hayan revisado privacidad, derechos y atribución.
 
+## Portal web AH
+
+El código fuente del portal está en [`docs/index.html`](docs/index.html), con identidad visual AH, misión, visión, trayectoria, metodología y las primeras fichas de proyectos **en preparación**. La web se podrá visualizar mediante GitHub Pages cuando se active la publicación desde `main` y `/docs`; **la presencia del HTML no implica que el sitio ya esté desplegado**.
+
 ## Estado actual
 
-**Etapa: preparación del entorno y la metodología.** El catálogo está en construcción; todavía no se presentan casos como finalizados, ni se ofrece una web AH desplegada.
+**Etapa: preparación visual y documental del entorno.** Los primeros espacios son **Analítica de Clientes** e **Integración y Reporting**, ambos pendientes de revisión y publicación. No se presentan como proyectos finalizados ni se comparten todavía sus datasets o entregables.
 
 ## Contacto
 
