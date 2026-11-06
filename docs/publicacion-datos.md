@@ -29,6 +29,5 @@ Registrar, antes de publicar:
 
 ## Artefactos visuales
 
-Los dashboards, imágenes, PDF y la web del portafolio se prepararán con identidad **AH**, evitando presentar materiales de evaluaciones originales o elementos corporativos protegidos como trabajos propios publicables.
+Los dashboards, imágenes, PDF y materiales visuales mantienen la identidad **AH** y respetan las condiciones de uso de datos, marcas y otros recursos.
 
-**Estado inicial:** la validación documental de licencias y permisos aún no está concluida para los datasets de los casos históricos; por tanto, este repositorio no declara autorizada su publicación.
