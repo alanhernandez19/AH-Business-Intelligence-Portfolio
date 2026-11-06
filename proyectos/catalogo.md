@@ -1,19 +1,19 @@
 # Catálogo de proyectos AH
 
-**Estado: primeros casos en preparación.** El repositorio central presenta el método y la futura vitrina de proyectos. Ningún caso se declara terminado ni se ofrece un reporte interactivo o un dataset publicable todavía.
+Este catálogo reúne las líneas de trabajo de Business Intelligence AH, sus objetivos, competencias y evidencias técnicas.
 
-## Primeras líneas de trabajo
+## Casos de Business Intelligence
 
 | Proyecto AH | Objetivo de negocio | Enfoque de BI | Estado |
 | --- | --- | --- | --- |
-| **Analítica de Clientes** | Entender el abandono, el valor y la composición de clientes para priorizar decisiones | KPI de retención, segmentación, perfiles, calidad de clientes, escenarios, Power BI | **Preparación y revisión** |
+| **Analítica de Clientes** | Entender el abandono, el valor y la composición de clientes para priorizar decisiones | KPI de retención, segmentación, perfiles, calidad de clientes, escenarios, Power BI | **En desarrollo** |
 | **Integración y Reporting** | Estandarizar la preparación y validación de datos para reportes confiables | ETL reproducible, controles de calidad, automatización, trazabilidad y Power BI | **Preparación y revisión** |
 
-Son nombres y alcances propios de AH. La identidad visual común no obliga a reutilizar métricas, páginas o lógica de negocio fuera de contexto.
+Cada caso comparte principios metodológicos e identidad visual AH, adaptando sus métricas y reglas de negocio a las necesidades analíticas particulares.
 
 ## Criterio de incorporación
 
-Los nuevos repositorios individuales se enlazarán **solo cuando** tengan una solución revisada, resultados conciliados, documentación suficiente y materiales con derechos de publicación verificados.
+Las fichas se vinculan a sus repositorios individuales para consultar código, modelos, reportes y documentos técnicos.
 
 ## Estructura de la ficha de cada caso
 
