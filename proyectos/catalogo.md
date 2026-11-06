@@ -1,24 +1,29 @@
 # Catálogo de proyectos AH
 
-**Estado: preparación del entorno.**
+**Estado: primeros casos en preparación.** El repositorio central presenta el método y la futura vitrina de proyectos. Ningún caso se declara terminado ni se ofrece un reporte interactivo o un dataset publicable todavía.
 
-Este catálogo crecerá **orgánicamente** a medida que se reconstruyan y validen proyectos de Business Intelligence. Por el momento **no hay casos publicados como finalizados**.
+## Primeras líneas de trabajo
 
-## Cómo se presentará cada caso
+| Proyecto AH | Objetivo de negocio | Enfoque de BI | Estado |
+| --- | --- | --- | --- |
+| **Analítica de Clientes** | Entender el abandono, el valor y la composición de clientes para priorizar decisiones | KPI de retención, segmentación, perfiles, calidad de clientes, escenarios, Power BI | **Preparación y revisión** |
+| **Integración y Reporting** | Estandarizar la preparación y validación de datos para reportes confiables | ETL reproducible, controles de calidad, automatización, trazabilidad y Power BI | **Preparación y revisión** |
 
-| Campo | Qué mostrará |
+Son nombres y alcances propios de AH. La identidad visual común no obliga a reutilizar métricas, páginas o lógica de negocio fuera de contexto.
+
+## Criterio de incorporación
+
+Los nuevos repositorios individuales se enlazarán **solo cuando** tengan una solución revisada, resultados conciliados, documentación suficiente y materiales con derechos de publicación verificados.
+
+## Estructura de la ficha de cada caso
+
+| Campo | Qué se presenta |
 | --- | --- |
-| Proyecto | Nombre AH, sin depender de marcas ajenas |
-| Problema de negocio | Pregunta o decisión relevante |
-| Datos | Fuente, licencia, granularidad y limitaciones |
-| KPI | Indicadores principales y explicación |
-| Metodología | Exploración, ETL, modelado, reporte y validación |
-| Competencias | Qué demuestra del perfil Senior BI |
-| Resultados | Hallazgos, recomendaciones y riesgos |
-| Evidencias | Capturas, PDF, notebook, PBIP y repositorio |
+| Problema | Pregunta o decisión empresarial |
+| Datos | Fuente, versión, permiso de uso y limitaciones |
+| Métricas | KPI y reglas de cálculo |
+| Proceso | Investigación, EDA, ETL, modelo y visualización |
+| Valor | Hallazgos, recomendaciones y competencias demostradas |
+| Evidencia | Notebook, código, PBIP, captura, PDF y controles de calidad según corresponda |
 
-## Estado de publicación
-
-No se han elegido ni anunciado públicamente los primeros casos. La selección, alcance y orden de publicación se definirán más adelante.
-
-Para conocer el método de desarrollo consulta [Metodología AH](../docs/metodologia.md) y [Estructura de casos](../docs/estructura-de-casos.md).
+Consultar [Metodología](../docs/metodologia.md), [Estructura de casos](../docs/estructura-de-casos.md) y [Criterios de calidad](../docs/criterios-calidad.md).
