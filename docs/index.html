@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071323">
+<meta name="description" content="Portafolio AH de Alan Hernández. Business Intelligence técnico-funcional, reporting, modernización, automatización y análisis para decisiones.">
+<title>AH · Business Intelligence & Decisiones</title>
+<style>
+:root{color-scheme:dark;--bg:#071323;--deep:#04101e;--surface:#0e2136;--surface2:#122b44;--line:#29455d;--text:#f3f8fe;--dim:#b5c9db;--muted:#829fb9;--accent:#4cbbff;--teal:#4fd5cb;--warm:#f5af68;--radius:20px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 'Segoe UI',Inter,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--teal);outline-offset:4px}
+button{font:inherit}
+.container{max-width:1180px;margin:auto;padding:0 28px}
+header{position:sticky;top:0;background:#071323ed;backdrop-filter:blur(14px);z-index:10;border-bottom:1px solid var(--line)}
+.header{min-height:72px;display:flex;gap:24px;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.03em}
+.monogram{display:inline-flex;align-items:center;justify-content:center;width:43px;height:43px;border-radius:12px;border:1px solid #5388a8;background:linear-gradient(130deg,#173956,#071323);font-size:21px;letter-spacing:-.1em;color:#fff;box-shadow:0 8px 25px #0005}
+.logo span:last-child{display:grid;line-height:1.25}
+.logo small{font-size:10px;color:var(--muted);font-weight:600;letter-spacing:.13em}
+nav{display:flex;flex-wrap:wrap;gap:20px}
+nav a{font-size:13px;color:var(--dim)}
+nav a:hover,.softlink:hover{color:var(--teal)}
+.hero{background:radial-gradient(ellipse at 75% 20%,#164166 0,transparent 45%),linear-gradient(130deg,#0b2338,var(--bg) 72%);border-bottom:1px solid #1d3b54}
+.heroGrid{min-height:540px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:48px;padding:90px 0}
+.eyebrow{color:var(--teal);font-size:11px;letter-spacing:.19em;font-weight:800;text-transform:uppercase}
+h1{font-size:clamp(42px,5vw,66px);letter-spacing:-.055em;line-height:1.1;margin:16px 0 23px}
+h1 em,h2 em{font-style:normal;color:var(--accent)}
+.lead{font-size:17px;max-width:710px;color:#c2d5e3}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-block;padding:12px 19px;border-radius:11px;background:var(--accent);color:#051b2b;font-weight:800;font-size:13px;border:1px solid var(--accent);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.secondary{color:var(--text);background:transparent;border-color:#57758c}
+.heroPanel{border:1px solid #3e607c;background:linear-gradient(145deg,#133651,#0b1e31);border-radius:25px;padding:30px;box-shadow:0 25px 70px #0005}
+.panelTag{font-size:11px;color:var(--teal);font-weight:800;letter-spacing:.13em}
+.heroPanel .monogram{height:93px;width:93px;font-size:45px;margin:22px 0;border-radius:23px}
+.heroPanel h3{margin:2px 0 6px;font-size:22px}
+.heroPanel p{color:var(--dim);margin:0}
+.stepMini{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:26px}
+.stepMini div{border:1px solid #315b77;border-radius:10px;padding:10px 8px;font-size:11px;color:var(--dim)}
+.stepMini strong{display:block;color:var(--text);font-size:12px}
+section{padding:82px 0}
+section.alt{background:#0a1b2e;border-top:1px solid #15344e;border-bottom:1px solid #15344e}
+.sectionHeader{max-width:840px;margin-bottom:30px}
+h2{font-size:clamp(30px,4vw,44px);line-height:1.15;letter-spacing:-.035em;margin:10px 0 15px}
+.sectionHeader p{color:var(--dim);margin:0}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--surface);border:1px solid #2c4a64;border-radius:var(--radius);padding:25px}
+.card h3{margin:4px 0 13px;font-size:21px}
+.card p{margin:0;color:var(--dim)}
+.label{font-size:11px;letter-spacing:.13em;color:var(--teal);font-weight:800;text-transform:uppercase}
+.card strong{color:var(--text)}
+.workflow{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.pill{border:1px solid #345c77;background:#12314a;color:#deecf7;border-radius:100px;padding:8px 13px;font-size:12px}
+.method{border-left:3px solid var(--teal);padding-left:15px}
+.project{display:flex;flex-direction:column;gap:16px;min-height:280px}
+.project .top{display:flex;align-items:center;justify-content:space-between;gap:15px}
+.status{color:#cde5f6;border:1px solid #53748c;border-radius:100px;padding:5px 9px;font-size:11px;white-space:nowrap}
+.project .num{font-size:12px;font-weight:800;color:var(--teal)}
+.project h3{font-size:24px;margin:0}
+.project p{flex:1}
+.tags{display:flex;gap:7px;flex-wrap:wrap}
+.tags span{font-size:11px;border:1px solid #3c586f;border-radius:7px;padding:5px 8px;color:#b5d4e8}
+.subtle{font-size:12px;color:var(--muted)}
+.history{display:grid;gap:12px}
+.historyItem{display:grid;grid-template-columns:148px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid #27445d}
+.historyItem strong{color:var(--teal)}
+.historyItem span{color:var(--dim)}
+.resources{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.resource{display:block;background:#132c43;border:1px solid #35546e;padding:20px;border-radius:14px;transition:transform .2s,border-color .2s}
+.resource:hover{transform:translateY(-3px);border-color:var(--accent)}
+.resource strong{display:block;margin-bottom:7px}
+.resource span{font-size:12px;color:var(--dim)}
+footer{border-top:1px solid #29455d;padding:26px 0;color:var(--muted);font-size:12px}
+.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+@media(max-width:850px){.heroGrid{grid-template-columns:1fr;gap:15px;padding:70px 0}.grid3,.resources{grid-template-columns:1fr 1fr}.header{align-items:flex-start;flex-direction:column;padding:15px 0}nav{gap:12px}section{padding:65px 0}}
+@media(max-width:570px){.container{padding:0 18px}.grid2,.grid3,.resources{grid-template-columns:1fr}.stepMini{grid-template-columns:1fr 1fr}.historyItem{grid-template-columns:1fr;gap:5px}h1{font-size:42px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.resource{transition:none}}
+</style>
+</head>
+<body>
+<header><div class="container header">
+<a class="logo" href="#inicio" aria-label="AH Business Intelligence, ir al inicio"><span class="monogram">AH</span><span>ALAN HERNÁNDEZ<small>SENIOR BUSINESS INTELLIGENCE</small></span></a>
+<nav aria-label="Navegación principal"><a href="#perfil">Perfil</a><a href="#proposito">Propósito</a><a href="#metodologia">Metodología</a><a href="#proyectos">Proyectos</a><a href="#recursos">Recursos</a><a href="#contacto">Contacto</a></nav>
+</div></header>
+<main id="inicio">
+<div class="hero"><div class="container heroGrid">
+<div><div class="eyebrow">Portafolio profesional AH · Business Intelligence</div>
+<h1>De los datos a <em>decisiones de negocio.</em></h1>
+<p class="lead">Soy Alan Hernández, especialista Senior en Business Intelligence con más de siete años de experiencia. Integro visión técnico-funcional, reporting, automatización, modernización e IA aplicada para convertir problemas empresariales en información confiable y útil.</p>
+<div class="actions"><a class="btn" href="#proyectos">Explorar proyectos</a><a class="btn secondary" href="https://github.com/alanhernandez19/AH-Business-Intelligence-Portfolio">Metodología en GitHub</a></div>
+</div>
+<aside class="heroPanel" aria-label="Resumen de especialidad"><div class="panelTag">PERFIL TÉCNICO-FUNCIONAL</div><div class="monogram">AH</div>
+<h3>Business Intelligence end-to-end</h3><p>Problema · Datos · Reglas · KPI · Visualización · Validación · Decisiones</p>
+<div class="stepMini"><div><strong>Python</strong>EDA y ETL</div><div><strong>Power BI</strong>Modelo y KPI</div><div><strong>GitHub</strong>Reproducibilidad</div></div></aside>
+</div></div>
+<section id="perfil"><div class="container"><div class="sectionHeader"><div class="eyebrow">01 · Perfil</div><h2>Experiencia, tecnología y <em>criterio funcional.</em></h2><p>Mi especialidad consiste en comprender procesos, reconstruir reglas, integrar información, diseñar indicadores y validar resultados. La tecnología habilita la solución; no define por sí sola el valor del análisis.</p></div>
+<div class="grid3">
+<article class="card"><span class="label">Reporting y analítica</span><h3>BI & KPI</h3><p>Tableros ejecutivos y operativos, análisis financiero, segmentación e indicadores conectados con decisiones empresariales.</p></article>
+<article class="card"><span class="label">Datos y procesos</span><h3>Modernización</h3><p>ETL, automatización, conciliación e ingeniería inversa de reporting heredado con trazabilidad y controles.</p></article>
+<article class="card"><span class="label">Calidad y desarrollo</span><h3>Validación e IA</h3><p>Pruebas de datos y reglas, documentación y uso supervisado de IA generativa sin delegar el criterio profesional.</p></article>
+</div></div></section>
+<section class="alt" id="proposito"><div class="container"><div class="sectionHeader"><div class="eyebrow">02 · Propósito</div><h2>Misión y visión del <em>portafolio.</em></h2></div><div class="grid2">
+<article class="card"><span class="label">Misión</span><h3>Demostrar BI de principio a fin</h3><p>Evidenciar mediante proyectos comprensibles y reproducibles cómo conecto necesidades de negocio, procesos, datos y tecnología; desde la investigación y el ETL hasta los KPI, la visualización, la validación y las recomendaciones.</p></article>
+<article class="card"><span class="label">Visión</span><h3>Competencias transferibles</h3><p>Construir un portafolio evolutivo que muestre capacidades aplicables a múltiples sectores y plataformas. Python y Power BI serán las herramientas principales de demostración, sin limitar el conocimiento a esas tecnologías.</p></article>
+</div></div></section>
+<section id="metodologia"><div class="container"><div class="sectionHeader"><div class="eyebrow">03 · Método</div><h2>Simplicidad a través de la <em>elegancia.</em></h2><p>La misma filosofía para problemas diferentes: explorar todas las variables relevantes, elegir métricas pertinentes y desarrollar únicamente la complejidad que añade valor.</p></div>
+<div class="card method"><h3>Proceso analítico y profesional</h3><div class="workflow"><span class="pill">01 · Investigar</span><span class="pill">02 · Comprender</span><span class="pill">03 · Explorar</span><span class="pill">04 · Identificar oportunidades</span><span class="pill">05 · Transformar</span><span class="pill">06 · Modelar</span><span class="pill">07 · Medir</span><span class="pill">08 · Visualizar</span><span class="pill">09 · Validar</span><span class="pill">10 · Recomendar</span><span class="pill">11 · Documentar</span></div><p style="margin-top:20px;color:var(--dim)">Cada KPI debe tener una definición, una fuente, una interpretación y una decisión asociada. Los escenarios hipotéticos se distinguen de los resultados observados. <a class="softlink" style="color:var(--teal)" href="https://github.com/alanhernandez19/AH-Business-Intelligence-Portfolio/blob/main/docs/metodologia.md">Leer metodología completa ↗</a></p></div>
+</div></section>
+<section class="alt" id="proyectos"><div class="container"><div class="sectionHeader"><div class="eyebrow">04 · Proyectos AH</div><h2>Soluciones en <em>preparación.</em></h2><p>Primeros proyectos del portafolio. Su metodología y diseño se están revisando antes de incorporar entregables, dashboards, datos o resultados. Los nombres, contenidos y la identidad visual son propios de AH.</p></div>
+<div class="grid2">
+<article class="card project"><div class="top"><span class="num">AH / 01</span><span class="status">En preparación</span></div><h3>Analítica de Clientes</h3><p>Comprender perfiles, abandono, calidad de clientes y exposición de negocio para identificar segmentos prioritarios y orientar estrategias de retención.</p><div class="tags"><span>Clientes</span><span>Churn</span><span>KPI</span><span>Segmentación</span><span>Decisiones</span></div><span class="subtle">Próximamente: investigación, ETL, Power BI, validación y evidencias.</span></article>
+<article class="card project"><div class="top"><span class="num">AH / 02</span><span class="status">En preparación</span></div><h3>Integración y Reporting</h3><p>Preparar, integrar y conciliar datos para producir reportes consistentes y procesos reproducibles, con énfasis en calidad, trazabilidad y eficiencia operativa.</p><div class="tags"><span>ETL</span><span>Python</span><span>Power BI</span><span>QA</span><span>Automatización</span></div><span class="subtle">Próximamente: procesos documentados, controles, dashboards y evidencias.</span></article>
+</div><p class="subtle" style="margin-top:23px">Los proyectos no se presentan como entregados ni certificados. La publicación se realizará de manera incremental después de su revisión técnica y documental.</p>
+</div></section>
+<section id="trayectoria"><div class="container"><div class="sectionHeader"><div class="eyebrow">05 · Trayectoria</div><h2>Experiencia en <em>diferentes sectores.</em></h2><p>Capacidades de BI aplicadas en telecomunicaciones, banca, finanzas y manufactura, con herramientas diversas y principios metodológicos transferibles.</p></div>
+<div class="history"><div class="historyItem"><strong>2019–2021 · Telcel</strong><span>Cognos Analytics, TM1, reporting financiero, ETL y optimización.</span></div>
+<div class="historyItem"><strong>2021–2023 · BIM</strong><span>Power BI bancario, SQL, indicadores, segmentación y automatización.</span></div>
+<div class="historyItem"><strong>2023–2026 · Banamex</strong><span>Proyecto mediante consultoría RGP: migración BI, Tableau, KNIME y conciliaciones.</span></div>
+<div class="historyItem"><strong>2026 · La Costeña</strong><span>Proyecto mediante Corus Consulting: liderazgo funcional BI, modernización y validación de reporting.</span></div></div>
+</div></section>
+<section class="alt" id="recursos"><div class="container"><div class="sectionHeader"><div class="eyebrow">06 · Documentación y evidencias</div><h2>Transparencia y <em>reproducibilidad.</em></h2><p>La documentación ya está disponible. Las infografías, capturas y PDF de los proyectos se integrarán tras la revisión de su contenido y derechos de publicación.</p></div>
+<div class="resources">
+<a class="resource" href="https://github.com/alanhernandez19/AH-Business-Intelligence-Portfolio/blob/main/docs/metodologia.md"><strong>Metodología BI ↗</strong><span>Investigación, datos, ETL, indicadores y decisiones.</span></a>
+<a class="resource" href="https://github.com/alanhernandez19/AH-Business-Intelligence-Portfolio/blob/main/docs/criterios-calidad.md"><strong>Calidad y validación ↗</strong><span>Controles, conciliaciones y criterios de cierre.</span></a>
+<a class="resource" href="https://github.com/alanhernandez19/AH-Business-Intelligence-Portfolio/blob/main/docs/publicacion-datos.md"><strong>Datos y publicación ↗</strong><span>Procedencia, licencias, privacidad y atribución.</span></a>
+</div></div></section>
+<section id="contacto"><div class="container"><div class="sectionHeader"><div class="eyebrow">07 · Contacto</div><h2>Conectemos el análisis con <em>el negocio.</em></h2><p>Para conocer mi trayectoria y seguir la evolución de los proyectos:</p></div><div class="actions"><a class="btn" href="https://www.linkedin.com/in/alanhdz9523/">Visitar LinkedIn</a><a class="btn secondary" href="https://github.com/alanhernandez19">Perfil GitHub</a></div></div></section>
+</main>
+<footer><div class="container foot"><span>© AH · Alan Hernández · Business Intelligence</span><span>Portafolio profesional · Documentación y proyectos en evolución</span></div></footer>
+</body>
+</html>
