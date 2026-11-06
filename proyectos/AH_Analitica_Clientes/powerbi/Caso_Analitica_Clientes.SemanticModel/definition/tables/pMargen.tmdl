@@ -1,0 +1,25 @@
+table pMargen
+	lineageTag: 012a6105-b338-47e3-b9cb-c4ae44301ad5
+
+	column Value
+		formatString: 0
+		lineageTag: b0ea69f3-9767-49a0-9b16-e4d1a4bfe48d
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pMargen = calculated
+		mode: import
+		source = ```
+				
+				    GENERATESERIES(
+				        0,
+				        5000,
+				        100
+				    )
+				```
+
+	annotation PBI_Id = e7277173b2664754b4f32b0e7c6ded12
+

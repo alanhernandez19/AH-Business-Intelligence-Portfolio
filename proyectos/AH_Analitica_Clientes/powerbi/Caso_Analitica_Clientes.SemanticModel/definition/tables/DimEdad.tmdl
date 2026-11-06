@@ -1,0 +1,25 @@
+table DimEdad
+	lineageTag: ea8cbc04-2799-4620-b314-ef3db34d4eb7
+
+	column EdadBanda
+		lineageTag: 2da50402-0a38-4f89-af42-5a85782beaaa
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [EdadBanda]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimEdad = calculated
+		mode: import
+		source = ```
+				
+				    DISTINCT(
+				        SELECTCOLUMNS(
+				            FactClientes,
+				            "EdadBanda", FactClientes[edad_banda]
+				        )
+				    )
+				```
+
+	annotation PBI_Id = 9c577551e6d345359d3b1976ccf7cd3b
+

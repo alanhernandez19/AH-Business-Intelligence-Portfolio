@@ -1,0 +1,25 @@
+model Model
+	culture: es-MX
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-MX
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["FactVisitas","Medidas","Usuarios","VisitaPlataforma","pArchivo","pArchivoA"]
+
+annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
+
+ref table FactVisitas
+ref table DimFecha
+ref table Medidas
+ref table Usuarios
+ref table VisitaPlataforma
+
+ref role RLS_Usuarios
+
+ref cultureInfo es-MX
+

@@ -1,0 +1,25 @@
+table pCostoFijo
+	lineageTag: 250a4f77-5b06-47e5-8c43-275944cb948e
+
+	column Value
+		formatString: 0
+		lineageTag: e0c8c79f-5808-4ff6-82e6-8614e8a0ce48
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pCostoFijo = calculated
+		mode: import
+		source = ```
+				
+				    GENERATESERIES(
+				        0,
+				        10000,
+				        250
+				    )
+				```
+
+	annotation PBI_Id = 649b27bdd17548128eee942ba7c57a25
+

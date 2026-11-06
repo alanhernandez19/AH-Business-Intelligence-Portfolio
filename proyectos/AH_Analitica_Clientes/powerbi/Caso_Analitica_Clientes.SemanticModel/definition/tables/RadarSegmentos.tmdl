@@ -1,0 +1,205 @@
+table RadarSegmentos
+	lineageTag: 280381a5-eaa2-4bac-bb78-7dbedd19a49a
+
+	column segmento_id
+		dataType: string
+		lineageTag: 297046c7-4737-4d62-bbe5-a1acdaa60e4e
+		summarizeBy: none
+		sourceColumn: segmento_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column regla
+		dataType: string
+		lineageTag: b136a734-c8e6-4f9f-9b8d-9513a5f2356b
+		summarizeBy: none
+		sourceColumn: regla
+
+		annotation SummarizationSetBy = Automatic
+
+	column estructura
+		dataType: string
+		lineageTag: 1036d2a7-ecd4-4520-8632-097219f38f76
+		summarizeBy: none
+		sourceColumn: estructura
+
+		annotation SummarizationSetBy = Automatic
+
+	column clientes
+		dataType: int64
+		formatString: #,##0
+		lineageTag: 38870522-0757-4659-8065-fcc42e3f0c17
+		summarizeBy: sum
+		sourceColumn: clientes
+
+		annotation SummarizationSetBy = Automatic
+
+	column bajas
+		dataType: int64
+		formatString: #,##0
+		lineageTag: e6e6ba37-8e72-472d-8849-35de8ba785a6
+		summarizeBy: sum
+		sourceColumn: bajas
+
+		annotation SummarizationSetBy = Automatic
+
+	column churn_pct
+		dataType: double
+		formatString: 0.00"%"
+		lineageTag: 7f880abd-e8f5-4d71-809f-76589f766a93
+		summarizeBy: sum
+		sourceColumn: churn_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column contribucion_bajas_pct
+		dataType: double
+		lineageTag: 3d7d9dd8-e682-4939-a680-0dd9b3047d30
+		summarizeBy: sum
+		sourceColumn: contribucion_bajas_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column participacion_clientes_pct
+		dataType: double
+		lineageTag: c132ca80-cea5-4f86-996d-1f60a861eb23
+		summarizeBy: sum
+		sourceColumn: participacion_clientes_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column indice_relativo_churn
+		dataType: double
+		lineageTag: 4474133e-d819-469b-af03-d1599e5da6d4
+		summarizeBy: sum
+		sourceColumn: indice_relativo_churn
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column exceso_descriptivo
+		dataType: double
+		lineageTag: 503a234f-d330-40d2-80be-190d11a520f4
+		summarizeBy: sum
+		sourceColumn: exceso_descriptivo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column saldo_asociado_bajas
+		dataType: double
+		lineageTag: a2b6a312-c4f5-409f-bc03-c1f7aee140cb
+		summarizeBy: sum
+		sourceColumn: saldo_asociado_bajas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cuadrante
+		dataType: string
+		lineageTag: 300f58a9-24e9-42f1-a8c8-4824780131e1
+		summarizeBy: none
+		sourceColumn: cuadrante
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cuadrante breve' =
+			SWITCH(
+			    RadarSegmentos[cuadrante],
+			    "Tasa alta / Volumen alto", "Alto / Alto",
+			    "Tasa alta / Volumen bajo", "Alto / Bajo",
+			    "Tasa baja / Volumen alto", "Bajo / Alto",
+			    "Tasa baja / Volumen bajo", "Bajo / Bajo",
+			    RadarSegmentos[cuadrante]
+			)
+		dataType: string
+		lineageTag: 0867701a-77a3-45f1-89fa-a7983614fd2a
+		summarizeBy: none
+
+	column 'Regla visible' = ```
+			VAR R =
+			    SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(
+			        RadarSegmentos[regla],
+			        "products_number", "Productos"), "active_member", "Actividad"),
+			        "credit_card", "Tarjeta"), "edad_banda", "Edad"),
+			        "saldo_estado", "Saldo"), "country", "País"), " | ", " · ")
+			RETURN
+			    SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(SUBSTITUTE(
+			        R, "Actividad=0", "Inactivo"), "Actividad=1", "Activo"),
+			        "Tarjeta=0", "Sin tarjeta"), "Tarjeta=1", "Con tarjeta"),
+			        "País=France", "País=Francia"), "País=Germany", "País=Alemania")
+			
+			```
+		dataType: string
+		lineageTag: f7796fe5-c781-42e9-8dc7-aa8a31ecac09
+		summarizeBy: none
+
+	partition RadarSegmentos = m
+		mode: import
+		source =
+				let
+				    // 1. Origen del archivo Excel
+				    Origen = Excel.Workbook(
+				        File.Contents(pArchivoExcel),
+				        null,
+				        true
+				    ),
+				
+				    // 2. Seleccionar la hoja RadarSegmentos
+				    RadarSegmentos_Sheet = Origen{
+				        [Item = "RadarSegmentos", Kind = "Sheet"]
+				    }[Data],
+				
+				    // 3. Promover encabezados
+				    #"Encabezados promovidos" = Table.PromoteHeaders(
+				        RadarSegmentos_Sheet,
+				        [PromoteAllScalars = true]
+				    ),
+				
+				    // 4. Aplicar tipos de datos
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Encabezados promovidos",
+				        {
+				            {"segmento_id", type text},
+				            {"regla", type text},
+				            {"estructura", type text},
+				            {"clientes", Int64.Type},
+				            {"bajas", Int64.Type},
+				            {"churn_pct", type number},
+				            {"contribucion_bajas_pct", type number},
+				            {"participacion_clientes_pct", type number},
+				            {"indice_relativo_churn", type number},
+				            {"exceso_descriptivo", type number},
+				            {"saldo_asociado_bajas", type number},
+				            {"cuadrante", type text}
+				        },
+				        "en-US"
+				    ),
+				
+				    // 5. Normalizar espacios en columnas de texto
+				    #"Textos normalizados" = Table.TransformColumns(
+				        #"Tipo cambiado",
+				        {
+				            {"segmento_id", each if _ = null then null else Text.Trim(_), type text},
+				            {"regla", each if _ = null then null else Text.Trim(_), type text},
+				            {"estructura", each if _ = null then null else Text.Trim(_), type text},
+				            {"cuadrante", each if _ = null then null else Text.Trim(_), type text}
+				        }
+				    )
+				
+				in
+				    #"Textos normalizados"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

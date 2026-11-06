@@ -1,0 +1,43 @@
+model Model
+	culture: es-MX
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-MX
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["FactClientes","DimPais","RadarSegmentos","CalidadCliente","Escenarios","HipotesisResumen","RadarCliente","pArchivoExcel","pArchivoRadar","01_Medidas_Generales","02_Medidas_Financieras","03_Medidas_Analisis","04_Medidas_Segmentacion","05_Medidas_Parametros","06_Medidas_Simulador"]
+
+annotation PBI_ProTooling = ["DevMode","DaxQueryView_Desktop"]
+
+ref table FactClientes
+ref table DimPais
+ref table RadarSegmentos
+ref table CalidadCliente
+ref table Escenarios
+ref table HipotesisResumen
+ref table RadarCliente
+ref table DimEdad
+ref table DimSaldo
+ref table DimHipotesis
+ref table pCobertura
+ref table pMejora
+ref table pCostoContacto
+ref table pCostoFijo
+ref table pMargen
+ref table pCAC
+ref table pReemplazo
+ref table pPresupuesto
+ref table 01_Medidas_Generales
+ref table 02_Medidas_Financieras
+ref table 03_Medidas_Analisis
+ref table 04_Medidas_Segmentacion
+ref table 05_Medidas_Parametros
+ref table 06_Medidas_Simulador
+ref table SensibilidadCobertura
+
+ref cultureInfo es-MX
+

@@ -1,0 +1,156 @@
+table Escenarios
+	lineageTag: 062fe146-1792-4776-b6bb-1605c2ee0ccc
+
+	column escenario
+		dataType: string
+		lineageTag: d4721a89-f15e-4cfd-bbae-96097f6b5766
+		summarizeBy: none
+		sourceColumn: escenario
+
+		annotation SummarizationSetBy = Automatic
+
+	column hipotesis
+		dataType: string
+		lineageTag: 67dbcd12-713f-49b1-a9c4-98800dd75c44
+		summarizeBy: none
+		sourceColumn: hipotesis
+
+		annotation SummarizationSetBy = Automatic
+
+	column poblacion
+		dataType: int64
+		formatString: 0
+		lineageTag: 04e755e6-95eb-455b-85d2-b80d9c9c0965
+		summarizeBy: sum
+		sourceColumn: poblacion
+
+		annotation SummarizationSetBy = Automatic
+
+	column contactos
+		dataType: int64
+		formatString: 0
+		lineageTag: aee7e1a0-6397-4123-acd1-bf6bf590024c
+		summarizeBy: sum
+		sourceColumn: contactos
+
+		annotation SummarizationSetBy = Automatic
+
+	column retenciones_incrementales_esperadas
+		dataType: double
+		lineageTag: c232041e-df5c-4e1d-89a3-f98b6f316da9
+		summarizeBy: sum
+		sourceColumn: retenciones_incrementales_esperadas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column costo
+		dataType: int64
+		formatString: 0
+		lineageTag: eaaa4cc1-c926-479a-8de5-be87fdc9759c
+		summarizeBy: sum
+		sourceColumn: costo
+
+		annotation SummarizationSetBy = Automatic
+
+	column beneficio_margen
+		dataType: int64
+		formatString: 0
+		lineageTag: fce82967-d284-4a18-8604-d88a5a6dfac0
+		summarizeBy: sum
+		sourceColumn: beneficio_margen
+
+		annotation SummarizationSetBy = Automatic
+
+	column beneficio_cac_alternativo
+		dataType: int64
+		formatString: 0
+		lineageTag: 09b8eddb-fd34-46b4-8f1b-3fa66cf8b861
+		summarizeBy: sum
+		sourceColumn: beneficio_cac_alternativo
+
+		annotation SummarizationSetBy = Automatic
+
+	column neto_margen
+		dataType: int64
+		formatString: 0
+		lineageTag: 82c1e134-a133-475a-8557-691ce636de5a
+		summarizeBy: sum
+		sourceColumn: neto_margen
+
+		annotation SummarizationSetBy = Automatic
+
+	column neto_cac_alternativo
+		dataType: int64
+		formatString: 0
+		lineageTag: d4588a09-d44a-451f-9b8c-64872c8e82ed
+		summarizeBy: sum
+		sourceColumn: neto_cac_alternativo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Escenarios = m
+		mode: import
+		source =
+				let
+				    // 1. Origen del archivo Excel
+				    Origen = Excel.Workbook(
+				        File.Contents(pArchivoExcel),
+				        null,
+				        true
+				    ),
+				
+				    // 2. Seleccionar la hoja Escenarios
+				    Escenarios_Sheet = Origen{
+				        [Item = "Escenarios", Kind = "Sheet"]
+				    }[Data],
+				
+				    // 3. Promover encabezados
+				    #"Encabezados promovidos" = Table.PromoteHeaders(
+				        Escenarios_Sheet,
+				        [PromoteAllScalars = true]
+				    ),
+				
+				    // 4. Aplicar tipos de datos
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Encabezados promovidos",
+				        {
+				            {"escenario", type text},
+				            {"hipotesis", type text},
+				            {"poblacion", Int64.Type},
+				            {"contactos", Int64.Type},
+				            {"retenciones_incrementales_esperadas", type number},
+				            {"costo", Int64.Type},
+				            {"beneficio_margen", Int64.Type},
+				            {"beneficio_cac_alternativo", Int64.Type},
+				            {"neto_margen", Int64.Type},
+				            {"neto_cac_alternativo", Int64.Type}
+				        },
+				        "en-US"
+				    ),
+				
+				    // 5. Normalizar campos de texto
+				    #"Textos normalizados" = Table.TransformColumns(
+				        #"Tipo cambiado",
+				        {
+				            {
+				                "escenario",
+				                each if _ = null then null else Text.Trim(_),
+				                type text
+				            },
+				            {
+				                "hipotesis",
+				                each if _ = null then null else Text.Trim(_),
+				                type text
+				            }
+				        }
+				    )
+				
+				in
+				    #"Textos normalizados"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

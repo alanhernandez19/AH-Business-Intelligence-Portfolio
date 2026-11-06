@@ -1,0 +1,98 @@
+table 03_Medidas_Analisis
+	lineageTag: d16b966e-5699-4a0f-ba60-bada3cee27d5
+
+	measure '1. Clientes global' = ```
+				CALCULATE(
+				    [1. Clientes],
+				    REMOVEFILTERS()
+				)
+			```
+		formatString: 0
+		lineageTag: 380a9006-34d6-469f-8f7f-0f882d809c83
+
+	measure '2. Bajas global' = ```
+				CALCULATE([2. Bajas], REMOVEFILTERS())
+			```
+		formatString: 0
+		lineageTag: 0a6fa3ea-6d62-4daf-ad3b-5e44e59fadd2
+
+	measure '3. Churn global %' = ```
+				DIVIDE([2. Bajas global], [1. Clientes global])
+			```
+		formatString: 0.00%
+		lineageTag: 39165c2e-01b3-4afa-898c-eee1d469107f
+
+	measure '4. Participación clientes %' = ```
+				DIVIDE([1. Clientes], [1. Clientes global])
+			```
+		formatString: 0.00%
+		lineageTag: b273a440-98f1-49e4-957d-224ea5c3c9ba
+
+	measure '5. Contribución bajas %' = ```
+				DIVIDE([2. Bajas], [2. Bajas global])
+			```
+		formatString: 0.00%
+		lineageTag: 13bfc4e1-7ffe-417f-b801-a889624d2397
+
+	measure '6. Índice churn' = ```
+				DIVIDE([4. Churn %], [3. Churn global %])
+			```
+		formatString: 0.00
+		lineageTag: 50e37c57-f861-43dc-9238-0569d9f229fb
+
+	measure '7. Brecha churn pp' = ```
+				([4. Churn %] - [3. Churn global %]) * 100
+			```
+		formatString: 0.00
+		lineageTag: ac1b1017-198c-42a6-8f19-4d7b4dfa558f
+
+	measure '8. Bajas referencia' = ```
+				[1. Clientes] * [3. Churn global %]
+			```
+		formatString: #,0.00
+		lineageTag: a4c2edd7-f6f6-4ef5-91b1-9398b074c69d
+
+	measure '9. Exceso descriptivo bajas' = ```
+				[2. Bajas] - [8. Bajas referencia]
+			```
+		formatString: #,0.00
+		lineageTag: 0ea44c77-c8c6-4ad5-98c4-ec13b614d78b
+
+	measure '10. Score promedio' = AVERAGE(FactClientes[credit_score])
+		formatString: #,0
+		lineageTag: 4445a80d-c2fb-431c-97da-a52e9e02cd85
+
+	measure '11. Salario estimado promedio' = AVERAGE(FactClientes[estimated_salary])
+		formatString: #,0.00
+		lineageTag: 8011140e-b141-4cb7-bcc6-db1c67568c18
+
+	measure '12. Color riesgo churn texto' = ```
+						VAR p = [4. Churn %]
+			RETURN SWITCH(TRUE(), ISBLANK(p), "#536278", p >= 0.40, "#B42032", p > [3. Churn global %], "#9B580E", "#176A50")
+			```
+		lineageTag: 3119ecfb-d7e0-4df8-b373-6d50b44d03bd
+
+	measure '13. Color riesgo churn fondo' = ```
+						VAR p = [4. Churn %]
+			RETURN SWITCH(TRUE(), ISBLANK(p), "#FFFFFF", p >= 0.40, "#FADDE2", p > [3. Churn global %], "#FFF0DD", "#E9F5EF")
+			```
+		lineageTag: 6ad876a8-921f-47b1-8642-9bc2f365d669
+
+	measure '14. Color exceso bajas texto' = ```
+						VAR v = [9. Exceso descriptivo bajas]
+			RETURN SWITCH(TRUE(), ISBLANK(v), "#536278", v > 0, "#B42032", v < 0, "#176A50", "#536278")
+			```
+		lineageTag: 91a349e3-f272-4277-86aa-719dc33416ae
+
+	partition 03_Medidas_Analisis = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+

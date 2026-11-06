@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Caso Analitica Clientes"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ab86e34e-f723-441f-aef2-1b5e5443e3da"
+  }
+}

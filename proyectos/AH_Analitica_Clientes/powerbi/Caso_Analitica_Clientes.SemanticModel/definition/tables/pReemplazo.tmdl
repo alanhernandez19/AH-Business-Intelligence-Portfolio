@@ -1,0 +1,27 @@
+table pReemplazo
+	lineageTag: 1d47fac6-993c-43a9-aaa6-db18699cf466
+
+	column Value
+		formatString: 0.0%
+		lineageTag: ea2a1597-19b7-489f-b513-6dbde8c4c54a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition pReemplazo = calculated
+		mode: import
+		source = ```
+				
+				    GENERATESERIES(
+				        CURRENCY(0),
+				        CURRENCY(1),
+				        CURRENCY(0.05)
+				    )
+				```
+
+	annotation PBI_Id = 2564f6733e234f43a663175f220cd45b
+

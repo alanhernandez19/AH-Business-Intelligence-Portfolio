@@ -1,0 +1,27 @@
+table pCobertura
+	lineageTag: 6c22cc64-1ce1-4716-bb9d-6eddd65f0b28
+
+	column Value
+		formatString: 0.0%
+		lineageTag: db925fc6-779d-48d9-83d4-16cd7eb74e32
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition pCobertura = calculated
+		mode: import
+		source = ```
+				
+				    GENERATESERIES(
+				        CURRENCY(0),
+				        CURRENCY(1),
+				        CURRENCY(0.05)
+				    )
+				```
+
+	annotation PBI_Id = 0924549536b04e8fbdcaef100449cc38
+

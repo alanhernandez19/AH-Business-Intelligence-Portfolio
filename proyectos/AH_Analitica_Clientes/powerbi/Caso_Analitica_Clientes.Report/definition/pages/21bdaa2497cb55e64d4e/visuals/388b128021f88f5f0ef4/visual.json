@@ -1,0 +1,358 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "388b128021f88f5f0ef4",
+  "position": {
+    "x": 452,
+    "y": 388,
+    "z": 8322,
+    "height": 646,
+    "width": 713,
+    "tabOrder": 161
+  },
+  "visual": {
+    "visualType": "scatterChart",
+    "drillFilterOtherVisuals": true,
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RadarSegmentos"
+                    }
+                  },
+                  "Property": "segmento_id"
+                }
+              },
+              "queryRef": "RadarSegmentos.segmento_id",
+              "nativeQueryRef": "segmento_id",
+              "displayName": "Segmento",
+              "active": true
+            }
+          ]
+        },
+        "X": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "04_Medidas_Segmentacion"
+                    }
+                  },
+                  "Property": "9. Radar clientes"
+                }
+              },
+              "queryRef": "04_Medidas_Segmentacion.9. Radar clientes",
+              "nativeQueryRef": "9. Radar clientes",
+              "displayName": "Radar clientes",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "04_Medidas_Segmentacion"
+                    }
+                  },
+                  "Property": "11. Radar churn %"
+                }
+              },
+              "queryRef": "04_Medidas_Segmentacion.11. Radar churn %",
+              "nativeQueryRef": "11. Radar churn %",
+              "displayName": "Radar churn %",
+              "active": true
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "04_Medidas_Segmentacion"
+                    }
+                  },
+                  "Property": "10. Radar bajas"
+                }
+              },
+              "queryRef": "04_Medidas_Segmentacion.10. Radar bajas",
+              "nativeQueryRef": "10. Radar bajas",
+              "displayName": "Radar bajas",
+              "active": true
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "04_Medidas_Segmentacion"
+                    }
+                  },
+                  "Property": "12. Radar índice churn"
+                }
+              },
+              "queryRef": "04_Medidas_Segmentacion.12. Radar índice churn",
+              "nativeQueryRef": "12. Radar índice churn",
+              "displayName": "Radar índice churn",
+              "active": true
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "04_Medidas_Segmentacion"
+                    }
+                  },
+                  "Property": "13. Radar aporte bajas %"
+                }
+              },
+              "queryRef": "04_Medidas_Segmentacion.13. Radar aporte bajas %",
+              "nativeQueryRef": "13. Radar aporte bajas %",
+              "displayName": "Radar aporte bajas %",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RadarSegmentos"
+                    }
+                  },
+                  "Property": "regla"
+                }
+              },
+              "queryRef": "RadarSegmentos.regla",
+              "nativeQueryRef": "regla",
+              "displayName": "Regla",
+              "active": true
+            }
+          ]
+        },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "RadarSegmentos"
+                    }
+                  },
+                  "Property": "Cuadrante breve"
+                }
+              },
+              "queryRef": "RadarSegmentos.Cuadrante breve",
+              "nativeQueryRef": "Cuadrante breve",
+              "displayName": "Cuadrante"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#51677F'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11.0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "valueAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#51677F'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11.0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "04_Medidas_Segmentacion"
+                        }
+                      },
+                      "Property": "25. Radar color de cuadrante"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Bottom'"
+                }
+              }
+            },
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#12263E'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10.0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "markers": [
+        {
+          "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "13.0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

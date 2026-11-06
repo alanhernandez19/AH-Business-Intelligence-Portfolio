@@ -29,7 +29,7 @@ Los proyectos descritos reflejan participación profesional en sus respectivos c
 
 ## Independencia tecnológica
 
-Los proyectos de este portafolio utilizarán predominantemente **Python y Power BI**, porque proporcionan un entorno claro y reproducible para mostrar el ciclo completo. Eso **no limita** los principios a estas herramientas: experiencia previa en SQL, BigQuery, Tableau, KNIME, Cognos y TM1 permite adaptar técnicas, indicadores y procesos donde corresponda.
+Los proyectos de este portafolio utilizan predominantemente **Python y Power BI**, porque proporcionan un entorno claro y reproducible para mostrar el ciclo completo. Eso **no limita** los principios a estas herramientas: experiencia previa en SQL, BigQuery, Tableau, KNIME, Cognos y TM1 permite adaptar técnicas, indicadores y procesos donde corresponda.
 
 No se reivindica especialización general en Data Science o Data Engineering; modelos predictivos y arquitecturas avanzadas son complementos cuando su alcance esté justificado.
 

@@ -7,7 +7,7 @@
 
 ## Bienvenido
 
-Este repositorio es el **punto de entrada al portafolio profesional AH**. Su finalidad es explicar mi trayectoria, especialidad técnico-funcional, metodología y criterios de calidad, y reunir progresivamente **proyectos documentados y reproducibles de Business Intelligence**.
+Este repositorio es el **punto de entrada al portafolio profesional AH**. Su finalidad es explicar mi trayectoria, especialidad técnico-funcional, metodología y criterios de calidad, y reunir **proyectos documentados y reproducibles de Business Intelligence**.
 
 Cuento con **más de siete años de experiencia** en reporting financiero, operativo y ejecutivo, automatización, análisis de datos y modernización de plataformas, en contextos de banca, telecomunicaciones, consultoría y manufactura.
 
@@ -19,7 +19,7 @@ Mi especialidad no consiste en acumular herramientas ni en presentar todos los c
 
 **Misión.** Construir y explicar soluciones BI **de principio a fin**: investigar, entender el problema, explorar y transformar datos, definir KPI, modelar, visualizar, conciliar resultados y formular recomendaciones accionables.
 
-**Visión.** Consolidar un portafolio evolutivo que demuestre **competencias transferibles entre sectores y plataformas**. En los casos presentados utilizaré principalmente **Python y Power BI** para facilitar la reproducción, pero el método y las reglas de negocio pueden implementarse —con las adaptaciones necesarias— mediante SQL, Tableau, KNIME, Cognos Analytics, TM1/Planning Analytics o BigQuery.
+**Visión.** Consolidar un portafolio de casos que demuestre **competencias transferibles entre sectores y plataformas**. En estos casos utilizo principalmente **Python y Power BI** para facilitar la reproducción, pero el método y las reglas de negocio pueden implementarse —con las adaptaciones necesarias— mediante SQL, Tableau, KNIME, Cognos Analytics, TM1/Planning Analytics o BigQuery.
 
 ## Qué encontrará aquí
 
@@ -31,7 +31,7 @@ Mi especialidad no consiste en acumular herramientas ni en presentar todos los c
 | [Criterios de calidad](docs/criterios-calidad.md) | Validaciones, trazabilidad, reproducibilidad y criterios de cierre |
 | [Política de datos y publicación](docs/publicacion-datos.md) | Procedencia, privacidad, permisos y atribución |
 | [Identidad AH y formatos visuales](docs/identidad-visual-y-medios.md) | Web, infografías, imágenes, PDF y proyectos Power BI |
-| [Catálogo de proyectos](proyectos/catalogo.md) | Casos incorporados únicamente cuando estén reconstruidos y verificados |
+| [Catálogo de proyectos](proyectos/catalogo.md) | Dos casos de BI con código, modelos, datos y documentación técnica |
 
 ## Mi enfoque de trabajo
 
@@ -66,9 +66,10 @@ Los casos de analítica se abordan con identidad propia, objetivos empresariales
 
 **[Abrir portafolio profesional](https://alanhernandez19.github.io/AH-Business-Intelligence-Portfolio/)** · **[Explorar Laboratorio BI](https://alanhernandez19.github.io/AH-Business-Intelligence-Portfolio/laboratorio-bi.html)**
 
-## Líneas de proyectos
+## Proyectos de Business Intelligence
 
-**Analítica de Clientes** e **Integración y Reporting** son las primeras aplicaciones de la metodología AH; sus materiales técnicos se irán integrando en sus fichas de proyecto.
+- **[Analítica de Clientes](proyectos/AH_Analitica_Clientes/)** — análisis de abandono, segmentación, radar de perfiles y escenarios de retención; incluye Jupyter, datos, modelo Power BI y reporte ejecutivo.
+- **[Integración y Reporting](proyectos/AH_Integracion_Reporting/)** — integración incremental de visitas digitales, controles de calidad, trazabilidad y reporting; incluye Jupyter, datos de muestra con identificadores ficticios, Power BI y reporte ejecutivo.
 
 ## Contacto
 

@@ -1,0 +1,59 @@
+table Usuarios
+	lineageTag: 0bed565c-4c76-472c-986c-7ed024bcca54
+
+	column Usuario
+		dataType: string
+		lineageTag: daafd12e-e38a-48c9-b645-7623cea9ade7
+		summarizeBy: none
+		sourceColumn: Usuario
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rol
+		dataType: string
+		lineageTag: 8d49284f-2e1f-4d6f-bb21-5e37dbf35c56
+		summarizeBy: none
+		sourceColumn: Rol
+
+		annotation SummarizationSetBy = Automatic
+
+	column Plataforma
+		dataType: string
+		lineageTag: 1db21b75-e751-4a7b-9fb2-7c0117c7672f
+		summarizeBy: none
+		sourceColumn: Plataforma
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Usuarios = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(
+				        File.Contents(pArchivo),
+				        null,
+				        true
+				    ),
+				
+				    usuarios_Sheet = Origen{[Item="usuarios", Kind="Sheet"]}[Data],
+				
+				    #"Encabezados promovidos" = Table.PromoteHeaders(
+				        usuarios_Sheet,
+				        [PromoteAllScalars = true]
+				    ),
+				
+				    #"Tipos cambiados" = Table.TransformColumnTypes(
+				        #"Encabezados promovidos",
+				        {
+				            {"Usuario", type text},
+				            {"Rol", type text},
+				            {"Plataforma", type text}
+				        }
+				    )
+				in
+				    #"Tipos cambiados"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

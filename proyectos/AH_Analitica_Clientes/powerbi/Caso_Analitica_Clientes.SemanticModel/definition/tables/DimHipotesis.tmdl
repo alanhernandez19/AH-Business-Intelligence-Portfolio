@@ -1,0 +1,30 @@
+table DimHipotesis
+	lineageTag: dff235d2-d9ab-476a-b243-ae8a24df69c2
+
+	column Hipotesis
+		lineageTag: 23340cd1-238b-4990-8f04-e1934959163b
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Hipotesis]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Hipotesis visible' = SWITCH(DimHipotesis[Hipotesis], "H1", "H1 · Reactivación", "H2", "H2 · Revisar productos", "H3", "H3 · Prevención", "Fuera", "Fuera · Referencia", DimHipotesis[Hipotesis])
+		dataType: string
+		lineageTag: ec5721cd-7fc6-42e9-b1df-a742039bd96e
+		summarizeBy: none
+
+	partition DimHipotesis = calculated
+		mode: import
+		source = ```
+				
+				    DISTINCT(
+				        SELECTCOLUMNS(
+				            FactClientes,
+				            "Hipotesis", FactClientes[hipotesis]
+				        )
+				    )
+				```
+
+	annotation PBI_Id = 2038dabbbcb24eda8afd27d37ac6b53a
+

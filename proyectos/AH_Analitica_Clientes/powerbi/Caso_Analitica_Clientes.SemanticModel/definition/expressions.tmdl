@@ -1,0 +1,14 @@
+expression pArchivoExcel = "C:\RUTA_DEL_PROYECTO_AH\output\Modelo_Analitica_Clientes.xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: d816dbcf-2cb0-4146-b78f-94cdb9ad164a
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+
+expression pArchivoRadar = "C:\RUTA_DEL_PROYECTO_AH\output\RadarCliente.csv" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 67d7dce3-3cad-4577-8bd1-b2f9993f974f
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+

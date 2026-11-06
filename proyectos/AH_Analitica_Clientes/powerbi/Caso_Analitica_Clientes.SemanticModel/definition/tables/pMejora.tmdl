@@ -1,0 +1,27 @@
+table pMejora
+	lineageTag: d83d0430-5bfb-40d8-aa0d-c216310540fb
+
+	column Value
+		formatString: 0.0%
+		lineageTag: 925a6f6a-dcef-4122-99db-99b2156b9813
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition pMejora = calculated
+		mode: import
+		source = ```
+				
+				    GENERATESERIES(
+				        CURRENCY(0),
+				        CURRENCY(0.20),
+				        CURRENCY(0.005)
+				    )
+				```
+
+	annotation PBI_Id = 2956e6b9385e46478cfd890ee70ce440
+

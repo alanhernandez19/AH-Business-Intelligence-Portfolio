@@ -1,0 +1,25 @@
+table pCAC
+	lineageTag: f5c3c1e7-bcbe-49cd-8641-1e800a99a121
+
+	column Value
+		formatString: 0
+		lineageTag: a18e77d4-d56d-469a-b4c3-2a893363894b
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pCAC = calculated
+		mode: import
+		source = ```
+				
+				    GENERATESERIES(
+				        0,
+				        10000,
+				        250
+				    )
+				```
+
+	annotation PBI_Id = 8245646dabeb40ba8c7ac36e4be213fc
+

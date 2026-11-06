@@ -1,0 +1,114 @@
+table HipotesisResumen
+	lineageTag: 818203e2-8a81-48e1-b5c2-df93c3584791
+
+	column hipotesis
+		dataType: string
+		lineageTag: da4a923b-15c0-4913-9966-2a4fcf9bdd09
+		summarizeBy: none
+		sourceColumn: hipotesis
+
+		annotation SummarizationSetBy = Automatic
+
+	column clientes
+		dataType: int64
+		formatString: 0
+		lineageTag: d6d926cf-8fa0-4ebb-a897-7053e9054d14
+		summarizeBy: sum
+		sourceColumn: clientes
+
+		annotation SummarizationSetBy = Automatic
+
+	column bajas
+		dataType: int64
+		formatString: 0
+		lineageTag: 6189310b-e71a-4c23-8223-e42eae0ba32a
+		summarizeBy: sum
+		sourceColumn: bajas
+
+		annotation SummarizationSetBy = Automatic
+
+	column saldo_observado
+		dataType: double
+		lineageTag: 5f28a2c7-e5a3-48bd-bc1f-652e0aea18d4
+		summarizeBy: sum
+		sourceColumn: saldo_observado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column churn_pct
+		dataType: double
+		lineageTag: eaa13971-9eb0-4849-b033-9777be10b5a0
+		summarizeBy: sum
+		sourceColumn: churn_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column contribucion_bajas_pct
+		dataType: double
+		lineageTag: e4475e21-92aa-4e58-adbf-fa94bf8079b4
+		summarizeBy: sum
+		sourceColumn: contribucion_bajas_pct
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition HipotesisResumen = m
+		mode: import
+		source =
+				let
+				    // 1. Origen del archivo Excel
+				    Origen = Excel.Workbook(
+				        File.Contents(pArchivoExcel),
+				        null,
+				        true
+				    ),
+				
+				    // 2. Seleccionar la hoja HipotesisResumen
+				    HipotesisResumen_Sheet = Origen{
+				        [Item = "HipotesisResumen", Kind = "Sheet"]
+				    }[Data],
+				
+				    // 3. Promover encabezados
+				    #"Encabezados promovidos" = Table.PromoteHeaders(
+				        HipotesisResumen_Sheet,
+				        [PromoteAllScalars = true]
+				    ),
+				
+				    // 4. Aplicar tipos de datos
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Encabezados promovidos",
+				        {
+				            {"hipotesis", type text},
+				            {"clientes", Int64.Type},
+				            {"bajas", Int64.Type},
+				            {"saldo_observado", type number},
+				            {"churn_pct", type number},
+				            {"contribucion_bajas_pct", type number}
+				        },
+				        "en-US"
+				    ),
+				
+				    // 5. Normalizar el campo de hipótesis
+				    #"Textos normalizados" = Table.TransformColumns(
+				        #"Tipo cambiado",
+				        {
+				            {
+				                "hipotesis",
+				                each if _ = null then null else Text.Trim(_),
+				                type text
+				            }
+				        }
+				    )
+				
+				in
+				    #"Textos normalizados"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

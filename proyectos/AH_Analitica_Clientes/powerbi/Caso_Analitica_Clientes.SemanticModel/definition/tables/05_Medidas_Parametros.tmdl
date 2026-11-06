@@ -1,0 +1,63 @@
+table 05_Medidas_Parametros
+	lineageTag: 3cb627f7-3b6f-48af-b9f0-f6e4f714cd5b
+
+	measure '1. pCobertura seleccionado' = ```
+				SELECTEDVALUE(pCobertura[Value], 0.25)
+			```
+		formatString: 0.00%
+		lineageTag: e2b7ad01-e784-401a-823f-d58855b3903b
+
+	measure '2. pMejora seleccionado' = ```
+				SELECTEDVALUE(pMejora[Value], 0.03)
+			```
+		formatString: 0.00%
+		lineageTag: 1b005f2e-b5af-4a6b-a928-024999db2dbd
+
+	measure '3. pCostoContacto seleccionado' = ```
+				SELECTEDVALUE(pCostoContacto[Value], 90)
+			```
+		formatString: 0
+		lineageTag: e526d982-56b1-4da9-8cec-8da6823c94f1
+
+	measure '4. pCostoFijo seleccionado' = ```
+				SELECTEDVALUE(pCostoFijo[Value], 1000)
+			```
+		formatString: 0
+		lineageTag: 188a65ec-c1cb-45c0-a0e9-6fa04e899fb0
+
+	measure '5. pMargen seleccionado' = ```
+				SELECTEDVALUE(pMargen[Value], 800)
+			```
+		formatString: 0
+		lineageTag: 213938f4-74a9-411d-95af-ff685c97c5b8
+
+	measure '6. pCAC seleccionado' = ```
+				SELECTEDVALUE(pCAC[Value], 1500)
+			```
+		formatString: 0
+		lineageTag: 46b09ce7-dca4-4fac-af2a-bbf6e730d22e
+
+	measure '7. pReemplazo seleccionado' = ```
+				SELECTEDVALUE(pReemplazo[Value], 0.5)
+			```
+		formatString: 0.00%
+		lineageTag: 9eb1da6f-f01c-4c57-a359-8aa75002d471
+
+	measure '8. pPresupuesto seleccionado' = ```
+				SELECTEDVALUE(pPresupuesto[Value], 116300)
+			```
+		formatString: #,0
+		lineageTag: 4e25b159-75db-4c4b-b727-49312055e582
+
+	partition 05_Medidas_Parametros = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+

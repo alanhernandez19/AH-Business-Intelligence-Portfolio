@@ -1,0 +1,19 @@
+table SensibilidadCobertura
+	lineageTag: afa0003c-7b3c-4ecd-8cd8-02705c4a432b
+
+	column Cobertura
+		dataType: double
+		formatString: 0%
+		lineageTag: bb5f57f6-10d7-498a-9bda-8faf932212ad
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Cobertura]
+
+	partition SensibilidadCobertura = calculated
+		mode: import
+		source = ```
+					 DATATABLE("Cobertura", DOUBLE, {{0.05}, {0.10}, {0.25}, {0.50}, {0.75}, {1.00}})
+				```
+
+	annotation PBI_Id = 9ca5eb3d0b8d4ff78867a4f3817295b4
+

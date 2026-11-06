@@ -1,0 +1,332 @@
+table FactClientes
+	lineageTag: 2c0e127d-52f8-483c-98e0-f8223a82cfc0
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c0292ce-42c6-44ae-928c-004549599c68
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column credit_score
+		dataType: int64
+		formatString: 0
+		lineageTag: baee5207-c49f-4d29-b22e-ecbc88de8eaf
+		summarizeBy: sum
+		sourceColumn: credit_score
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 5af02e58-5466-4bac-b50b-9d0f7b0a4cfd
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column gender
+		dataType: string
+		lineageTag: 0b68267c-4403-43a1-8a2d-21122134f58a
+		summarizeBy: none
+		sourceColumn: gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column age
+		dataType: int64
+		formatString: 0
+		lineageTag: 58a1e840-bb08-4f63-8b8d-d0c85ab1797b
+		summarizeBy: sum
+		sourceColumn: age
+
+		annotation SummarizationSetBy = Automatic
+
+	column tenure
+		dataType: int64
+		formatString: 0
+		lineageTag: 57825215-1a51-4a1b-b6c6-cfbb166174a5
+		summarizeBy: sum
+		sourceColumn: tenure
+
+		annotation SummarizationSetBy = Automatic
+
+	column balance
+		dataType: double
+		lineageTag: 1f94546d-2ef7-4294-8564-a412dfa5524f
+		summarizeBy: sum
+		sourceColumn: balance
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column products_number
+		dataType: int64
+		formatString: 0
+		lineageTag: c5b50040-8a6d-4f00-ae8e-8825d43dc78e
+		summarizeBy: sum
+		sourceColumn: products_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column credit_card
+		dataType: int64
+		formatString: 0
+		lineageTag: 754cd4e1-bd20-4448-9b61-24db7ef2404f
+		summarizeBy: sum
+		sourceColumn: credit_card
+
+		annotation SummarizationSetBy = Automatic
+
+	column active_member
+		dataType: int64
+		formatString: 0
+		lineageTag: 03704b58-0377-4c66-9efd-bfcafa4c298b
+		summarizeBy: sum
+		sourceColumn: active_member
+
+		annotation SummarizationSetBy = Automatic
+
+	column estimated_salary
+		dataType: double
+		lineageTag: f96b7fb5-49b8-4927-9a30-0b32185a44a5
+		summarizeBy: sum
+		sourceColumn: estimated_salary
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column churn
+		dataType: int64
+		formatString: 0
+		lineageTag: 9da1d0c8-df7d-4fea-94a1-72ed943d0cd7
+		summarizeBy: sum
+		sourceColumn: churn
+
+		annotation SummarizationSetBy = Automatic
+
+	column saldo_estado
+		dataType: string
+		lineageTag: 99c8e4f5-fbf7-43a3-b507-44763c6e264c
+		summarizeBy: none
+		sourceColumn: saldo_estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column edad_banda
+		dataType: string
+		lineageTag: fa9d5810-4e3b-41ab-9678-8d50959ab38b
+		summarizeBy: none
+		sourceColumn: edad_banda
+
+		annotation SummarizationSetBy = Automatic
+
+	column saldo_banda
+		dataType: string
+		lineageTag: 3fc31cb9-0f63-4e0a-85d1-c137b4f56a7b
+		summarizeBy: none
+		sourceColumn: saldo_banda
+
+		annotation SummarizationSetBy = Automatic
+
+	column vinculacion_tipo
+		dataType: string
+		lineageTag: 832080cf-00e7-4bb2-88e3-849d2a1c1861
+		summarizeBy: none
+		sourceColumn: vinculacion_tipo
+
+		annotation SummarizationSetBy = Automatic
+
+	column perfil_actividad_saldo
+		dataType: string
+		lineageTag: aae3d6bb-7b80-47e2-973f-3e3ca48d1238
+		summarizeBy: none
+		sourceColumn: perfil_actividad_saldo
+
+		annotation SummarizationSetBy = Automatic
+
+	column perfil_actividad_productos
+		dataType: string
+		lineageTag: c06669c3-97f3-49a5-8ed5-a4564cf4c89b
+		summarizeBy: none
+		sourceColumn: perfil_actividad_productos
+
+		annotation SummarizationSetBy = Automatic
+
+	column perfil_saldo_producto
+		dataType: string
+		lineageTag: c2ca641a-ce38-48f7-9765-1597b2405a35
+		summarizeBy: none
+		sourceColumn: perfil_saldo_producto
+
+		annotation SummarizationSetBy = Automatic
+
+	column productos_alto_3o4
+		dataType: int64
+		formatString: 0
+		lineageTag: 3110864e-9bcf-4e8a-989a-905cfc9ddafa
+		summarizeBy: sum
+		sourceColumn: productos_alto_3o4
+
+		annotation SummarizationSetBy = Automatic
+
+	column hipotesis
+		dataType: string
+		lineageTag: 15948723-7dd5-4e3f-96e2-6f98d989759f
+		summarizeBy: none
+		sourceColumn: hipotesis
+
+		annotation SummarizationSetBy = Automatic
+
+	column simulable
+		dataType: int64
+		formatString: 0
+		lineageTag: bba7153c-eb5b-41d4-9b67-ed6b2b8ee5b8
+		summarizeBy: sum
+		sourceColumn: simulable
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Género visible' = SWITCH(FactClientes[gender], "Female", "Femenino", "Male", "Masculino", FactClientes[gender])
+		dataType: string
+		lineageTag: 24bfa720-06ce-4855-aaab-09d4d888595a
+		summarizeBy: none
+
+	column 'Actividad visible' = IF(FactClientes[active_member] = 1, "Activo", "Inactivo")
+		dataType: string
+		lineageTag: cb88f7b9-8928-4a7a-9d24-9054ba3b6eff
+		summarizeBy: none
+
+	column 'Tarjeta visible' = IF(FactClientes[credit_card] = 1, "Con tarjeta", "Sin tarjeta")
+		dataType: string
+		lineageTag: 5a91f7f3-f8a9-4e49-ac09-b9c63641557e
+		summarizeBy: none
+
+	partition FactClientes = m
+		mode: import
+		source =
+				let
+				    // 1. Origen del archivo Excel
+				    Origen = Excel.Workbook(
+				        File.Contents(pArchivoExcel),
+				        null,
+				        true
+				    ),
+				
+				    // 2. Seleccionar la hoja principal
+				    FactClientes_Sheet = Origen{
+				        [Item = "FactClientes", Kind = "Sheet"]
+				    }[Data],
+				
+				    // 3. Promover la primera fila como encabezados
+				    #"Encabezados promovidos" = Table.PromoteHeaders(
+				        FactClientes_Sheet,
+				        [PromoteAllScalars = true]
+				    ),
+				
+				    // 4. Validar que existan las 22 columnas esperadas
+				    ColumnasEsperadas = {
+				        "customer_id",
+				        "credit_score",
+				        "country",
+				        "gender",
+				        "age",
+				        "tenure",
+				        "balance",
+				        "products_number",
+				        "credit_card",
+				        "active_member",
+				        "estimated_salary",
+				        "churn",
+				        "saldo_estado",
+				        "edad_banda",
+				        "saldo_banda",
+				        "vinculacion_tipo",
+				        "perfil_actividad_saldo",
+				        "perfil_actividad_productos",
+				        "perfil_saldo_producto",
+				        "productos_alto_3o4",
+				        "hipotesis",
+				        "simulable"
+				    },
+				
+				    ColumnasFaltantes = List.Difference(
+				        ColumnasEsperadas,
+				        Table.ColumnNames(#"Encabezados promovidos")
+				    ),
+				
+				    #"Columnas validadas" =
+				        if List.IsEmpty(ColumnasFaltantes) then
+				            #"Encabezados promovidos"
+				        else
+				            error Error.Record(
+				                "Estructura incorrecta",
+				                "Faltan columnas en FactClientes",
+				                ColumnasFaltantes
+				            ),
+				
+				    // 5. Aplicar tipos de datos
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Columnas validadas",
+				        {
+				            {"customer_id", Int64.Type},
+				            {"credit_score", Int64.Type},
+				            {"country", type text},
+				            {"gender", type text},
+				            {"age", Int64.Type},
+				            {"tenure", Int64.Type},
+				            {"balance", type number},
+				            {"products_number", Int64.Type},
+				            {"credit_card", Int64.Type},
+				            {"active_member", Int64.Type},
+				            {"estimated_salary", type number},
+				            {"churn", Int64.Type},
+				            {"saldo_estado", type text},
+				            {"edad_banda", type text},
+				            {"saldo_banda", type text},
+				            {"vinculacion_tipo", type text},
+				            {"perfil_actividad_saldo", type text},
+				            {"perfil_actividad_productos", type text},
+				            {"perfil_saldo_producto", type text},
+				            {"productos_alto_3o4", Int64.Type},
+				            {"hipotesis", type text},
+				            {"simulable", Int64.Type}
+				        },
+				        "en-US"
+				    ),
+				
+				    // 6. Limpiar espacios accidentales en columnas de texto
+				    #"Textos normalizados" = Table.TransformColumns(
+				        #"Tipo cambiado",
+				        List.Transform(
+				            {
+				                "country",
+				                "gender",
+				                "saldo_estado",
+				                "edad_banda",
+				                "saldo_banda",
+				                "vinculacion_tipo",
+				                "perfil_actividad_saldo",
+				                "perfil_actividad_productos",
+				                "perfil_saldo_producto",
+				                "hipotesis"
+				            },
+				            (columna) => {
+				                columna,
+				                each if _ = null then null else Text.Trim(_),
+				                type text
+				            }
+				        )
+				    )
+				
+				in
+				    #"Textos normalizados"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

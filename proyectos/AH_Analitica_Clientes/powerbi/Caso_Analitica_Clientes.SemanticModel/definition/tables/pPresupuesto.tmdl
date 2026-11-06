@@ -1,0 +1,25 @@
+table pPresupuesto
+	lineageTag: ced7181b-aad2-414f-97c6-221f6db0a195
+
+	column Value
+		formatString: 0
+		lineageTag: b4a766c4-656a-4764-af3e-5b5df9aaa09a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pPresupuesto = calculated
+		mode: import
+		source = ```
+				
+				    GENERATESERIES(
+				        0,
+				        250000,
+				        100
+				    )
+				```
+
+	annotation PBI_Id = 1207ca01667e4d088ead1d3d0ef1edf7
+

@@ -1,0 +1,7 @@
+﻿Usuario,Rol,Plataforma
+usuario0001@example.com,administrador,TODAS
+usuario0005@example.com,desarrollador,Win7
+usuario0003@example.com,desarrollador,iOS
+usuario0002@example.com,desarrollador,Android
+usuario0004@example.com,desarrollador,Android
+usuario0004@example.com,desarrollador,Win7

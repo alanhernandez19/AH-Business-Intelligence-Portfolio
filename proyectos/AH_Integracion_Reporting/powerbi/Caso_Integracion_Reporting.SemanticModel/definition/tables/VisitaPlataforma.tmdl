@@ -1,0 +1,57 @@
+table VisitaPlataforma
+	lineageTag: 23f08908-1cbd-44b8-b7c5-052b09bc00ae
+
+	column IdVisita
+		dataType: int64
+		formatString: 0
+		lineageTag: d9b62038-b5d9-49df-abc7-bd295850d518
+		summarizeBy: none
+		sourceColumn: IdVisita
+
+		annotation SummarizationSetBy = Automatic
+
+	column Plataforma
+		dataType: string
+		lineageTag: 0d99e8ea-57a4-4d39-a9c0-df3a982e4c9b
+		summarizeBy: none
+		sourceColumn: Plataforma
+
+		annotation SummarizationSetBy = Automatic
+
+	partition VisitaPlataforma = m
+		mode: import
+		source =
+				let
+				    // 1. Origen de datos
+				    Origen = Excel.Workbook(
+				        File.Contents(pArchivoA),
+				        null,
+				        true
+				    ),
+				
+				    VisitaPlataforma_Sheet = Origen{[
+				        Item = "VisitaPlataforma",
+				        Kind = "Sheet"
+				    ]}[Data],
+				
+				    // 2. Promover encabezados
+				    #"Encabezados promovidos" = Table.PromoteHeaders(
+				        VisitaPlataforma_Sheet,
+				        [PromoteAllScalars = true]
+				    ),
+				
+				    // 3. Asignar tipos a las 2 columnas
+				    #"Tipos cambiados" = Table.TransformColumnTypes(
+				        #"Encabezados promovidos",
+				        {
+				            {"IdVisita", Int64.Type},
+				            {"Plataforma", type text}
+				        }
+				    )
+				in
+				    #"Tipos cambiados"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

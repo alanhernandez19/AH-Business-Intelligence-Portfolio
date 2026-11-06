@@ -1,0 +1,8 @@
+relationship 20a595ba-bd52-23ef-babc-88b65f990f69
+	fromColumn: FactVisitas.FechaVisitaDia
+	toColumn: DimFecha.Date
+
+relationship AutoDetected_3544c21e-13e1-47c8-b949-7dce12a32649
+	fromColumn: VisitaPlataforma.IdVisita
+	toColumn: FactVisitas.IdVisita
+

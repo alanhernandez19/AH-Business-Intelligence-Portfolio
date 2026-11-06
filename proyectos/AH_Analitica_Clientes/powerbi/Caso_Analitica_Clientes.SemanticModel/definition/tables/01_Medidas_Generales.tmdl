@@ -1,0 +1,68 @@
+table 01_Medidas_Generales
+	lineageTag: f526f9eb-bb92-470d-9fa5-3c9ce1e1a984
+
+	measure '1. Clientes' = ```
+				DISTINCTCOUNT(FactClientes[customer_id])
+			```
+		formatString: #,0
+		lineageTag: dc174c27-5f4e-4f0b-b371-0549201ad77a
+
+	measure '2. Bajas' = ```
+				SUM(FactClientes[churn])
+			```
+		formatString: #,0
+		lineageTag: 97d52d29-9de0-4690-b841-65cd3ebe2b51
+
+	measure '3. Sin abandono' = ```
+				[1. Clientes] - [2. Bajas]
+			```
+		formatString: #,0
+		lineageTag: 891e944d-77c3-4e4d-b392-966247ab2a6e
+
+	measure '4. Churn %' = ```
+				DIVIDE([2. Bajas], [1. Clientes])
+			```
+		formatString: 0.00%
+		lineageTag: cd13d7a4-45d2-408c-8273-2688b3c5af4c
+
+	measure '10. QA antigüedad cero' = ```
+				SUM(CalidadCliente[tenure_cero])
+			```
+		formatString: #,0
+		lineageTag: 582d52dd-d27e-4266-8be3-1aed537ef087
+
+	measure '11. QA score extremo' = ```
+				SUM(CalidadCliente[score_extremo_350_850])
+			```
+		formatString: #,0
+		lineageTag: 70d8c011-efb5-45e1-b76d-231943d47913
+
+	measure '12. QA salario menor 100' = ```
+				SUM(CalidadCliente[salario_menor_100])
+			```
+		formatString: #,0
+		lineageTag: fa35ff2b-0768-4de9-8324-e975fd62a2a3
+
+	measure '13. QA edad menos antigüedad' = ```
+				SUM(CalidadCliente[edad_menos_antiguedad_menor_18])
+			```
+		formatString: #,0
+		lineageTag: b0ba0e28-b432-4bcb-b260-26bf256554a6
+
+	measure '14. Insight churn filtrado' = ```
+				"Selección: " & FORMAT([1. Clientes], "#,0") & " clientes · " & FORMAT([4. Churn %], "0.00%") & " churn"
+			```
+		lineageTag: daddfeaf-e022-4f20-896e-029061d67964
+
+	partition 01_Medidas_Generales = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,14 @@
+expression pArchivo = "C:\RUTA_DEL_PROYECTO_AH\output\Modelo_Integracion_Reporting.xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: a611cec5-259c-41bb-b84d-5fec8137786a
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+
+expression pArchivoA = "C:\RUTA_DEL_PROYECTO_AH\output\Interacciones_Plataforma.xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 90862356-6fd4-404a-81af-359be4137320
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+

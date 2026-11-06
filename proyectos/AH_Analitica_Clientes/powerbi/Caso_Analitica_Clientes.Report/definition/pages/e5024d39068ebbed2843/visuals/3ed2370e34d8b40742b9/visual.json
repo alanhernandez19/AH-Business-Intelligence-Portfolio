@@ -1,0 +1,505 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "3ed2370e34d8b40742b9",
+  "position": {
+    "x": 33,
+    "y": 828,
+    "z": 8196,
+    "height": 214,
+    "width": 1854,
+    "tabOrder": 98
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimPais"
+                    }
+                  },
+                  "Property": "pais_es"
+                }
+              },
+              "queryRef": "DimPais.pais_es",
+              "nativeQueryRef": "pais_es",
+              "displayName": "País"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactClientes"
+                    }
+                  },
+                  "Property": "Género visible"
+                }
+              },
+              "queryRef": "FactClientes.Género visible",
+              "nativeQueryRef": "Género visible",
+              "displayName": "Género"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactClientes"
+                    }
+                  },
+                  "Property": "Actividad visible"
+                }
+              },
+              "queryRef": "FactClientes.Actividad visible",
+              "nativeQueryRef": "Actividad visible",
+              "displayName": "Actividad"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactClientes"
+                    }
+                  },
+                  "Property": "products_number"
+                }
+              },
+              "queryRef": "FactClientes.products_number",
+              "nativeQueryRef": "products_number",
+              "displayName": "Productos"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "FactClientes"
+                    }
+                  },
+                  "Property": "tenure"
+                }
+              },
+              "queryRef": "FactClientes.tenure",
+              "nativeQueryRef": "tenure",
+              "displayName": "Antigüedad"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "01_Medidas_Generales"
+                    }
+                  },
+                  "Property": "1. Clientes"
+                }
+              },
+              "queryRef": "01_Medidas_Generales.1. Clientes",
+              "nativeQueryRef": "1. Clientes",
+              "displayName": "Clientes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "01_Medidas_Generales"
+                    }
+                  },
+                  "Property": "4. Churn %"
+                }
+              },
+              "queryRef": "01_Medidas_Generales.4. Churn %",
+              "nativeQueryRef": "4. Churn %",
+              "displayName": "Churn %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "03_Medidas_Analisis"
+                    }
+                  },
+                  "Property": "10. Score promedio"
+                }
+              },
+              "queryRef": "03_Medidas_Analisis.10. Score promedio",
+              "nativeQueryRef": "10. Score promedio",
+              "displayName": "Score medio"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "03_Medidas_Analisis"
+                    }
+                  },
+                  "Property": "11. Salario estimado promedio"
+                }
+              },
+              "queryRef": "03_Medidas_Analisis.11. Salario estimado promedio",
+              "nativeQueryRef": "11. Salario estimado promedio",
+              "displayName": "Salario medio"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "12.6D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#12263E'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E7F1FA'"
+                    }
+                  }
+                }
+              }
+            },
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'fitToContent'"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10.0D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#12263E'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F5F9FD'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "03_Medidas_Analisis"
+                        }
+                      },
+                      "Property": "12. Color riesgo churn texto"
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "03_Medidas_Analisis"
+                        }
+                      },
+                      "Property": "13. Color riesgo churn fondo"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "01_Medidas_Generales.4. Churn %"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "0.0D"
+                }
+              }
+            },
+            "gridHorizontal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D5E3EF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "223.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DimPais.pais_es"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "204.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FactClientes.gender"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "191.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FactClientes.Actividad visible"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "159.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FactClientes.products_number"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "204.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "FactClientes.tenure"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "172.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "01_Medidas_Generales.1. Clientes"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "185.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "01_Medidas_Generales.4. Churn %"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "223.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "03_Medidas_Analisis.10. Score promedio"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "261.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "03_Medidas_Analisis.11. Salario estimado promedio"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,22 @@
+relationship AutoDetected_f663e483-d8ad-4341-897e-219d85942a06
+	fromColumn: FactClientes.country
+	toColumn: DimPais.country
+
+relationship AutoDetected_9181f9e5-6b50-41a0-8bc5-06eab6421671
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: CalidadCliente.customer_id
+	toColumn: FactClientes.customer_id
+
+relationship 2cfe8660-1ca2-dc5e-8fca-bb64c02a42b8
+	fromColumn: FactClientes.edad_banda
+	toColumn: DimEdad.EdadBanda
+
+relationship 7764518a-fc9f-8475-6f45-fbb4b02e0eec
+	fromColumn: FactClientes.saldo_banda
+	toColumn: DimSaldo.SaldoBanda
+
+relationship 3cd2cc1d-e67b-850e-302f-f8d357bc3faf
+	fromColumn: FactClientes.hipotesis
+	toColumn: DimHipotesis.Hipotesis
+

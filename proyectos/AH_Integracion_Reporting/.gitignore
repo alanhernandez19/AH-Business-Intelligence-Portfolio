@@ -1,0 +1,8 @@
+# Archivos locales y temporales
+**/.pbi/
+**/.ipynb_checkpoints/
+**/__pycache__/
+*.pyc
+.DS_Store
+/output/_salida_temporal/
+/output/.carga_en_curso

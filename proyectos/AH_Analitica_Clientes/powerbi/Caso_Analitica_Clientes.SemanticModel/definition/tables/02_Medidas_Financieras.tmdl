@@ -1,0 +1,49 @@
+table 02_Medidas_Financieras
+	lineageTag: 18a74de2-8c4f-4842-a418-e404634c4010
+
+	measure '1. Saldo agregado total' = SUM(FactClientes[balance])
+		formatString: #,0.00
+		lineageTag: f9444c3e-79e4-48ca-ad3f-297581719364
+
+	measure '2. Saldo promedio cuenta' = ```
+				AVERAGE(FactClientes[balance])
+			```
+		formatString: #,0.00
+		lineageTag: 6fce8dce-dac6-4548-8201-e15c0b1c4f5d
+
+	measure '3. Saldo agregado bajas' = ```
+				CALCULATE([1. Saldo agregado total], FactClientes[churn] = 1)
+			```
+		formatString: #,0.00
+		lineageTag: 8c70ea2d-7afc-4494-b1d0-56a3419d66a5
+
+	measure '4. Saldo medio bajas' = ```
+				CALCULATE([2. Saldo promedio cuenta], FactClientes[churn] = 1)
+			```
+		formatString: #,0.00
+		lineageTag: 48a1ffa9-df55-4fdf-855d-c47e0dc0793b
+
+	measure '5. Saldo medio sin abandono' = ```
+				CALCULATE([2. Saldo promedio cuenta], FactClientes[churn] = 0)
+			```
+		formatString: #,0.00
+		lineageTag: f37c6e88-5ad2-4e4c-810a-5e862475f1d6
+
+	measure '6. Participación saldo bajas %' = ```
+				DIVIDE([3. Saldo agregado bajas], [1. Saldo agregado total])
+			```
+		formatString: 0.00%
+		lineageTag: 240195a1-f150-4a71-be84-1f81aa6165b9
+
+	partition 02_Medidas_Financieras = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+

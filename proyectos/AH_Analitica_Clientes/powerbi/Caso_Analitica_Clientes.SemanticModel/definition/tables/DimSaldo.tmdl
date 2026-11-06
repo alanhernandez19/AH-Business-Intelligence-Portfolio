@@ -1,0 +1,25 @@
+table DimSaldo
+	lineageTag: 25bf787c-318a-4ae0-a477-3ce5119445a5
+
+	column SaldoBanda
+		lineageTag: 0ee3bf08-8754-47ba-90ef-aaac566fd780
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [SaldoBanda]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimSaldo = calculated
+		mode: import
+		source = ```
+				
+				    DISTINCT(
+				        SELECTCOLUMNS(
+				            FactClientes,
+				            "SaldoBanda", FactClientes[saldo_banda]
+				        )
+				    )
+				```
+
+	annotation PBI_Id = 732482ddc7a64a6498d874a6a62fa868
+

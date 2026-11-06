@@ -1,0 +1,8 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../Caso_Analitica_Clientes.SemanticModel"
+    }
+  }
+}

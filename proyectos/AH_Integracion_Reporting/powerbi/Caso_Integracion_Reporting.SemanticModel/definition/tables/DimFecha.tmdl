@@ -1,0 +1,72 @@
+table DimFecha
+	lineageTag: 161f1f22-dc65-4e05-954c-88b12339a569
+	dataCategory: Time
+
+	column Date
+		isKey
+		formatString: dd/MM/yyyy
+		lineageTag: 10fab5d0-6103-4d40-83c3-fb1c040ee7ce
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Año = YEAR(DimFecha[Date])
+		formatString: 0
+		lineageTag: 0da14c21-25de-40fe-9553-10feb739a556
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Mes = MONTH(DimFecha[Date])
+		formatString: 0
+		lineageTag: 8f8413cc-b40c-43bf-aa1f-bffff51752ad
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column NombreMes = FORMAT(DimFecha[Date], "MMMM")
+		lineageTag: 1cb5fe3d-8edf-4d8b-8cd5-911c98d8e085
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesCorto = FORMAT(DimFecha[Date], "MMM")
+		lineageTag: 75662a98-1b12-4fd9-9ef2-4e692d65a19b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre = "T" & QUARTER(DimFecha[Date])
+		lineageTag: e42bcb8c-9cd9-4ab1-ad68-cd0a3330255e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column AñoMes = FORMAT(DimFecha[Date], "yyyy-MM")
+		lineageTag: 20073224-ddf8-4d34-81e9-b4ebd9e0c38c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column AñoMesOrden = DimFecha[Año] * 100 + DimFecha[Mes]
+		formatString: 0
+		lineageTag: bdfbc388-4d5d-472c-9212-ce5e6ea1c794
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimFecha = calculated
+		mode: import
+		source = ```
+				
+				    VAR FechaMin = MIN(FactVisitas[FechaVisitaDia])
+				    VAR FechaMax = MAX(FactVisitas[FechaVisitaDia])
+				
+				    RETURN
+				        CALENDAR(FechaMin, FechaMax)
+				```
+
+	annotation PBI_Id = 1ed1179e2dd44811ab868437b8557177
+

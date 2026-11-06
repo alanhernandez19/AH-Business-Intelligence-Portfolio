@@ -1,29 +1,16 @@
 # Catálogo de proyectos AH
 
-Este catálogo reúne las líneas de trabajo de Business Intelligence AH, sus objetivos, competencias y evidencias técnicas.
+Los siguientes proyectos reúnen investigación, preparación de datos, modelos analíticos, controles de calidad y visualización en Power BI. Cada uno incluye documentación técnica y una guía de reproducción.
 
-## Casos de Business Intelligence
+## Proyectos de Business Intelligence
 
-| Proyecto AH | Objetivo de negocio | Enfoque de BI | Estado |
-| --- | --- | --- | --- |
-| **Analítica de Clientes** | Entender el abandono, el valor y la composición de clientes para priorizar decisiones | KPI de retención, segmentación, perfiles, calidad de clientes, escenarios, Power BI | **En desarrollo** |
-| **Integración y Reporting** | Estandarizar la preparación y validación de datos para reportes confiables | ETL reproducible, controles de calidad, automatización, trazabilidad y Power BI | **Preparación y revisión** |
+| Proyecto | Problema y objetivo | Elementos técnicos |
+| --- | --- | --- |
+| **[Analítica de Clientes](AH_Analitica_Clientes/)** | Comprender el abandono de clientes, identificar segmentos prioritarios y evaluar posibles acciones de retención. | Exploración Python/Jupyter, ETL, segmentación, KPI, radar de perfiles, simulador de escenarios y Power BI. |
+| **[Integración y Reporting](AH_Integracion_Reporting/)** | Integrar visitas digitales de distintas fuentes y producir indicadores consistentes con trazabilidad de cargas. | ETL incremental Python, control SHA-256, conciliaciones, normalización, modelo de reporting y RLS en Power BI. |
 
-Cada caso comparte principios metodológicos e identidad visual AH, adaptando sus métricas y reglas de negocio a las necesidades analíticas particulares.
+## Cómo explorar los proyectos
 
-## Criterio de incorporación
+Cada carpeta contiene un `README.md` con el problema de negocio, la arquitectura, las métricas, las decisiones técnicas, los resultados y los pasos de ejecución. Los directorios `notebooks/`, `powerbi/`, `data/`, `docs/` y `reports/` reúnen el material correspondiente según cada caso.
 
-Las fichas se vinculan a sus repositorios individuales para consultar código, modelos, reportes y documentos técnicos.
-
-## Estructura de la ficha de cada caso
-
-| Campo | Qué se presenta |
-| --- | --- |
-| Problema | Pregunta o decisión empresarial |
-| Datos | Fuente, versión, permiso de uso y limitaciones |
-| Métricas | KPI y reglas de cálculo |
-| Proceso | Investigación, EDA, ETL, modelo y visualización |
-| Valor | Hallazgos, recomendaciones y competencias demostradas |
-| Evidencia | Notebook, código, PBIP, captura, PDF y controles de calidad según corresponda |
-
-Consultar [Metodología](../docs/metodologia.md), [Estructura de casos](../docs/estructura-de-casos.md) y [Criterios de calidad](../docs/criterios-calidad.md).
+La [metodología AH](../docs/metodologia.md) y los [criterios de calidad](../docs/criterios-calidad.md) explican el enfoque aplicado a ambos proyectos.

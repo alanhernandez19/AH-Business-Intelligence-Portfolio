@@ -1,0 +1,8 @@
+pandas
+numpy
+matplotlib
+openpyxl
+jupyterlab
+ipykernel
+# El modo remoto SFTP (MODO="R") también requiere paramiko
+paramiko

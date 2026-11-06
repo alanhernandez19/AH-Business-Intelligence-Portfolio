@@ -1,0 +1,361 @@
+table FactVisitas
+	lineageTag: ba16a712-65b8-4692-8c46-f0d04f8cfb85
+
+	column email
+		dataType: string
+		lineageTag: 07baf286-8b89-41d0-bd04-8816db2be9f3
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column CampoExtra
+		dataType: string
+		lineageTag: f508508a-428a-49b8-9bc6-be643ad3e9e1
+		summarizeBy: none
+		sourceColumn: CampoExtra
+
+		annotation SummarizationSetBy = Automatic
+
+	column Badmail
+		dataType: string
+		lineageTag: bbe091aa-0874-4f57-8132-19337f1992d7
+		summarizeBy: none
+		sourceColumn: Badmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column Baja
+		dataType: string
+		lineageTag: 55fe4679-49de-495e-b9a1-0a0a04ea89ad
+		summarizeBy: none
+		sourceColumn: Baja
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fecha envio'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: acddcd7d-b5a3-4b72-97cc-17a857d91677
+		summarizeBy: none
+		sourceColumn: Fecha envio
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fecha open'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1f8cc852-efe3-4c24-ad48-8eb227d38eb4
+		summarizeBy: none
+		sourceColumn: Fecha open
+
+		annotation SummarizationSetBy = Automatic
+
+	column Opens
+		dataType: int64
+		formatString: 0
+		lineageTag: 5d8996a4-ce78-4c41-a88b-e267f238d94b
+		summarizeBy: sum
+		sourceColumn: Opens
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opens virales'
+		dataType: int64
+		formatString: 0
+		lineageTag: ecedb70c-3c51-4217-9375-7bdc4cc59803
+		summarizeBy: sum
+		sourceColumn: Opens virales
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Fecha click'
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 75d22116-5843-4c84-8aa9-7e43c38ddddf
+		summarizeBy: none
+		sourceColumn: Fecha click
+
+		annotation SummarizationSetBy = Automatic
+
+	column Clicks
+		dataType: int64
+		formatString: 0
+		lineageTag: 6aae960f-e217-4fd7-92d8-e80f951faa3d
+		summarizeBy: sum
+		sourceColumn: Clicks
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Clicks virales'
+		dataType: int64
+		formatString: 0
+		lineageTag: d28a2164-bf8a-4595-8eee-653ebfad19a7
+		summarizeBy: sum
+		sourceColumn: Clicks virales
+
+		annotation SummarizationSetBy = Automatic
+
+	column Links
+		dataType: string
+		lineageTag: 82fbd613-12be-4853-a6e8-2d800de87d69
+		summarizeBy: none
+		sourceColumn: Links
+
+		annotation SummarizationSetBy = Automatic
+
+	column IPs
+		dataType: string
+		lineageTag: e094f393-09fd-46fd-9e5f-2f0165561130
+		summarizeBy: none
+		sourceColumn: IPs
+
+		annotation SummarizationSetBy = Automatic
+
+	column Navegadores
+		dataType: string
+		lineageTag: 7485b261-9399-46b5-afc4-25d3d45356ab
+		summarizeBy: none
+		sourceColumn: Navegadores
+
+		annotation SummarizationSetBy = Automatic
+
+	column Plataformas
+		dataType: string
+		isHidden
+		lineageTag: 8d6374c3-38d3-4bec-b719-316bf9a48be9
+		summarizeBy: none
+		sourceColumn: Plataformas
+
+		annotation SummarizationSetBy = Automatic
+
+	column ArchivoOrigen
+		dataType: string
+		lineageTag: 9e562acf-fcbe-4507-bcf5-fd086b279448
+		summarizeBy: none
+		sourceColumn: ArchivoOrigen
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaVisita_Texto
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7be54d78-d2da-4e94-93cf-dd1cf4fc1895
+		summarizeBy: none
+		sourceColumn: FechaVisita_Texto
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrigenFechaVisita
+		dataType: string
+		lineageTag: 923ff499-fb04-4d29-bb85-beba2524e865
+		summarizeBy: none
+		sourceColumn: OrigenFechaVisita
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaVisita
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 86a9895c-b4d3-46ee-8435-17c9555fd3d7
+		summarizeBy: none
+		sourceColumn: FechaVisita
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitasRegistro
+		dataType: int64
+		formatString: 0
+		lineageTag: 367bd2e5-a221-4dbb-aa43-010f42b646bc
+		summarizeBy: sum
+		sourceColumn: VisitasRegistro
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmailNormalizado
+		dataType: string
+		lineageTag: eb9eec0b-9af5-4c6c-867f-bf013c78bc85
+		summarizeBy: none
+		sourceColumn: EmailNormalizado
+
+		annotation SummarizationSetBy = Automatic
+
+	column NavegadorAnalitico
+		dataType: string
+		lineageTag: a6e7fbf4-dd39-437f-aed2-870ab7309840
+		summarizeBy: none
+		sourceColumn: NavegadorAnalitico
+
+		annotation SummarizationSetBy = Automatic
+
+	column PlataformaAnalitica
+		dataType: string
+		isHidden
+		lineageTag: e61288e4-6190-457c-a0ea-dddfa2bff86a
+		summarizeBy: none
+		sourceColumn: PlataformaAnalitica
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoBadmail
+		dataType: string
+		lineageTag: 8650f9c9-7050-4d96-9661-743c9e74bfd7
+		summarizeBy: none
+		sourceColumn: EstadoBadmail
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoBaja
+		dataType: string
+		lineageTag: 88e3122d-4b93-44b1-be86-9f44d006e70f
+		summarizeBy: none
+		sourceColumn: EstadoBaja
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaVisitaDia =
+			
+			DATE(
+			    YEAR(FactVisitas[FechaVisita]),
+			    MONTH(FactVisitas[FechaVisita]),
+			    DAY(FactVisitas[FechaVisita])
+			)
+		formatString: dd/mm/yyyy
+		lineageTag: 6a17c708-d878-4c4a-afb2-060107fd115b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column IdVisita
+		dataType: int64
+		formatString: 0
+		lineageTag: b7ddc784-4eb8-43ff-8167-2333e2d06ccf
+		summarizeBy: none
+		sourceColumn: IdVisita
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactVisitas = m
+		mode: import
+		source =
+				let
+				    // 1. Origen de datos
+				    Origen = Excel.Workbook(
+				        File.Contents(pArchivo),
+				        null,
+				        true
+				    ),
+				
+				    CONSOLIDADO_Sheet = Origen{[
+				        Item = "CONSOLIDADO",
+				        Kind = "Sheet"
+				    ]}[Data],
+				
+				    // 2. Promover encabezados
+				    #"Encabezados promovidos" = Table.PromoteHeaders(
+				        CONSOLIDADO_Sheet,
+				        [PromoteAllScalars = true]
+				    ),
+				
+				    // 3. Asignar tipos a las 26 columnas
+				    #"Tipos iniciales" = Table.TransformColumnTypes(
+				        #"Encabezados promovidos",
+				        {
+				            {"email", type text},
+				            {"CampoExtra", type text},
+				            {"Badmail", type text},
+				            {"Baja", type text},
+				            {"Fecha envio", type datetime},
+				            {"Fecha open", type text},
+				            {"Opens", Int64.Type},
+				            {"Opens virales", Int64.Type},
+				            {"Fecha click", type text},
+				            {"Clicks", Int64.Type},
+				            {"Clicks virales", Int64.Type},
+				            {"Links", type text},
+				            {"IPs", type text},
+				            {"Navegadores", type text},
+				            {"Plataformas", type text},
+				            {"ArchivoOrigen", type text},
+				            {"FechaVisita_Texto", type datetime},
+				            {"OrigenFechaVisita", type text},
+				            {"FechaVisita", type datetime},
+				            {"VisitasRegistro", Int64.Type},
+				            {"EmailNormalizado", type text},
+				
+				            // Columnas analíticas
+				            {"NavegadorAnalitico", type text},
+				            {"PlataformaAnalitica", type text},
+				            {"EstadoBadmail", type text},
+				            {"EstadoBaja", type text},
+				
+				            // Identificador generado en el ETL de Excel
+				            {"IdVisita", Int64.Type}
+				        },
+				        "es-MX"
+				    ),
+				
+				    // 4. Limpiar fechas originales
+				    #"Fechas originales limpias" = Table.TransformColumns(
+				        #"Tipos iniciales",
+				        {
+				            {
+				                "Fecha open",
+				                each
+				                    if _ = null then
+				                        null
+				                    else if
+				                        Text.Trim(Text.From(_)) = "-" or
+				                        Text.Trim(Text.From(_)) = ""
+				                    then
+				                        null
+				                    else
+				                        Text.Trim(Text.From(_)),
+				                type nullable text
+				            },
+				            {
+				                "Fecha click",
+				                each
+				                    if _ = null then
+				                        null
+				                    else if
+				                        Text.Trim(Text.From(_)) = "-" or
+				                        Text.Trim(Text.From(_)) = ""
+				                    then
+				                        null
+				                    else
+				                        Text.Trim(Text.From(_)),
+				                type nullable text
+				            }
+				        }
+				    ),
+				
+				    // 5. Convertir fechas originales a datetime
+				    #"Fechas convertidas" = Table.TransformColumns(
+				        #"Fechas originales limpias",
+				        {
+				            {
+				                "Fecha open",
+				                each
+				                    try DateTime.FromText(_, [Culture = "es-MX"])
+				                    otherwise null,
+				                type nullable datetime
+				            },
+				            {
+				                "Fecha click",
+				                each
+				                    try DateTime.FromText(_, [Culture = "es-MX"])
+				                    otherwise null,
+				                type nullable datetime
+				            }
+				        }
+				    )
+				in
+				    #"Fechas convertidas"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

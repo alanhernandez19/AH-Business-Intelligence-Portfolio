@@ -1,0 +1,85 @@
+table DimPais
+	lineageTag: 5faea621-a398-4a05-9416-94b667751c12
+
+	column country
+		dataType: string
+		lineageTag: 390151c8-5e9f-4760-80f0-d346565ce3b1
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column pais_iso2
+		dataType: string
+		lineageTag: 7b8f2939-9b49-4182-a047-28470fd3c5a2
+		summarizeBy: none
+		sourceColumn: pais_iso2
+
+		annotation SummarizationSetBy = Automatic
+
+	column pais_iso3
+		dataType: string
+		lineageTag: dda9c517-1299-41a7-aa58-54c0a9c2be78
+		summarizeBy: none
+		sourceColumn: pais_iso3
+
+		annotation SummarizationSetBy = Automatic
+
+	column pais_es
+		dataType: string
+		lineageTag: b69bcf89-be29-452a-9f97-c18f5c9cf721
+		summarizeBy: none
+		sourceColumn: pais_es
+
+		annotation SummarizationSetBy = Automatic
+
+	column continente
+		dataType: string
+		lineageTag: e71313ff-8de9-48d2-8235-874efbedb552
+		summarizeBy: none
+		sourceColumn: continente
+
+		annotation SummarizationSetBy = Automatic
+
+	column contexto_pais
+		dataType: string
+		lineageTag: 25e5550f-1c91-4ee5-a684-61903b070a2a
+		summarizeBy: none
+		sourceColumn: contexto_pais
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimPais = m
+		mode: import
+		source =
+				let
+				    Origen = Excel.Workbook(
+				        File.Contents(pArchivoExcel),
+				        null,
+				        true
+				    ),
+				    DimPais_Sheet = Origen{[Item="DimPais", Kind="Sheet"]}[Data],
+				
+				    #"Encabezados promovidos" = Table.PromoteHeaders(
+				        DimPais_Sheet,
+				        [PromoteAllScalars=true]
+				    ),
+				
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Encabezados promovidos",
+				        {
+				            {"country", type text},
+				            {"pais_iso2", type text},
+				            {"pais_iso3", type text},
+				            {"pais_es", type text},
+				            {"continente", type text},
+				            {"contexto_pais", type text}
+				        }
+				    )
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

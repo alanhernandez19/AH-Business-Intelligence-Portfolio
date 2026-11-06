@@ -1,0 +1,25 @@
+table pCostoContacto
+	lineageTag: 371e587f-390d-47ce-ba67-11d3a97fcabc
+
+	column Value
+		formatString: 0
+		lineageTag: da557362-07a2-4498-bcd3-97d6e34b4ea7
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Value]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pCostoContacto = calculated
+		mode: import
+		source = ```
+				
+				    GENERATESERIES(
+				        0,
+				        500,
+				        10
+				    )
+				```
+
+	annotation PBI_Id = b78270d6ce804ec6b42efe76139274d8
+

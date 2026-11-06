@@ -1,0 +1,253 @@
+table 06_Medidas_Simulador
+	lineageTag: 805acba7-f04c-4aba-a054-b78f97b567ba
+
+	measure '1. Sim meta H1' = ```
+				INT([1. Clientes H1] * [1. pCobertura seleccionado])
+			```
+		formatString: #,0
+		lineageTag: 3f9586d8-1e87-4058-8d70-1142fad3f5b1
+
+	measure '2. Sim meta H3' = ```
+				INT([3. Clientes H3] * [1. pCobertura seleccionado])
+			```
+		formatString: #,0
+		lineageTag: 8f07f845-c6bb-4df6-aabe-1d54ff87db1c
+
+	measure '3. Sim contactos H1' = ```
+				VAR Meta = [1. Sim meta H1]
+				VAR Presupuesto = [8. pPresupuesto seleccionado]
+				VAR CostoFijo = [4. pCostoFijo seleccionado]
+				VAR CostoUnitario = [3. pCostoContacto seleccionado]
+				RETURN
+				    IF(
+				        Meta <= 0 || Presupuesto < CostoFijo,
+				        0,
+				        IF(
+				            CostoUnitario = 0,
+				            Meta,
+				            MIN(
+				                Meta,
+				                INT(DIVIDE(Presupuesto - CostoFijo, CostoUnitario, 0))
+				            )
+				        )
+				    )
+			```
+		formatString: #,0
+		lineageTag: 73beb912-f679-41c9-a44c-5e62b711b9f4
+
+	measure '4. Sim costo H1' = ```
+				IF([3. Sim contactos H1]=0,0,[4. pCostoFijo seleccionado]+[3. Sim contactos H1]*[3. pCostoContacto seleccionado])
+			```
+		formatString: #,0.00
+		lineageTag: 0ea61872-1b33-4048-aa9d-2da319f626b7
+
+	measure '5. Sim disponible H3' = ```
+				MAX(0,[8. pPresupuesto seleccionado]-[4. Sim costo H1])
+			```
+		formatString: #,0.00
+		lineageTag: 96893acc-3a5f-43e6-96ef-a0c7772787ef
+
+	measure '6. Sim contactos H3' = ```
+				VAR Meta = [2. Sim meta H3]
+				VAR Disponible = [5. Sim disponible H3]
+				VAR CostoFijo = [4. pCostoFijo seleccionado]
+				VAR CostoUnitario = [3. pCostoContacto seleccionado]
+				RETURN
+				    IF(
+				        Meta <= 0 || Disponible < CostoFijo,
+				        0,
+				        IF(
+				            CostoUnitario = 0,
+				            Meta,
+				            MIN(
+				                Meta,
+				                INT(DIVIDE(Disponible - CostoFijo, CostoUnitario, 0))
+				            )
+				        )
+				    )
+			```
+		formatString: #,0
+		lineageTag: 5fc93373-9a0d-47ad-89b4-6d0622a8cc78
+
+	measure '7. Sim costo H3' = ```
+				IF([6. Sim contactos H3]=0,0,[4. pCostoFijo seleccionado]+[6. Sim contactos H3]*[3. pCostoContacto seleccionado])
+			```
+		formatString: #,0.00
+		lineageTag: 92dfb19b-41fb-4a92-bc3e-a8f5d17ca3a0
+
+	measure '8. Sim contactos total' = ```
+				[3. Sim contactos H1]+[6. Sim contactos H3]
+			```
+		formatString: #,0
+		lineageTag: e9124629-9a3d-45fe-94f5-d400ffdcbcbb
+
+	measure '9. Sim costo total' = ```
+				[4. Sim costo H1]+[7. Sim costo H3]
+			```
+		formatString: #,0.00
+		lineageTag: 25b6cc92-6ce3-4ac2-b669-dd377087f8a2
+
+	measure '10. Sim presupuesto restante' = ```
+				[8. pPresupuesto seleccionado]-[9. Sim costo total]
+			```
+		formatString: #,0.00
+		lineageTag: 8942518e-0e64-45a5-b694-027e9e164c2e
+
+	measure '11. Sim uplift válido' = ```
+				IF([2. pMejora seleccionado]>=0 && [2. pMejora seleccionado]<=[7. Churn H1 %] && [2. pMejora seleccionado]<=[8. Churn H3 %],1,0)
+			```
+		formatString: #,0
+		lineageTag: 1f09060c-baef-4566-93c6-e367c49eeeef
+
+	measure '12. Sim retenidos adicionales esperados' = ```
+				IF([11. Sim uplift válido]=1,[8. Sim contactos total]*[2. pMejora seleccionado],BLANK())
+			```
+		formatString: #,0.00
+		lineageTag: a407abbf-acce-4404-bb0a-222b7c7dd63b
+
+	measure '13. Sim beneficio margen' = ```
+				[12. Sim retenidos adicionales esperados]*[5. pMargen seleccionado]
+			```
+		formatString: #,0.00
+		lineageTag: db29ae27-b681-4069-88ef-5bd7301ca236
+
+	measure '14. Sim neto margen' = ```
+				IF([11. Sim uplift válido]=1,[13. Sim beneficio margen]-[9. Sim costo total],BLANK())
+			```
+		formatString: #,0.00
+		lineageTag: 523c53c5-e9ea-4850-b80a-673437c9f4ef
+
+	measure '15. Sim beneficio CAC alternativo' = ```
+				[12. Sim retenidos adicionales esperados]*[7. pReemplazo seleccionado]*[6. pCAC seleccionado]
+			```
+		formatString: #,0.00
+		lineageTag: 3772a356-ad90-4a55-a31c-8e9adcfcf603
+
+	measure '16. Sim neto CAC alternativo' = ```
+				IF([11. Sim uplift válido]=1,[15. Sim beneficio CAC alternativo]-[9. Sim costo total],BLANK())
+			```
+		formatString: #,0.00
+		lineageTag: 1067e8f4-f569-4367-88d6-e84e36810762
+
+	measure '17. Sim costo por retenido esperado' = ```
+				DIVIDE([9. Sim costo total],[12. Sim retenidos adicionales esperados])
+			```
+		formatString: #,0.00
+		lineageTag: e85daa62-1d85-47bd-ba3f-bfaf52722344
+
+	measure '18. Sim uplift equilibrio margen' = ```
+				DIVIDE([9. Sim costo total],[8. Sim contactos total]*[5. pMargen seleccionado])
+			```
+		formatString: 0.00%
+		lineageTag: 5252cc78-b7ea-46d5-bb8b-a1645e6d6a7f
+
+	measure '19. Sim uplift equilibrio CAC' = ```
+				DIVIDE([9. Sim costo total],[8. Sim contactos total]*[7. pReemplazo seleccionado]*[6. pCAC seleccionado])
+			```
+		formatString: 0.00%
+		lineageTag: 86c5df0b-8a0a-41e3-b5e2-66d631e13569
+
+	measure '20. Sim contactos posibles %' = ```
+				DIVIDE(
+				    [8. Sim contactos total],
+				    [1. Clientes H1] + [3. Clientes H3]
+				)
+			```
+		formatString: 0.00%
+		lineageTag: 7d767c5b-d0fa-448c-a2d9-acec716e4dfa
+
+	measure '21. Sim margen viable' = ```
+				IF([11. Sim uplift válido]<>1,BLANK(),IF([14. Sim neto margen]>=0,"Sí","No"))
+			```
+		lineageTag: 5e885e52-6655-4f4d-b305-577f8779af61
+
+	measure '22. Sim estado escenario' = ```
+			
+			    IF(
+			        [11. Sim uplift válido] = 0,
+			        "Escenario inválido: la mejora supera el churn observado.",
+			        "Escenario válido"
+			    )
+			```
+		lineageTag: 974a87d8-2fae-4691-8223-6c9ed9022cd7
+
+	measure '23. Sim contactos por hipótesis' = ```
+				SWITCH(SELECTEDVALUE(Escenarios[hipotesis]), "H1", [3. Sim contactos H1], "H3", [6. Sim contactos H3], BLANK())
+			```
+		formatString: #,0
+		lineageTag: f1e1a919-4ce7-4533-a839-20a728d4b221
+
+	measure '24. Sim costo por hipótesis' = ```
+				SWITCH(SELECTEDVALUE(Escenarios[hipotesis]), "H1", [4. Sim costo H1], "H3", [7. Sim costo H3], BLANK())
+			```
+		formatString: #,0
+		lineageTag: fab6f512-f7c7-4d53-854d-ca28713a6e06
+
+	measure '26. Sim utilización presupuesto %' = ```
+				DIVIDE([9. Sim costo total], [8. pPresupuesto seleccionado], 0)
+			```
+		formatString: 0.00%
+		lineageTag: 19085ba5-560c-46b2-b67a-535b2b91aff6
+
+	measure '28. Neto margen sensibilidad cobertura' = ```
+						VAR porcentaje = SELECTEDVALUE(SensibilidadCobertura[Cobertura])
+			RETURN IF(ISBLANK(porcentaje), BLANK(),
+			 CALCULATE([14. Sim neto margen], FILTER(ALL(pCobertura), ABS(pCobertura[Value] - porcentaje) < 0.000001))
+			)
+			```
+		formatString: #,0.00;(#,0.00);0.00
+		lineageTag: 8727e328-f11e-4372-a518-9e1b2e2cea8c
+
+	measure '29. Color neto margen' = ```
+						VAR n = [14. Sim neto margen]
+			RETURN SWITCH(TRUE(), ISBLANK(n), "#536278", n < 0, "#C72439", n > 0, "#15815F", "#B97819")
+			```
+		lineageTag: 527b08fd-7f43-4172-b942-0040dedcac4b
+
+	measure '30. Color neto CAC' = ```
+						VAR n = [16. Sim neto CAC alternativo]
+			RETURN SWITCH(TRUE(), ISBLANK(n), "#536278", n < 0, "#C72439", n > 0, "#15815F", "#B97819")
+			```
+		lineageTag: 8107c9af-9097-4a29-95ba-c9daa0807adb
+
+	measure '31. Color viabilidad' = ```
+						VAR s = [21. Sim margen viable]
+			RETURN SWITCH(TRUE(), s = "Sí", "#15815F", s = "No", "#C72439", "#536278")
+			```
+		lineageTag: e952c78f-6259-4e90-b496-dc10d1a4075d
+
+	measure '32. Color estado escenario' = ```
+						VAR s = [22. Sim estado escenario]
+			RETURN IF(CONTAINSSTRING(LOWER(s), "inválido"), "#C72439", "#15815F")
+			```
+		lineageTag: 6833c5da-3ffe-429d-8025-a1d028ec8582
+
+	measure '36. Contactos sensibilidad cobertura' =
+			VAR Porcentaje = SELECTEDVALUE(SensibilidadCobertura[Cobertura])
+			RETURN
+			    IF(
+			        ISBLANK(Porcentaje),
+			        BLANK(),
+			        CALCULATE(
+			            [8. Sim contactos total],
+			            FILTER(
+			                ALL(pCobertura),
+			                ABS(pCobertura[Value] - Porcentaje) < 0.000001
+			            )
+			        )
+			    )
+		formatString: #,0
+		lineageTag: a49d46e4-fb37-4e51-8ad2-c3c63b01a807
+
+	partition 06_Medidas_Simulador = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+

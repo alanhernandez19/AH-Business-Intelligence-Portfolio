@@ -1,0 +1,70 @@
+table RadarCliente
+	lineageTag: 1787507b-418d-4e12-9f20-3e3dbbe9651c
+
+	column segmento_id
+		dataType: string
+		lineageTag: bc1da8c4-41d7-459a-a85b-cf5bb59fd5d8
+		summarizeBy: none
+		sourceColumn: segmento_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 06d670cc-6843-44ac-8cfe-eaee43df3769
+		summarizeBy: sum
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RadarCliente = m
+		mode: import
+		source =
+				let
+				    // 1. Origen del archivo CSV
+				    Origen = Csv.Document(
+				        File.Contents(pArchivoRadar),
+				        [
+				            Delimiter = ",",
+				            Columns = 2,
+				            Encoding = 65001,
+				            QuoteStyle = QuoteStyle.None
+				        ]
+				    ),
+				
+				    // 2. Promover encabezados
+				    #"Encabezados promovidos" = Table.PromoteHeaders(
+				        Origen,
+				        [PromoteAllScalars = true]
+				    ),
+				
+				    // 3. Aplicar tipos de datos
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Encabezados promovidos",
+				        {
+				            {"segmento_id", type text},
+				            {"customer_id", Int64.Type}
+				        },
+				        "en-US"
+				    ),
+				
+				    // 4. Normalizar identificadores de segmento
+				    #"Textos normalizados" = Table.TransformColumns(
+				        #"Tipo cambiado",
+				        {
+				            {
+				                "segmento_id",
+				                each if _ = null then null else Text.Trim(_),
+				                type text
+				            }
+				        }
+				    )
+				
+				in
+				    #"Textos normalizados"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

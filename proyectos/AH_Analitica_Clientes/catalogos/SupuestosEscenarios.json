@@ -1,0 +1,32 @@
+[
+  {
+    "escenario": "Conservador",
+    "cobertura": 0.1,
+    "mejora": 0.01,
+    "costo_contacto": 90,
+    "costo_fijo": 1000,
+    "margen": 800,
+    "cac": 1500,
+    "reemplazo": 0.5
+  },
+  {
+    "escenario": "Base",
+    "cobertura": 0.25,
+    "mejora": 0.03,
+    "costo_contacto": 90,
+    "costo_fijo": 1000,
+    "margen": 800,
+    "cac": 1500,
+    "reemplazo": 0.5
+  },
+  {
+    "escenario": "Optimista",
+    "cobertura": 0.4,
+    "mejora": 0.06,
+    "costo_contacto": 90,
+    "costo_fijo": 1000,
+    "margen": 800,
+    "cac": 1500,
+    "reemplazo": 0.5
+  }
+]

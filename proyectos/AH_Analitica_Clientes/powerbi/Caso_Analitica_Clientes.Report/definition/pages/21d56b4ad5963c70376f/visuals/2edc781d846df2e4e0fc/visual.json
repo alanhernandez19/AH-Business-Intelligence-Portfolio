@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "2edc781d846df2e4e0fc",
+  "position": {
+    "x": 42,
+    "y": 153,
+    "z": 8014,
+    "height": 30,
+    "width": 1838,
+    "tabOrder": 7
+  },
+  "visual": {
+    "visualType": "textbox",
+    "drillFilterOtherVisuals": true,
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "ALCANCE GLOBAL  •  El simulador utiliza H1/H3 sobre los 10,000 clientes; los filtros demográficos no modifican estos cálculos.",
+                    "textStyle": {
+                      "fontFamily": "Segoe UI",
+                      "fontSize": "15pt",
+                      "color": "#12263E",
+                      "fontWeight": "600"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

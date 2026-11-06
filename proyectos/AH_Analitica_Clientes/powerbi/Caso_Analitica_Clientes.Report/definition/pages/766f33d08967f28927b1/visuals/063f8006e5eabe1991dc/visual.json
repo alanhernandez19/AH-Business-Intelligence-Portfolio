@@ -1,0 +1,517 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "063f8006e5eabe1991dc",
+  "position": {
+    "x": 33,
+    "y": 393,
+    "z": 8578,
+    "height": 315,
+    "width": 1154,
+    "tabOrder": 289
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimPais"
+                    }
+                  },
+                  "Property": "pais_es"
+                }
+              },
+              "queryRef": "DimPais.pais_es",
+              "nativeQueryRef": "pais_es",
+              "displayName": "País"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimHipotesis"
+                    }
+                  },
+                  "Property": "Hipotesis"
+                }
+              },
+              "queryRef": "DimHipotesis.Hipotesis",
+              "nativeQueryRef": "Hipotesis",
+              "displayName": "Hipótesis"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "01_Medidas_Generales"
+                    }
+                  },
+                  "Property": "1. Clientes"
+                }
+              },
+              "queryRef": "01_Medidas_Generales.1. Clientes",
+              "nativeQueryRef": "1. Clientes",
+              "displayName": "Clientes"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "01_Medidas_Generales"
+                    }
+                  },
+                  "Property": "2. Bajas"
+                }
+              },
+              "queryRef": "01_Medidas_Generales.2. Bajas",
+              "nativeQueryRef": "2. Bajas",
+              "displayName": "Bajas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "01_Medidas_Generales"
+                    }
+                  },
+                  "Property": "4. Churn %"
+                }
+              },
+              "queryRef": "01_Medidas_Generales.4. Churn %",
+              "nativeQueryRef": "4. Churn %",
+              "displayName": "Churn %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "03_Medidas_Analisis"
+                    }
+                  },
+                  "Property": "6. Índice churn"
+                }
+              },
+              "queryRef": "03_Medidas_Analisis.6. Índice churn",
+              "nativeQueryRef": "6. Índice churn",
+              "displayName": "Índice churn"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "03_Medidas_Analisis"
+                    }
+                  },
+                  "Property": "9. Exceso descriptivo bajas"
+                }
+              },
+              "queryRef": "03_Medidas_Analisis.9. Exceso descriptivo bajas",
+              "nativeQueryRef": "9. Exceso descriptivo bajas",
+              "displayName": "Exceso bajas"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "03_Medidas_Analisis"
+                    }
+                  },
+                  "Property": "7. Brecha churn pp"
+                }
+              },
+              "queryRef": "03_Medidas_Analisis.7. Brecha churn pp",
+              "nativeQueryRef": "7. Brecha churn pp",
+              "displayName": "Brecha (pp)"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "03_Medidas_Analisis"
+                  }
+                },
+                "Property": "9. Exceso descriptivo bajas"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "columnHeaders": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI Semibold'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11.2D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#12263E'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E7F1FA'"
+                    }
+                  }
+                }
+              }
+            },
+            "columnAdjustment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'fitToContent'"
+                }
+              }
+            },
+            "autoSizeColumnWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "wordWrap": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Segoe UI'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10.2D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#12263E'"
+                    }
+                  }
+                }
+              }
+            },
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F5F9FD'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "03_Medidas_Analisis"
+                        }
+                      },
+                      "Property": "12. Color riesgo churn texto"
+                    }
+                  }
+                }
+              }
+            },
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "03_Medidas_Analisis"
+                        }
+                      },
+                      "Property": "13. Color riesgo churn fondo"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "01_Medidas_Generales.4. Churn %"
+          }
+        },
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "03_Medidas_Analisis"
+                        }
+                      },
+                      "Property": "14. Color exceso bajas texto"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "03_Medidas_Analisis.9. Exceso descriptivo bajas"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "rowPadding": {
+              "expr": {
+                "Literal": {
+                  "Value": "7.0D"
+                }
+              }
+            },
+            "gridHorizontal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D5E3EF'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "139.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DimPais.pais_es"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "120.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DimHipotesis.Hipotesis"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "118.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "01_Medidas_Generales.1. Clientes"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "116.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "01_Medidas_Generales.2. Bajas"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "120.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "01_Medidas_Generales.4. Churn %"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "119.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "03_Medidas_Analisis.6. Índice churn"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "197.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "03_Medidas_Analisis.9. Exceso descriptivo bajas"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "185.0D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "03_Medidas_Analisis.7. Brecha churn pp"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "visualHeader": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,176 @@
+table 04_Medidas_Segmentacion
+	lineageTag: d2368475-9bcc-47f6-b38e-e24a88941ab8
+
+	measure '1. Clientes H1' = ```
+				CALCULATE(
+				    [1. Clientes],
+				    REMOVEFILTERS(),
+				    FactClientes[hipotesis] = "H1"
+				)
+			```
+		formatString: #,0
+		lineageTag: 3834a6fc-6aec-4dc7-9d7a-9bb1663f63ca
+
+	measure '2. Clientes H2' = ```
+				CALCULATE([1. Clientes], REMOVEFILTERS(), FactClientes[hipotesis] = "H2")
+			```
+		formatString: #,0
+		lineageTag: e3c5e1bd-16f4-4bab-96ce-e5e448ee8f0a
+
+	measure '3. Clientes H3' = ```
+				CALCULATE([1. Clientes], REMOVEFILTERS(), FactClientes[hipotesis] = "H3")
+			```
+		formatString: #,0
+		lineageTag: 3cfb8e0f-1c72-44aa-bf78-73b7494cf2c0
+
+	measure '4. Bajas H1' = ```
+				CALCULATE([2. Bajas], REMOVEFILTERS(), FactClientes[hipotesis] = "H1")
+			```
+		formatString: #,0
+		lineageTag: e093c6cc-4236-4f88-ba13-15d293db339f
+
+	measure '5. Bajas H2' = ```
+				CALCULATE([2. Bajas], REMOVEFILTERS(), FactClientes[hipotesis] = "H2")
+			```
+		formatString: #,0
+		lineageTag: 4f48b6b1-e1cf-4e97-bdf3-1edcf8516734
+
+	measure '6. Bajas H3' = ```
+				CALCULATE([2. Bajas], REMOVEFILTERS(), FactClientes[hipotesis] = "H3")
+			```
+		formatString: #,0
+		lineageTag: e8b3d730-9485-49b3-9a93-682e26264ec9
+
+	measure '7. Churn H1 %' = ```
+				DIVIDE([4. Bajas H1], [1. Clientes H1])
+			```
+		formatString: 0.00%
+		lineageTag: e49cddda-a809-4139-85aa-139e9b41ed5e
+
+	measure '8. Churn H3 %' = ```
+				DIVIDE([6. Bajas H3], [3. Clientes H3])
+			```
+		formatString: 0.00%
+		lineageTag: e306ac06-2c98-44e6-b622-cc0d0ec02de8
+
+	measure '9. Radar clientes' = ```
+				VAR Ids = VALUES(RadarSegmentos[segmento_id])
+				VAR ClientesRadar = CALCULATETABLE(VALUES(RadarCliente[customer_id]), TREATAS(Ids, RadarCliente[segmento_id]))
+				RETURN IF(HASONEVALUE(RadarSegmentos[segmento_id]), CALCULATE([1. Clientes], TREATAS(ClientesRadar, FactClientes[customer_id])), BLANK())
+			```
+		formatString: #,0
+		lineageTag: 16d67959-a7a9-4c81-bd11-8f7c97570299
+
+	measure '10. Radar bajas' = ```
+				VAR Ids = VALUES(RadarSegmentos[segmento_id])
+				VAR ClientesRadar = CALCULATETABLE(VALUES(RadarCliente[customer_id]), TREATAS(Ids, RadarCliente[segmento_id]))
+				RETURN IF(HASONEVALUE(RadarSegmentos[segmento_id]), CALCULATE([2. Bajas], TREATAS(ClientesRadar, FactClientes[customer_id])), BLANK())
+			```
+		formatString: #,0
+		lineageTag: b216b5cc-6f87-46e5-a6c5-290a4ab22e4b
+
+	measure '11. Radar churn %' = ```
+				DIVIDE([10. Radar bajas], [9. Radar clientes])
+			```
+		formatString: 0.00%
+		lineageTag: 71ba6f58-f8a9-404f-97dd-07f45f628185
+
+	measure '12. Radar índice churn' = ```
+				DIVIDE([11. Radar churn %], [3. Churn global %])
+			```
+		formatString: #,0.00
+		lineageTag: b6a01f9a-365d-43d1-bd42-a087a281bbe3
+
+	measure '13. Radar aporte bajas %' = ```
+				DIVIDE([10. Radar bajas], [2. Bajas global])
+			```
+		formatString: 0.00%
+		lineageTag: fd1f2a02-76ea-4418-9fed-9234f6fd2e59
+
+	measure '14. Radar clientes únicos seleccionados' = ```
+				VAR Ids = VALUES(RadarSegmentos[segmento_id])
+				VAR Conj = CALCULATETABLE(VALUES(RadarCliente[customer_id]), TREATAS(Ids, RadarCliente[segmento_id]))
+				RETURN IF(ISFILTERED(RadarSegmentos), CALCULATE([1. Clientes], TREATAS(Conj, FactClientes[customer_id])), BLANK())
+			```
+		formatString: #,0
+		lineageTag: b6834ead-fe6f-4bfd-aa70-960e8129e0ac
+
+	measure '15. Radar bajas únicas seleccionadas' = ```
+				VAR Ids = VALUES(RadarSegmentos[segmento_id])
+				VAR Conj = CALCULATETABLE(VALUES(RadarCliente[customer_id]), TREATAS(Ids, RadarCliente[segmento_id]))
+				RETURN IF(ISFILTERED(RadarSegmentos), CALCULATE([2. Bajas], TREATAS(Conj, FactClientes[customer_id])), BLANK())
+			```
+		formatString: #,0
+		lineageTag: 8243ba74-f9f6-4f40-9330-4dc64b2dcf36
+
+	measure '16. Radar cobertura única bajas %' = ```
+				DIVIDE([15. Radar bajas únicas seleccionadas], [2. Bajas global])
+			```
+		formatString: 0.00%
+		lineageTag: 44a5029c-9256-406e-b05a-2df5d152127e
+
+	measure '17. Radar clientes visual' = ```
+				COALESCE([14. Radar clientes únicos seleccionados], [1. Clientes])
+			```
+		formatString: #,0
+		lineageTag: 8a0e4b54-c2fb-5f45-9a55-def3ddb896f0
+
+	measure '18. Radar bajas visual' = ```
+				COALESCE([15. Radar bajas únicas seleccionadas], [2. Bajas])
+			```
+		formatString: #,0
+		lineageTag: f8379c42-2787-5904-8828-c9c7594ab478
+
+	measure '19. Radar cobertura visual %' = ```
+				DIVIDE([18. Radar bajas visual], [2. Bajas global])
+			```
+		formatString: 0.00%
+		lineageTag: dc3c559d-7482-5d5e-998f-a30582100e37
+
+	measure '20. Radar churn visual %' = ```
+				DIVIDE([18. Radar bajas visual], [17. Radar clientes visual])
+			```
+		formatString: 0.00%
+		lineageTag: 8b2dc31b-f9e3-5a18-bafa-d7c115eef4f0
+
+	measure '22. Radar membresías visibles' = ```
+				VAR Ids = VALUES(RadarSegmentos[segmento_id])
+				RETURN CALCULATE(COUNTROWS(RadarCliente), TREATAS(Ids, RadarCliente[segmento_id]))
+			```
+		formatString: #,0
+		lineageTag: b19bdf4e-6ff3-4842-80ad-fcc29d7e344b
+
+	measure '23. Radar duplicaciones evitadas' = ```
+				[22. Radar membresías visibles] - [17. Radar clientes visual]
+			```
+		formatString: #,0
+		lineageTag: 276bd189-6d28-489a-8370-fa9052be3441
+
+	measure '24. Radar segmentos visibles' = ```
+				DISTINCTCOUNT(RadarSegmentos[segmento_id])
+			```
+		formatString: #,0
+		lineageTag: 080938d8-e16b-4911-82cc-2039f6e5ba72
+
+	measure '25. Radar color de cuadrante' = ```
+				SWITCH(SELECTEDVALUE(RadarSegmentos[cuadrante]),
+				"Tasa alta / Volumen alto", "#EC0000",
+				"Tasa alta / Volumen bajo", "#162B49",
+				"Tasa baja / Volumen alto", "#F5A5AE",
+				"Tasa baja / Volumen bajo", "#A1ACBA",
+				"#A1ACBA")
+			```
+		lineageTag: 17e44672-8373-48d4-8834-b79f49fa7078
+
+	partition 04_Medidas_Segmentacion = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+

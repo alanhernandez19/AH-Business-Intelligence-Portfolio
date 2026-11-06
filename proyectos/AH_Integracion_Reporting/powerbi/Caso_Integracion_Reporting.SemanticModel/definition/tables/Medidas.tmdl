@@ -1,0 +1,212 @@
+table Medidas
+	lineageTag: 3d31a935-5597-4f96-8dcd-b84965e11016
+
+	measure '1. Visitas Totales' = SUM(FactVisitas[VisitasRegistro])
+		formatString: 0
+		lineageTag: d0ebd261-7bf4-46bc-808f-991da53ece7a
+
+	measure '2. Usuarios Unicos' = DISTINCTCOUNT(FactVisitas[EmailNormalizado])
+		formatString: 0
+		lineageTag: 4ae69202-675d-4162-b88d-8a47dfeb995b
+
+	measure '3. Visitas Mes Actual' = ```
+			
+			    CALCULATE(
+			        [1. Visitas Totales],
+			        DATESBETWEEN(
+			            DimFecha[Date],
+			            DATE(YEAR(TODAY()), MONTH(TODAY()), 1),
+			            EOMONTH(TODAY(), 0)
+			        )
+			    )
+			```
+		formatString: 0
+		lineageTag: 4dbb4dd9-883e-43aa-9c55-717108bb5acf
+
+	measure '4. Visitas Año Actual' = ```
+			
+			    CALCULATE(
+			        [1. Visitas Totales],
+			        DATESBETWEEN(
+			            DimFecha[Date],
+			            DATE(YEAR(TODAY()), 1, 1),
+			            DATE(YEAR(TODAY()), 12, 31)
+			        )
+			    )
+			```
+		formatString: 0
+		lineageTag: af8550a0-a7aa-468c-a65f-0b350efd5866
+
+	measure '5. Visitas Mes Anterior' = ```
+			
+			    CALCULATE(
+			        [1. Visitas Totales],
+			        DATEADD(DimFecha[Date], -1, MONTH)
+			    )
+			```
+		formatString: 0
+		lineageTag: b08901ee-d1fc-47d1-b11c-c9cf94981d17
+
+	measure '6. Variacion Mensual' = [1. Visitas Totales] - [5. Visitas Mes Anterior]
+		formatString: 0
+		lineageTag: 07ce15d5-28d6-499a-adae-87e445101abd
+
+	measure '7. Variacion Mensual %' = ```
+			
+			    DIVIDE(
+			        [6. Variacion Mensual],
+			        [5. Visitas Mes Anterior]
+			    )
+			```
+		lineageTag: 239e6898-a88f-4e5e-9658-af2f7ab9c053
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '8. Visitas Acumuladas' =
+			VAR UltimaFecha = MAX(DimFecha[Date])
+			RETURN
+			    CALCULATE(
+			        [1. Visitas Totales],
+			        FILTER(
+			            ALL(DimFecha),
+			            DimFecha[Date] <= UltimaFecha
+			        )
+			    )
+		formatString: 0
+		lineageTag: 81258f72-643e-4447-999d-51cb0fb8b737
+
+	measure '9. Visitas por Usuario' = [1. Visitas Totales]
+		formatString: 0
+		lineageTag: e22ddaf8-5658-47cf-bb09-19d36e1ce293
+
+	measure '10. Usuarios Nuevos' =
+			VAR FechaInicio = MIN(DimFecha[Date])
+			VAR FechaFin = MAX(DimFecha[Date])
+			RETURN
+			    COUNTROWS(
+			        FILTER(
+			            VALUES(FactVisitas[EmailNormalizado]),
+			            VAR PrimerDia =
+			                CALCULATE(
+			                    MIN(FactVisitas[FechaVisitaDia]),
+			                    REMOVEFILTERS(DimFecha)
+			                )
+			            RETURN
+			                NOT ISBLANK(PrimerDia)
+			                    && PrimerDia >= FechaInicio
+			                    && PrimerDia <= FechaFin
+			        )
+			    )
+		formatString: 0
+		lineageTag: a7f2d31f-4c2d-4508-b5fb-6ec866f48a1b
+
+	measure '11. Usuarios Recurrentes' = [2. Usuarios Unicos] - [10. Usuarios Nuevos]
+		formatString: 0
+		lineageTag: 3b5f7d95-89b9-4b39-9813-72d805b2229e
+
+	measure '12. Clicks Totales' = SUM(FactVisitas[Clicks])
+		formatString: 0
+		lineageTag: dd70283f-7bae-4801-abf4-ef34100cfc39
+
+	measure '13. Clicks Promedio por Visita' = ```
+			
+			    DIVIDE(
+			        [12. Clicks Totales],
+			        [1. Visitas Totales],
+			        0
+			    )
+			```
+		formatString: 0.00
+		lineageTag: 3eb6950d-9776-4408-890a-144b3ba28743
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '14. Visitas Año Anterior' = ```
+			
+			    CALCULATE(
+			        [1. Visitas Totales],
+			        SAMEPERIODLASTYEAR(DimFecha[Date])
+			    )
+			```
+		formatString: 0
+		lineageTag: ce30b48c-95c8-43da-8dd5-bde5622c43a1
+
+	measure '15. Variacion Anual %' = ```
+			
+			    DIVIDE(
+			        [1. Visitas Totales] - [14. Visitas Año Anterior],
+			        [14. Visitas Año Anterior]
+			    )
+			```
+		lineageTag: a3bbc431-05b1-4007-8a6b-43f2b16d8965
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure '16. Aperturas Totales' = SUM(FactVisitas[Opens])
+		formatString: #,0
+		lineageTag: b73d39d4-daad-41ce-8a3e-1389dd710fa3
+
+	measure '17. Visitas Fecha Open' = COALESCE(CALCULATE([1. Visitas Totales], FactVisitas[OrigenFechaVisita] = "OPEN"), 0)
+		formatString: #,0
+		lineageTag: eb4c7b4f-fb19-420d-a78e-5bde4156926e
+
+	measure '18. Visitas Respaldo Envio' = COALESCE(CALCULATE([1. Visitas Totales], FactVisitas[OrigenFechaVisita] = "ENVIO"), 0)
+		formatString: #,0
+		lineageTag: 81a2610c-d65f-47fe-b3cc-77703e8c919d
+
+	measure '19. Visitas Fecha Proceso' = COALESCE(CALCULATE([1. Visitas Totales], FactVisitas[OrigenFechaVisita] = "PROCESO"), 0)
+		formatString: #,0
+		lineageTag: b36be8d2-5895-440a-9701-15c076ba8824
+
+	measure '20. Asociaciones Plataforma' = COUNTROWS(VisitaPlataforma)
+		formatString: #,0
+		lineageTag: 4a9c015c-3d00-4dbe-9743-98c31a51d3d4
+
+	measure '21. Visitas Plataforma Identificada' = DISTINCTCOUNT(VisitaPlataforma[IdVisita])
+		formatString: #,0
+		lineageTag: 71ae7485-b71a-437a-97ef-d13ce85c6a3f
+
+	measure '22. Plataformas Distintas' = DISTINCTCOUNT(VisitaPlataforma[Plataforma])
+		formatString: #,0
+		lineageTag: 1f6fce8a-4dad-4826-81fb-4e8fcacfc78e
+
+	measure '23. Visitas Multiplataforma' = COUNTROWS(FILTER(VALUES(VisitaPlataforma[IdVisita]), CALCULATE(COUNTROWS(VisitaPlataforma)) > 1))
+		formatString: #,0
+		lineageTag: 35882f35-2e30-4133-885a-9d741fd933ce
+
+	measure '24. Visitas Adicionales' = [1. Visitas Totales] - [2. Usuarios Unicos]
+		formatString: #,0
+		lineageTag: fdc4e283-28c9-47ea-85d8-1821c7edb76f
+
+	measure '25. Archivos Origen' = DISTINCTCOUNT(FactVisitas[ArchivoOrigen])
+		formatString: #,0
+		lineageTag: 785b384f-7f54-4dff-b3e7-3578fe54215e
+
+	measure '26. Fechas Finales Vacias' = COALESCE(CALCULATE(COUNTROWS(FactVisitas), ISBLANK(FactVisitas[FechaVisita])), 0)
+		formatString: #,0
+		lineageTag: 9c5d3a67-92c2-469c-beeb-c7dcb0b128c2
+
+	/// Promedio de clics por visita para navegadores con al menos cinco visitas
+	/// en el contexto actual. Los navegadores con pocas observaciones permanecen
+	/// disponibles en el origen y en la medida 13 sin filtrar.
+	measure '27. Clicks por Visita Navegadores 5+' =
+			VAR Visitas = [1. Visitas Totales]
+			RETURN
+				IF(Visitas >= 5, [13. Clicks Promedio por Visita], BLANK())
+		formatString: 0.00
+		lineageTag: d87a8405-2da5-422f-b47b-9200c2395b36
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navegación
+

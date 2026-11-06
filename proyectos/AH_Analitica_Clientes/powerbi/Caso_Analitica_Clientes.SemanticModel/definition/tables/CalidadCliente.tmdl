@@ -1,0 +1,90 @@
+table CalidadCliente
+	lineageTag: 5b5165bd-7a87-40a8-99a3-ccdc4253034c
+
+	column customer_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b9d5901-41fe-4e82-b0ec-1a4743ee02bd
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column tenure_cero
+		dataType: int64
+		formatString: 0
+		lineageTag: b4c70f82-a195-49e0-a8ef-0599d8b025e5
+		summarizeBy: sum
+		sourceColumn: tenure_cero
+
+		annotation SummarizationSetBy = Automatic
+
+	column score_extremo_350_850
+		dataType: int64
+		formatString: 0
+		lineageTag: d340e802-ca6b-4b41-928e-ebd956b8473c
+		summarizeBy: sum
+		sourceColumn: score_extremo_350_850
+
+		annotation SummarizationSetBy = Automatic
+
+	column salario_menor_100
+		dataType: int64
+		formatString: 0
+		lineageTag: f2914fb4-e363-4365-b3c1-0caea305be70
+		summarizeBy: sum
+		sourceColumn: salario_menor_100
+
+		annotation SummarizationSetBy = Automatic
+
+	column edad_menos_antiguedad_menor_18
+		dataType: int64
+		formatString: 0
+		lineageTag: 2a5fbb72-a8a6-4ddd-9484-2df321fdda5d
+		summarizeBy: sum
+		sourceColumn: edad_menos_antiguedad_menor_18
+
+		annotation SummarizationSetBy = Automatic
+
+	partition CalidadCliente = m
+		mode: import
+		source =
+				let
+				    // 1. Origen del archivo Excel
+				    Origen = Excel.Workbook(
+				        File.Contents(pArchivoExcel),
+				        null,
+				        true
+				    ),
+				
+				    // 2. Seleccionar la hoja CalidadCliente
+				    CalidadCliente_Sheet = Origen{
+				        [Item = "CalidadCliente", Kind = "Sheet"]
+				    }[Data],
+				
+				    // 3. Promover encabezados
+				    #"Encabezados promovidos" = Table.PromoteHeaders(
+				        CalidadCliente_Sheet,
+				        [PromoteAllScalars = true]
+				    ),
+				
+				    // 4. Aplicar tipos de datos
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Encabezados promovidos",
+				        {
+				            {"customer_id", Int64.Type},
+				            {"tenure_cero", Int64.Type},
+				            {"score_extremo_350_850", Int64.Type},
+				            {"salario_menor_100", Int64.Type},
+				            {"edad_menos_antiguedad_menor_18", Int64.Type}
+				        },
+				        "en-US"
+				    )
+				
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

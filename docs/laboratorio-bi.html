@@ -73,16 +73,16 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px}.foot{display:flex;j
 <details><summary>06 · Explicar hallazgos y limitaciones</summary><div class="detail"><p>Conectar lo observado con decisiones; diferenciar claramente resultados reales, hipótesis y simulaciones, y documentar lo necesario para reproducirlos.</p><ul><li>Resumen ejecutivo y recomendaciones.</li><li>Limitaciones y supuestos declarados.</li><li>Guía de ejecución y artefactos autorizados.</li></ul></div></details>
 </div>
 </div></section>
-<section id="casos"><div class="wrap"><div class="secHead"><span class="eyebrow">03 / Primeros proyectos</span><h2>Dos enfoques de BI. <em>Una misma exigencia de calidad.</em></h2><p>Dos aplicaciones complementarias de una misma filosofía: comprender el negocio, construir modelos confiables y traducir el análisis en decisiones.</p></div>
+<section id="casos"><div class="wrap"><div class="secHead"><span class="eyebrow">03 / Proyectos AH</span><h2>Dos enfoques de BI. <em>Una misma exigencia de calidad.</em></h2><p>Dos aplicaciones complementarias de una misma filosofía: comprender el negocio, construir modelos confiables y traducir el análisis en decisiones.</p></div>
 <div class="workspace">
 <div class="tabRow" role="tablist" aria-label="Selecciona el proyecto">
 <button class="tab" id="tabClientes" type="button" role="tab" aria-controls="panelCaso" aria-selected="true" tabindex="0" data-case="clientes">01 · Analítica de Clientes</button>
 <button class="tab" id="tabReporting" type="button" role="tab" aria-controls="panelCaso" aria-selected="false" tabindex="-1" data-case="reporting">02 · Integración y Reporting</button>
 </div>
 <div class="caseBody" id="panelCaso" role="tabpanel" aria-labelledby="tabClientes" tabindex="0" aria-live="polite">
-<div><span class="state" id="caseState">PRÓXIMO PROYECTO</span><h3 id="caseTitle">Analítica de Clientes</h3><p id="caseIntro">Explorar composición, valor y abandono de clientes para identificar segmentos prioritarios y fundamentar decisiones de retención.</p><div class="tags" id="caseTags"><span>Segmentación</span><span>Churn</span><span>KPI</span><span>Power BI</span></div>
+<div><span class="state" id="caseState">PROYECTO DISPONIBLE</span><h3 id="caseTitle">Analítica de Clientes</h3><p id="caseIntro">Explorar composición, valor y abandono de clientes para identificar segmentos prioritarios y fundamentar decisiones de retención.</p><div class="tags" id="caseTags"><span>Segmentación</span><span>Churn</span><span>KPI</span><span>Power BI</span></div>
 </div>
-<aside class="casePanel"><h4>Áreas de trabajo</h4><ul id="caseChecklist"><li>Exploración y diccionario de variables.</li><li>Modelo y KPI de clientes y abandono.</li><li>Dashboard y escenarios explícitos.</li><li>Controles de conciliación y conclusiones.</li></ul></aside>
+<aside class="casePanel"><h4>Áreas de trabajo</h4><ul id="caseChecklist"><li>Exploración y diccionario de variables.</li><li>Modelo y KPI de clientes y abandono.</li><li>Dashboard y escenarios explícitos.</li><li>Controles de conciliación y conclusiones.</li></ul><p style="margin-top:14px"><a class="btn alt" id="caseProjectLink" href="https://github.com/alanhernandez19/AH-Business-Intelligence-Portfolio/tree/main/proyectos/AH_Analitica_Clientes">Ver proyecto en GitHub ↗</a></p></aside>
 </div>
 </div>
 </div></section>
@@ -119,14 +119,14 @@ footer{border-top:1px solid var(--line);padding:26px 0 40px}.foot{display:flex;j
 (function(){
 'use strict';
 var cases={
-clientes:{title:'Analítica de Clientes',intro:'Explorar composición, valor y abandono de clientes para identificar segmentos prioritarios y fundamentar decisiones de retención.',tags:['Segmentación','Churn','KPI','Power BI'],items:['Exploración y diccionario de variables.','Modelo y KPI de clientes y abandono.','Dashboard y escenarios explícitos.','Controles de conciliación y conclusiones.']},
-reporting:{title:'Integración y Reporting',intro:'Organizar la integración, preparación y validación de datos para producir información consistente y procesos operativos reproducibles.',tags:['ETL','Python','Calidad','Reporting'],items:['Inventario de fuentes, claves y reglas.','ETL reproducible y controles de calidad.','Modelo de reporting con KPI pertinentes.','Conciliaciones, trazabilidad y documentación.']}
+clientes:{url:'https://github.com/alanhernandez19/AH-Business-Intelligence-Portfolio/tree/main/proyectos/AH_Analitica_Clientes',title:'Analítica de Clientes',intro:'Explorar composición, valor y abandono de clientes para identificar segmentos prioritarios y fundamentar decisiones de retención.',tags:['Segmentación','Churn','KPI','Power BI'],items:['Exploración y diccionario de variables.','Modelo y KPI de clientes y abandono.','Dashboard y escenarios explícitos.','Controles de conciliación y conclusiones.']},
+reporting:{url:'https://github.com/alanhernandez19/AH-Business-Intelligence-Portfolio/tree/main/proyectos/AH_Integracion_Reporting',title:'Integración y Reporting',intro:'Organizar la integración, preparación y validación de datos para producir información consistente y procesos operativos reproducibles.',tags:['ETL','Python','Calidad','Reporting'],items:['Inventario de fuentes, claves y reglas.','ETL reproducible y controles de calidad.','Modelo de reporting con KPI pertinentes.','Conciliaciones, trazabilidad y documentación.']}
 };
 var tabs=Array.prototype.slice.call(document.querySelectorAll('[data-case]'));var panel=document.getElementById('panelCaso');
 function pick(key,focus){
 var c=cases[key];if(!c)return;
 tabs.forEach(function(t){var active=t.dataset.case===key;t.setAttribute('aria-selected',String(active));t.tabIndex=active?0:-1;if(active){panel.setAttribute('aria-labelledby',t.id);if(focus)t.focus();}});
-document.getElementById('caseTitle').textContent=c.title;document.getElementById('caseIntro').textContent=c.intro;
+document.getElementById('caseTitle').textContent=c.title;document.getElementById('caseIntro').textContent=c.intro;document.getElementById('caseProjectLink').href=c.url;
 var tags=document.getElementById('caseTags');tags.replaceChildren();c.tags.forEach(function(t){var n=document.createElement('span');n.textContent=t;tags.appendChild(n)});
 var li=document.getElementById('caseChecklist');li.replaceChildren();c.items.forEach(function(t){var n=document.createElement('li');n.textContent=t;li.appendChild(n)});
 }

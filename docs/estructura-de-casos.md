@@ -1,6 +1,6 @@
 # Estructura estándar de los casos
 
-Esta estructura de referencia organiza los repositorios individuales de Business Intelligence. Cada caso adopta únicamente los componentes que aportan valor y facilitan su reproducción.
+Esta estructura de referencia organiza las carpetas de los proyectos de Business Intelligence dentro del portafolio. Cada caso adopta únicamente los componentes que aportan valor y facilitan su reproducción.
 
 ```text
 nombre-del-caso/
@@ -38,4 +38,4 @@ Cada caso **podrá** incorporar una mejora concreta (automatización, simulació
 
 ## Publicación incremental
 
-Cada repositorio individual se incorpora al catálogo cuando contiene documentación, artefactos útiles y evidencias suficientes para comprender su alcance.
+Cada proyecto se presenta en el catálogo con acceso a su documentación, artefactos técnicos y evidencias de resultados.

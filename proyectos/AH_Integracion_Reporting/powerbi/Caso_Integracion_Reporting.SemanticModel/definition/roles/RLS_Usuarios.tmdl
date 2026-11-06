@@ -1,0 +1,40 @@
+role RLS_Usuarios
+	modelPermission: read
+
+	tablePermission FactVisitas =
+			// Comparación exacta de tokens separados por coma;
+			// no depende del RLS del puente ni introduce circularidad.
+			VAR Identidad = LOWER(USERPRINCIPALNAME())
+			VAR Permisos =
+			    CALCULATETABLE(
+			        VALUES(Usuarios[Plataforma]),
+			        FILTER(ALL(Usuarios), LOWER(Usuarios[Usuario]) = Identidad)
+			    )
+			VAR PlataformasRegistro =
+			    "," & SUBSTITUTE(COALESCE(FactVisitas[Plataformas], ""), " ", "") & ","
+			RETURN
+			    "TODAS" IN Permisos
+			        || COUNTROWS(
+			            FILTER(
+			                Permisos,
+			                CONTAINSSTRING(
+			                    PlataformasRegistro,
+			                    "," & SUBSTITUTE(Usuarios[Plataforma], " ", "") & ","
+			                )
+			            )
+			        ) > 0
+
+	tablePermission Usuarios = LOWER(Usuarios[Usuario]) = LOWER(USERPRINCIPALNAME())
+
+	tablePermission VisitaPlataforma =
+			VAR Identidad = LOWER(USERPRINCIPALNAME())
+			VAR Permisos =
+			    CALCULATETABLE(
+			        VALUES(Usuarios[Plataforma]),
+			        FILTER(ALL(Usuarios), LOWER(Usuarios[Usuario]) = Identidad)
+			    )
+			RETURN
+			    "TODAS" IN Permisos || VisitaPlataforma[Plataforma] IN Permisos
+
+	annotation PBI_Id = 7a0ddc91ad964d39b1dcd882d9f39b24
+
