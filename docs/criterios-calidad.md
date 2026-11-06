@@ -3,7 +3,7 @@
 ## Lista de verificación por caso
 
 - [ ] Problema y objetivos de negocio claramente definidos.
-- [ ] Contexto histórico distinguido de la reconstrucción profesional actual.
+- [ ] Contexto, problema, decisiones y objetivos claramente definidos.
 - [ ] Fuentes, granularidad, esquema, fechas, unidades y limitaciones documentadas.
 - [ ] Perfilado de **todas** las variables y selección razonada de oportunidades analíticas.
 - [ ] Diccionario de KPI: definición, fórmula, filtros, fuente e interpretación.
@@ -25,7 +25,7 @@
 **Pendiente:** requiere validación adicional.  
 **Hipótesis:** afirmación no establecida por los datos y tratada explícitamente como tal.
 
-Los resultados de proyectos anteriores **no certifican automáticamente** proyectos nuevos, aunque se reutilicen diseños o patrones.
+Cada caso debe contar con evidencia propia y controles adecuados a sus fuentes, reglas y modelo.
 
 ## Definición de terminado
 
