@@ -10,7 +10,7 @@ Los proyectos Power BI usarán como referencia una identidad AH con:
 - Tipografía legible, navegación funcional, indicadores jerarquizados y visuales justificados.
 - El diseño se adapta al caso: no copiar páginas, medidas o filtros sin necesidad.
 
-La última web de referencia del autor emplea una variante **oscura** (fondo `#071323`, superficies `#0E2136`, acento `#4CBBFF`). El diseño de la nueva web **aún no está cerrado**.
+La identidad web AH emplea una variante **oscura** (fondo `#071323`, superficies `#0E2136`, acento `#4CBBFF`). El nuevo portal adopta esta identidad como base y puede evolucionar sin afectar los formatos de Power BI.
 
 ## Qué podrá consultar un visitante
 
@@ -29,10 +29,10 @@ Para el futuro sitio web se preferirá **HTML, CSS y JavaScript sencillos**, reu
 
 - La galería mostrará únicamente casos y materiales **revisados y autorizados**.
 - Los PDF e infografías deben ser legibles, accesibles y coherentes con el análisis documentado.
-- Las referencias originales de Santander, VinkOS y FlyAcross se conservan **fuera de este repositorio público** hasta que haya una versión apropiada para difusión.
+- Los materiales de referencia privados permanecen **fuera de este repositorio público**. Aquí se incorporarán únicamente soluciones y recursos AH revisados para difusión.
 - No prometer dashboards interactivos desde PDF; Power BI embebido requerirá una evaluación separada de privacidad y licencias.
 - La web se publicará solo cuando tenga contenido real, enlaces probados y revisión de derechos.
 
 ## Próxima fase
 
-Diseñar la página AH con secciones **Perfil, Misión y visión, Metodología, Proyectos, Evidencias visuales y Contacto**. Vincularla al README cuando exista, sin enlaces de muestra que parezcan proyectos terminados.
+Mantener la página AH en `docs/index.html` con secciones **Perfil, Misión y visión, Metodología, Proyectos, Evidencias visuales y Contacto**. La activación de GitHub Pages se realizará tras revisar la versión de lanzamiento; no debe confundirse la existencia de archivos web con un despliegue público activo.
