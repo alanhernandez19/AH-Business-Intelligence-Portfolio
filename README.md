@@ -57,7 +57,7 @@ Los KPI se definen por su utilidad, disponibilidad de datos y reglas de cálculo
 
 Los casos de analítica se abordan con identidad propia, objetivos empresariales claros y metodología reproducible. Cada solución reúne contexto, transformación, indicadores, visualización y controles de calidad, con documentación útil para su evaluación técnica.
 
-**Origen de los casos.** Este portafolio reúne trabajos desarrollados en distintos momentos de mi trayectoria, tanto a partir de datos de acceso público como de conjuntos de muestra utilizados en ejercicios técnicos. Se presentan con una metodología y documentación comunes para facilitar la revisión de su planteamiento, implementación y resultados.
+**Origen de los casos.** Este portafolio reúne trabajos desarrollados en distintos momentos de mi trayectoria, a partir de datos de acceso público y conjuntos de muestra utilizados en ejercicios técnicos. Cuando fue pertinente, se sustituyeron identificadores puntuales por valores ficticios, conservando la consistencia de la información para su análisis. Los proyectos se presentan con una metodología y documentación comunes que facilitan revisar su planteamiento, implementación y resultados.
 
 ## Dos experiencias complementarias
 
