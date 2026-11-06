@@ -59,9 +59,12 @@ Algunos problemas provienen de ejercicios históricos recibidos a lo largo de mi
 
 Solo se compartirán datos, imágenes y otros materiales cuando exista fundamento suficiente para hacerlo y se hayan revisado privacidad, derechos y atribución.
 
-## Portal web AH
+## Dos experiencias complementarias
 
-El código fuente del portal está en [`docs/index.html`](docs/index.html), con identidad visual AH, misión, visión, trayectoria, metodología y las primeras fichas de proyectos **en preparación**. La web se podrá visualizar mediante GitHub Pages cuando se active la publicación desde `main` y `/docs`; **la presencia del HTML no implica que el sitio ya esté desplegado**.
+- **[Perfil interactivo AH — fuente HTML](docs/index.html):** extensión navegable de mi CV, con trayectoria, experiencia, mapa profesional, proyectos, demostraciones y PDF integrados. Se conserva el portal original con su diseño e interactividad.
+- **[Laboratorio BI AH — fuente HTML](docs/laboratorio-bi.html):** complemento técnico para comprender el método end-to-end, los criterios de calidad, las evidencias y las primeras líneas de proyectos.
+
+Ambas páginas están conectadas entre sí. Cuando se habilite **GitHub Pages** desde `main` y `/docs`, estarán disponibles como sitio web. **Los archivos fuente ya existen, pero su presencia en GitHub no confirma todavía el despliegue de Pages.**
 
 ## Estado actual
 
