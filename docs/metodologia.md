@@ -42,9 +42,9 @@ Para cada KPI registrar **definición, fórmula, granularidad, fuente, filtros, 
 
 **Complementos posibles:** simulador, análisis SQL, automatización, validación adicional, RLS, drill-through, análisis RFM o modelo ML explicable. Cada complemento debe justificar qué decisión o validación mejora. No forzar ML, Apache, Spark, Airflow, Docker o servicios cloud si el caso no lo necesita.
 
-## Referencias históricas
+## Referencias y alcance
 
-Las soluciones de Santander y VinkOS y el diseño AH de FlyAcross constituyen **referencias privadas de metodología, QA y presentación**. No se asume que aplicaron íntegramente las etapas nuevas, en especial la revisión sistemática de todas las variables y la matriz KPI–decisión.
+Este método se nutre de experiencia profesional en reporting, modernización, automatización y proyectos analíticos previos. Los nuevos desarrollos serán **soluciones AH independientes**: no se atribuyen certificaciones históricas a proyectos nuevos ni se presentan como implementadas etapas que todavía no se hayan ejecutado. La revisión sistemática de variables y la matriz KPI–decisión son requisitos explícitos de las nuevas soluciones.
 
 ## Criterio de cierre
 
