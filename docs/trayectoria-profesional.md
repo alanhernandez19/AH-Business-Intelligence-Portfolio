@@ -25,7 +25,7 @@ Los proyectos descritos reflejan participación profesional en sus respectivos c
 5. **Modernización e ingeniería inversa:** identificar dependencias y reconstruir reglas poco documentadas.
 6. **Calidad y conciliación:** validar cifras, granularidad, relaciones y comportamiento.
 7. **Comunicación y transferencia:** explicar decisiones, supuestos, riesgos y resultados.
-8. **IA aplicada con supervisión:** emplear herramientas de apoyo sin sustituir la responsabilidad profesional.
+8. **Comunicación de resultados:** presentar evidencia, recomendaciones y conclusiones entendibles para las áreas de negocio.
 
 ## Independencia tecnológica
 
@@ -38,4 +38,4 @@ No se reivindica especialización general en Data Science o Data Engineering; mo
 - [LinkedIn](https://www.linkedin.com/in/alanhdz9523/)
 - [GitHub](https://github.com/alanhernandez19)
 
-El CV y otros materiales de presentación podrán incorporarse en versiones destinadas a difusión pública, una vez revisada su información personal.
+La trayectoria y los proyectos se complementan con el [perfil profesional interactivo](https://alanhernandez19.github.io/AH-Business-Intelligence-Portfolio/).
