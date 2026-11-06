@@ -7,7 +7,7 @@
 
 ## Bienvenido
 
-Este repositorio es el **punto de entrada al portafolio profesional AH**. Su finalidad es explicar mi trayectoria, especialidad técnico-funcional, metodología y criterios de calidad, y reunir progresivamente **proyectos nuevos y reproducibles de Business Intelligence**.
+Este repositorio es el **punto de entrada al portafolio profesional AH**. Su finalidad es explicar mi trayectoria, especialidad técnico-funcional, metodología y criterios de calidad, y reunir progresivamente **proyectos documentados y reproducibles de Business Intelligence**.
 
 Cuento con **más de siete años de experiencia** en reporting financiero, operativo y ejecutivo, automatización, análisis de datos y modernización de plataformas, en contextos de banca, telecomunicaciones, consultoría y manufactura.
 
@@ -19,7 +19,7 @@ Mi especialidad no consiste en acumular herramientas ni en presentar todos los c
 
 **Misión.** Construir y explicar soluciones BI **de principio a fin**: investigar, entender el problema, explorar y transformar datos, definir KPI, modelar, visualizar, conciliar resultados y formular recomendaciones accionables.
 
-**Visión.** Consolidar un portafolio evolutivo que demuestre **competencias transferibles entre sectores y plataformas**. En los nuevos casos utilizaré principalmente **Python y Power BI** para facilitar la reproducción, pero el método y las reglas de negocio pueden implementarse —con las adaptaciones necesarias— mediante SQL, Tableau, KNIME, Cognos Analytics, TM1/Planning Analytics o BigQuery.
+**Visión.** Consolidar un portafolio evolutivo que demuestre **competencias transferibles entre sectores y plataformas**. En los casos presentados utilizaré principalmente **Python y Power BI** para facilitar la reproducción, pero el método y las reglas de negocio pueden implementarse —con las adaptaciones necesarias— mediante SQL, Tableau, KNIME, Cognos Analytics, TM1/Planning Analytics o BigQuery.
 
 ## Qué encontrará aquí
 
@@ -47,7 +47,7 @@ Los KPI se definen por su utilidad, disponibilidad de datos y reglas de cálculo
 
 ## Herramientas
 
-| Núcleo de los nuevos casos | Experiencia transferible y complementos |
+| Núcleo de los casos AH | Experiencia transferible y complementos |
 | --- | --- |
 | **Python / Jupyter / pandas** para exploración, ETL y validación | SQL, BigQuery, KNIME, Power Query y otras soluciones ETL |
 | **Power BI / DAX** para modelos, reportes e interacción | Tableau, Cognos Analytics, TM1 / Planning Analytics |
@@ -56,6 +56,8 @@ Los KPI se definen por su utilidad, disponibilidad de datos y reglas de cálculo
 ## Proyectos AH
 
 Los casos de analítica se abordan con identidad propia, objetivos empresariales claros y metodología reproducible. Cada solución reúne contexto, transformación, indicadores, visualización y controles de calidad, con documentación útil para su evaluación técnica.
+
+**Origen de los casos.** Este portafolio reúne trabajos desarrollados en distintos momentos de mi trayectoria, tanto a partir de datos de acceso público como de conjuntos de muestra utilizados en ejercicios técnicos. Se presentan con una metodología y documentación comunes para facilitar la revisión de su planteamiento, implementación y resultados.
 
 ## Dos experiencias complementarias
 
