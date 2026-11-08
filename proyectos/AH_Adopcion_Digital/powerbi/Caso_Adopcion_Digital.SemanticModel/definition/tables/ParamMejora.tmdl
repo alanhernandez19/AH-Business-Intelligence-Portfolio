@@ -1,0 +1,15 @@
+table ParamMejora
+	lineageTag: 5b6cd787-0a33-5ba3-94ef-1e3e30827b4d
+
+	column Mejora
+		dataType: double
+		formatString: 0.0%
+		lineageTag: 59d0cd48-cd34-54cc-ba95-15aa7de2b56e
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Mejora]
+
+	partition ParamMejora = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 0, 0.10, 0.005 ), "Mejora", [Value] )
+

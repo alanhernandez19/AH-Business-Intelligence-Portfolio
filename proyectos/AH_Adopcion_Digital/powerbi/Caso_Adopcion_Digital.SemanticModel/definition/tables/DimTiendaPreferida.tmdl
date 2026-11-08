@@ -1,0 +1,160 @@
+table DimTiendaPreferida
+	lineageTag: 57a30710-09cc-4c03-ae8d-82c40154762d
+
+	column TiendaPreferidaKey
+		formatString: 0
+		lineageTag: 96679eeb-c827-4e06-a865-d0b4b3d5bc89
+		summarizeBy: count
+		isNameInferred
+		sourceColumn: [TiendaPreferidaKey]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TiendaCodigoFuente
+		lineageTag: fa4ac8a8-726d-47b4-a58d-34134b74b14d
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [TiendaCodigoFuente]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Canal
+		lineageTag: 9bb3d98d-1368-4fa6-9520-1352c59675dc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Canal]
+
+		annotation SummarizationSetBy = Automatic
+
+	column TiendaEnCatalogo
+		formatString: 0
+		lineageTag: 6a72b281-3744-451d-b402-42042824770a
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [TiendaEnCatalogo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MunicipioTiendaValido
+		formatString: 0
+		lineageTag: fbb84383-73ed-44b6-b342-bc1d4884fbad
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MunicipioTiendaValido]
+
+		annotation SummarizationSetBy = Automatic
+
+	column CensoMunicipalDisponible
+		formatString: 0
+		lineageTag: 18f34fc1-094e-4fde-9753-289cec0b7e11
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [CensoMunicipalDisponible]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MunicipioTiendaCve
+		lineageTag: eae1d703-d25e-4359-9724-622885430d9a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MunicipioTiendaCve]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MunicipioNombre
+		lineageTag: afdb0535-3f3a-4656-b105-70f0862425d6
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MunicipioNombre]
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoClave
+		lineageTag: 58e81785-1f54-4bca-bcd6-0260d1e9a337
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [EstadoClave]
+
+		annotation SummarizationSetBy = Automatic
+
+	column IndiceTerritorialFuente2020
+		lineageTag: d73d7d48-9aba-4efd-804a-64c9e0319977
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [IndiceTerritorialFuente2020]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NombreEstado
+		lineageTag: 6c515a00-7aa5-44f4-8efc-b2bd7a67d36a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [NombreEstado]
+
+		annotation SummarizationSetBy = Automatic
+
+	column PoblacionMunicipio2020
+		formatString: 0
+		lineageTag: c7291f8c-71c3-460f-b5c9-42ab75f41261
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [PoblacionMunicipio2020]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ViviendasConCaracteristicas2020
+		formatString: 0
+		lineageTag: d1dd9f58-57ad-448e-8f81-d3d2e2dde111
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [ViviendasConCaracteristicas2020]
+
+		annotation SummarizationSetBy = Automatic
+
+	column ViviendasInternet2020
+		formatString: 0
+		lineageTag: a112ef71-0f74-415d-8567-dece10b62760
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [ViviendasInternet2020]
+
+		annotation SummarizationSetBy = Automatic
+
+	column PorcentajeInternetMunicipio2020
+		lineageTag: b410f4b1-1879-4bbe-8787-dfc0d08f9b2e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [PorcentajeInternetMunicipio2020]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition DimTiendaPreferida = calculated
+		mode: import
+		source = ```
+				
+				    SELECTCOLUMNS (
+				        DimTienda,
+				        "TiendaPreferidaKey", DimTienda[TiendaKey],
+				        "TiendaCodigoFuente", DimTienda[TiendaCodigoFuente],
+				        "Canal", DimTienda[Canal],
+				        "TiendaEnCatalogo", DimTienda[TiendaEnCatalogo],
+				        "MunicipioTiendaValido", DimTienda[MunicipioTiendaValido],
+				        "CensoMunicipalDisponible", DimTienda[CensoMunicipalDisponible],
+				        "MunicipioTiendaCve", DimTienda[MunicipioTiendaCve],
+				        "MunicipioNombre", DimTienda[MunicipioNombre],
+				        "EstadoClave", DimTienda[EstadoClave],
+				        "IndiceTerritorialFuente2020", DimTienda[IndiceTerritorialFuente2020],
+				        "NombreEstado", DimTienda[NombreEstado],
+				        "PoblacionMunicipio2020", DimTienda[PoblacionMunicipio2020],
+				        "ViviendasConCaracteristicas2020", DimTienda[ViviendasConCaracteristicas2020],
+				        "ViviendasInternet2020", DimTienda[ViviendasInternet2020],
+				        "PorcentajeInternetMunicipio2020", DimTienda[PorcentajeInternetMunicipio2020]
+				    )
+				```
+
+	annotation PBI_Id = 23c10bcad62d4573928fa04fe49a3c3e
+

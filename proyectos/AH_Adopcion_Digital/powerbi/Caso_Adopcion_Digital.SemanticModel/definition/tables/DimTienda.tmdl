@@ -1,0 +1,176 @@
+table DimTienda
+	lineageTag: 4d0d9940-ec38-42b0-a6dd-5f1d74d97711
+
+	column TiendaKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 441d2c59-5cb7-476b-9c34-d6c60ab429e7
+		summarizeBy: none
+		sourceColumn: TiendaKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column TiendaCodigoFuente
+		dataType: string
+		lineageTag: 48d70c11-458c-4e44-b091-70e1adca657b
+		summarizeBy: none
+		sourceColumn: TiendaCodigoFuente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Canal
+		dataType: string
+		lineageTag: bf65e9a4-e24f-4559-8180-6dd96110fc6a
+		summarizeBy: none
+		sourceColumn: Canal
+
+		annotation SummarizationSetBy = Automatic
+
+	column MunicipioTiendaCve
+		dataType: string
+		lineageTag: a84f481e-987d-468c-8288-544ba165a331
+		summarizeBy: none
+		sourceColumn: MunicipioTiendaCve
+
+		annotation SummarizationSetBy = Automatic
+
+	column TiendaEnCatalogo
+		dataType: int64
+		formatString: 0
+		lineageTag: d4a728f3-fdce-4352-b5d1-dee1ef26a38d
+		summarizeBy: none
+		sourceColumn: TiendaEnCatalogo
+
+		annotation SummarizationSetBy = Automatic
+
+	column MunicipioNombre
+		dataType: string
+		lineageTag: c93e45df-bc24-43f2-8de8-074b6ac43b00
+		summarizeBy: none
+		sourceColumn: MunicipioNombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoClave
+		dataType: string
+		lineageTag: 77c338f1-887a-495a-885b-d40b401796f1
+		summarizeBy: none
+		sourceColumn: EstadoClave
+
+		annotation SummarizationSetBy = Automatic
+
+	column IndiceTerritorialFuente2020
+		dataType: double
+		lineageTag: d2ea19f6-7e1b-4518-a440-5f67ea1731e9
+		summarizeBy: none
+		sourceColumn: IndiceTerritorialFuente2020
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NombreEstado
+		dataType: string
+		lineageTag: 0263842c-56ff-49a6-9991-70b3f98be752
+		summarizeBy: none
+		sourceColumn: NombreEstado
+
+		annotation SummarizationSetBy = Automatic
+
+	column PoblacionMunicipio2020
+		dataType: int64
+		formatString: 0
+		lineageTag: 8caf4571-e515-41ee-bff9-5555c54ab5ae
+		summarizeBy: none
+		sourceColumn: PoblacionMunicipio2020
+
+		annotation SummarizationSetBy = Automatic
+
+	column ViviendasConCaracteristicas2020
+		dataType: int64
+		formatString: 0
+		lineageTag: 13cde95d-61d4-449a-9b27-0b59762a7bfb
+		summarizeBy: none
+		sourceColumn: ViviendasConCaracteristicas2020
+
+		annotation SummarizationSetBy = Automatic
+
+	column ViviendasInternet2020
+		dataType: int64
+		formatString: 0
+		lineageTag: 55a6ffe4-23a9-421a-ac2b-88eb4c768cb7
+		summarizeBy: none
+		sourceColumn: ViviendasInternet2020
+
+		annotation SummarizationSetBy = Automatic
+
+	column PorcentajeInternetMunicipio2020
+		dataType: double
+		lineageTag: dc7780a4-2d68-4ed1-a80c-e4d6fbcee73b
+		summarizeBy: none
+		sourceColumn: PorcentajeInternetMunicipio2020
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CensoMunicipalDisponible
+		dataType: int64
+		formatString: 0
+		lineageTag: 0abe1d97-0912-4cf1-87f3-dec4a3fb8778
+		summarizeBy: none
+		sourceColumn: CensoMunicipalDisponible
+
+		annotation SummarizationSetBy = Automatic
+
+	column MunicipioTiendaValido
+		dataType: int64
+		formatString: 0
+		lineageTag: 5cc13126-8799-46f3-838c-ea22105817c0
+		summarizeBy: none
+		sourceColumn: MunicipioTiendaValido
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimTienda = m
+		mode: import
+		source =
+				let
+				    ArchivoSalida = "\DimTienda.csv",
+				    Origen = Csv.Document(
+				        File.Contents(pArchivo & ArchivoSalida),
+				        [Delimiter = ",", Columns = 15, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+				    ),
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    #"Vacíos como nulos" = Table.ReplaceValue(
+				        #"Encabezados promovidos", "", null, Replacer.ReplaceValue,
+				        Table.ColumnNames(#"Encabezados promovidos")
+				    ),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Vacíos como nulos",
+				        {
+				            {"TiendaKey", Int64.Type},
+				            {"TiendaCodigoFuente", type text},
+				            {"Canal", type text},
+				            {"MunicipioTiendaCve", type text},
+				            {"TiendaEnCatalogo", Int64.Type},
+				            {"MunicipioNombre", type text},
+				            {"EstadoClave", type text},
+				            {"IndiceTerritorialFuente2020", type number},
+				            {"NombreEstado", type text},
+				            {"PoblacionMunicipio2020", Int64.Type},
+				            {"ViviendasConCaracteristicas2020", Int64.Type},
+				            {"ViviendasInternet2020", Int64.Type},
+				            {"PorcentajeInternetMunicipio2020", type number},
+				            {"CensoMunicipalDisponible", Int64.Type},
+				            {"MunicipioTiendaValido", Int64.Type}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

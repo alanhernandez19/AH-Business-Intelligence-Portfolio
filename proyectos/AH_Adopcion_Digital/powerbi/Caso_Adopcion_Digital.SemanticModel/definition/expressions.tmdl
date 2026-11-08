@@ -1,0 +1,7 @@
+expression pArchivo = "C:\RUTA_DEL_PROYECTO_AH\output" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 407b87fd-d0a0-41f7-ad2f-2e80dfee4dac
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Text
+

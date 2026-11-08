@@ -1,0 +1,182 @@
+table FactMovimientos
+	lineageTag: 1b3d2ff6-3d62-4f40-b751-22545936f077
+
+	column LineaFuenteNro
+		dataType: int64
+		formatString: 0
+		lineageTag: e95a7669-e970-4eba-871d-5d7b28e2eb42
+		summarizeBy: sum
+		sourceColumn: LineaFuenteNro
+
+		annotation SummarizationSetBy = Automatic
+
+	column TicketKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 63cb68ab-fddf-41fa-8b3c-ae1a899e06d4
+		summarizeBy: count
+		sourceColumn: TicketKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 0cfb5967-ed44-4a95-861d-4898f04fb892
+		summarizeBy: count
+		sourceColumn: FechaKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClienteKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 78ef337f-5e6d-482b-8061-d121c50a14a6
+		summarizeBy: none
+		sourceColumn: ClienteKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductoKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 42aea27e-f58d-47a6-a7c8-6bbf1f8e40b4
+		summarizeBy: none
+		sourceColumn: ProductoKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column TiendaKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 2330fb12-d4dd-40b2-9800-36582efb1bb3
+		summarizeBy: none
+		sourceColumn: TiendaKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column OperacionFuente
+		dataType: int64
+		formatString: 0
+		lineageTag: e1c03a41-78e0-4ac3-a507-67d95d5cb397
+		summarizeBy: sum
+		sourceColumn: OperacionFuente
+
+		annotation SummarizationSetBy = Automatic
+
+	column MontoCentavos
+		dataType: int64
+		formatString: 0
+		lineageTag: 8b8baa7e-73be-4e37-b319-2836ba584fee
+		summarizeBy: sum
+		sourceColumn: MontoCentavos
+
+		annotation SummarizationSetBy = Automatic
+
+	column ImporteFirmado
+		dataType: double
+		lineageTag: 0a9bcedf-3b96-4ab1-a13b-3a770484ff84
+		summarizeBy: sum
+		sourceColumn: ImporteFirmado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Unidades
+		dataType: double
+		lineageTag: 2922b108-2e9e-47f6-bf8d-e0df61409c29
+		summarizeBy: sum
+		sourceColumn: Unidades
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EsMontoNegativo
+		dataType: int64
+		formatString: 0
+		lineageTag: 1c508d71-cc0a-4d9c-82ff-8a35275000c3
+		summarizeBy: sum
+		sourceColumn: EsMontoNegativo
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsMontoCero
+		dataType: int64
+		formatString: 0
+		lineageTag: cc581e34-ffd9-46e4-8cfa-87fcb0381c4e
+		summarizeBy: sum
+		sourceColumn: EsMontoCero
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsServicio
+		dataType: int64
+		formatString: 0
+		lineageTag: 1df1235f-9bf3-45d5-a708-84e1fd23bc25
+		summarizeBy: sum
+		sourceColumn: EsServicio
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsProductoDesconocido
+		dataType: int64
+		formatString: 0
+		lineageTag: 48f53930-739c-4d39-9351-5144b053048c
+		summarizeBy: sum
+		sourceColumn: EsProductoDesconocido
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsCanalDesconocido
+		dataType: int64
+		formatString: 0
+		lineageTag: ba03f80b-3aaf-4879-a3e4-324e70fb471d
+		summarizeBy: sum
+		sourceColumn: EsCanalDesconocido
+
+		annotation SummarizationSetBy = Automatic
+
+	partition FactMovimientos = m
+		mode: import
+		source =
+				let
+				    ArchivoSalida = "\FactMovimientos.csv",
+				    Origen = Csv.Document(
+				        File.Contents(pArchivo & ArchivoSalida),
+				        [Delimiter = ",", Columns = 15, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+				    ),
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    #"Vacíos como nulos" = Table.ReplaceValue(
+				        #"Encabezados promovidos", "", null, Replacer.ReplaceValue,
+				        Table.ColumnNames(#"Encabezados promovidos")
+				    ),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Vacíos como nulos",
+				        {
+				            {"LineaFuenteNro", Int64.Type},
+				            {"TicketKey", Int64.Type},
+				            {"FechaKey", Int64.Type},
+				            {"ClienteKey", Int64.Type},
+				            {"ProductoKey", Int64.Type},
+				            {"TiendaKey", Int64.Type},
+				            {"OperacionFuente", Int64.Type},
+				            {"MontoCentavos", Int64.Type},
+				            {"ImporteFirmado", type number},
+				            {"Unidades", type number},
+				            {"EsMontoNegativo", Int64.Type},
+				            {"EsMontoCero", Int64.Type},
+				            {"EsServicio", Int64.Type},
+				            {"EsProductoDesconocido", Int64.Type},
+				            {"EsCanalDesconocido", Int64.Type}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

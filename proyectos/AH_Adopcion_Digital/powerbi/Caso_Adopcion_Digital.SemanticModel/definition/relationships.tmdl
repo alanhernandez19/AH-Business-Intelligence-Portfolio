@@ -1,0 +1,72 @@
+relationship eadab46f-cc79-4768-bdb9-c576bbb11021
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactClienteCorte.FechaPrimeraObservada
+	toColumn: LocalDateTable_480acc8f-ed8c-433b-b7c0-5c05bd6baff8.Date
+
+relationship 67abb15f-575a-4ea6-a618-0f1e1cd90982
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactClienteCorte.FechaUltimaObservada
+	toColumn: LocalDateTable_2fe27bb2-428e-4ecb-b589-2096b12a0585.Date
+
+relationship 8113a15c-0cae-4355-97d7-dff3b87b8a2b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactClienteCorte.FechaPrimeraFisica
+	toColumn: LocalDateTable_701e9a0e-446a-4f8f-8d11-d0e3d585a4c2.Date
+
+relationship 578384c2-0b9a-4d9c-bcc5-bee46263a566
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactClienteCorte.FechaPrimeraInternet
+	toColumn: LocalDateTable_a0236454-5bcd-46e7-a19c-15a9c0b3b33f.Date
+
+relationship 7c68a2bf-1e7b-4b38-bc99-c52c74b9afea
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactClienteCorte.FechaReferenciaAntecedentes
+	toColumn: LocalDateTable_cc0f99fb-0637-492f-a727-7999c5814a54.Date
+
+relationship ca30ce88-7c52-46ce-a569-7acc79f9e819
+	joinOnDateBehavior: datePartOnly
+	fromColumn: FactClienteCorte.FechaUltimaAntecedente
+	toColumn: LocalDateTable_904027b4-8e21-4721-8012-422a6fcecce7.Date
+
+relationship AutoDetected_1e5a4b4d-fc3e-4a8d-b58a-088d6682047f
+	fromColumn: FactClienteCorte.ClienteKey
+	toColumn: DimCliente.ClienteKey
+
+relationship AutoDetected_7a85b45f-3c69-4e0a-91a5-257dc08fbdfa
+	fromColumn: FactMovimientos.ClienteKey
+	toColumn: DimCliente.ClienteKey
+
+relationship AutoDetected_be33b637-9f7b-4eeb-a1ce-8fe3fab5526a
+	fromColumn: FactClienteCorte.ReglaKey
+	toColumn: DimReglaAnalisis.ReglaKey
+
+relationship AutoDetected_eadc3288-80ed-4e76-8390-3dfa8f2a0005
+	fromColumn: FactMovimientos.ProductoKey
+	toColumn: DimProducto.ProductoKey
+
+relationship AutoDetected_4d6aeb02-4a73-404e-847b-df98020603af
+	fromColumn: FactMovimientos.TiendaKey
+	toColumn: DimTienda.TiendaKey
+
+relationship 24b2581a-630f-4cbb-af47-7b95dc593718
+	fromColumn: FactMovimientos.FechaKey
+	toColumn: DimFecha.FechaKey
+
+relationship b14a025f-b6e5-4b06-a261-3be8dbe258fd
+	fromColumn: FactClienteCorte.CorteKey
+	toColumn: DimCorte.CorteKey
+
+relationship e3c1c47b-cba9-4148-a911-508db3640a0b
+	fromColumn: FactClienteCorte.TiendaPreferidaKey
+	toColumn: DimTiendaPreferida.TiendaPreferidaKey
+
+relationship f8b4706b-d568-4fb9-bce1-6b9cc0c731cc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimFecha.Fecha
+	toColumn: LocalDateTable_a0fd7ace-b738-46ec-a4cb-792991c11a63.Date
+
+relationship 0ce227d2-50a3-43f3-98f4-c4b2b2c813c8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DimCorte.FechaCorte
+	toColumn: LocalDateTable_68aa20f4-14de-4c02-8080-31a090ced301.Date
+

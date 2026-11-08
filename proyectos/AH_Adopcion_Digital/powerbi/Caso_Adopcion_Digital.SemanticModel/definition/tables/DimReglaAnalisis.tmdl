@@ -1,0 +1,58 @@
+table DimReglaAnalisis
+	lineageTag: 1870b6a1-cfd6-4930-9ca7-86e4a0cd23f6
+
+	column ReglaKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 32c7f2f1-a579-4539-a340-214e0bd7b386
+		summarizeBy: none
+		sourceColumn: ReglaKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReglaNombre
+		dataType: string
+		lineageTag: 34e6ba27-dd96-4712-a5cf-f4696311d61c
+		summarizeBy: none
+		sourceColumn: ReglaNombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column Definicion
+		dataType: string
+		lineageTag: f60840ba-6fb5-4f40-b7bc-3dbf309b4df9
+		summarizeBy: none
+		sourceColumn: Definicion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimReglaAnalisis = m
+		mode: import
+		source =
+				let
+				    ArchivoSalida = "\DimReglaAnalisis.csv",
+				    Origen = Csv.Document(
+				        File.Contents(pArchivo & ArchivoSalida),
+				        [Delimiter = ",", Columns = 3, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+				    ),
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    #"Vacíos como nulos" = Table.ReplaceValue(
+				        #"Encabezados promovidos", "", null, Replacer.ReplaceValue,
+				        Table.ColumnNames(#"Encabezados promovidos")
+				    ),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Vacíos como nulos",
+				        {
+				            {"ReglaKey", Int64.Type},
+				            {"ReglaNombre", type text},
+				            {"Definicion", type text}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

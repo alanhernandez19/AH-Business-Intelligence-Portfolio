@@ -1,0 +1,48 @@
+table DimCorte
+	lineageTag: 39ef3541-38af-4053-a35a-161389bcf33f
+
+	column CorteKey
+		formatString: 0
+		lineageTag: 234463a8-bfba-4faa-a5f3-249d524b9ccc
+		summarizeBy: count
+		isNameInferred
+		sourceColumn: [CorteKey]
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaCorte
+		formatString: General Date
+		lineageTag: ccef51f9-563f-4f5a-a00c-18e6579684ed
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [FechaCorte]
+
+		variation Variation
+			isDefault
+			relationship: 0ce227d2-50a3-43f3-98f4-c4b2b2c813c8
+			defaultHierarchy: LocalDateTable_68aa20f4-14de-4c02-8080-31a090ced301.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column CorteNombre = FORMAT ( DimCorte[FechaCorte], "yyyy-MM-dd" )
+		lineageTag: a3dc94b1-27bd-4790-a812-6a2619dd2d5c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimCorte = calculated
+		mode: import
+		source = ```
+				
+				    SELECTCOLUMNS (
+				        FILTER (
+				            DimFecha,
+				            DimFecha[FechaKey] IN VALUES ( FactClienteCorte[CorteKey] )
+				        ),
+				        "CorteKey", DimFecha[FechaKey],
+				        "FechaCorte", DimFecha[Fecha]
+				    )
+				```
+
+	annotation PBI_Id = d45d9ea1052c41739536dfd395e07757
+

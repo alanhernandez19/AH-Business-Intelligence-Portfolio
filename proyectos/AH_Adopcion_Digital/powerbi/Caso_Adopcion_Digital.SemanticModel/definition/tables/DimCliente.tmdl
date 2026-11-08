@@ -1,0 +1,246 @@
+table DimCliente
+	lineageTag: cb7f9775-3782-41bc-8bf1-99e175fda1af
+
+	column ClienteKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 77c9d61b-a5af-4bf2-babf-e807053b4a77
+		summarizeBy: none
+		sourceColumn: ClienteKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column EdadObservada
+		dataType: double
+		lineageTag: c8af3bbd-66bf-4d90-9d12-883250e997ac
+		summarizeBy: sum
+		sourceColumn: EdadObservada
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MunicipioDomicilioCve
+		dataType: string
+		lineageTag: c4dfe577-cf1c-43bc-ba3d-abac58d7655e
+		summarizeBy: none
+		sourceColumn: MunicipioDomicilioCve
+
+		annotation SummarizationSetBy = Automatic
+
+	column CuentasEnMaestro
+		dataType: int64
+		formatString: 0
+		lineageTag: 1538a414-7eed-4d9e-a7da-9eb0f54e7928
+		summarizeBy: sum
+		sourceColumn: CuentasEnMaestro
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClienteReferencia
+		dataType: string
+		lineageTag: b58ba2a8-d234-453d-a9c5-23a22bd9efb1
+		summarizeBy: none
+		sourceColumn: ClienteReferencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column SegmentoOrigenCodigo
+		dataType: string
+		lineageTag: 4cdd1794-293f-4d1a-84ec-6e1a5e11d047
+		summarizeBy: none
+		sourceColumn: SegmentoOrigenCodigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column EdadDisponible
+		dataType: int64
+		formatString: 0
+		lineageTag: 4397f238-8787-45c7-b034-444aaebe0fb1
+		summarizeBy: sum
+		sourceColumn: EdadDisponible
+
+		annotation SummarizationSetBy = Automatic
+
+	column EdadMayor100Revisar
+		dataType: int64
+		formatString: 0
+		lineageTag: 7a2bf4c4-9110-4ceb-b8fd-62f53ddcacf7
+		summarizeBy: sum
+		sourceColumn: EdadMayor100Revisar
+
+		annotation SummarizationSetBy = Automatic
+
+	column GrupoEdad
+		dataType: string
+		lineageTag: b1a5f9ab-05b7-4487-b91d-80b136610281
+		summarizeBy: none
+		sourceColumn: GrupoEdad
+
+		annotation SummarizationSetBy = Automatic
+
+	column SegmentoDisponible
+		dataType: int64
+		formatString: 0
+		lineageTag: 9bc3e67d-66d4-46a1-9ffc-6e3765d40b99
+		summarizeBy: sum
+		sourceColumn: SegmentoDisponible
+
+		annotation SummarizationSetBy = Automatic
+
+	column MunicipioNombre
+		dataType: string
+		lineageTag: 15a75239-b4a8-47b9-a454-cad20ca4cf2e
+		summarizeBy: none
+		sourceColumn: MunicipioNombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column EstadoClave
+		dataType: string
+		lineageTag: 9f2b6917-f4b8-4af0-930f-cf018cdfeffc
+		summarizeBy: none
+		sourceColumn: EstadoClave
+
+		annotation SummarizationSetBy = Automatic
+
+	column IndiceTerritorialFuente2020
+		dataType: double
+		lineageTag: 7401d1a3-f130-4047-9ae7-5c93069a1b5c
+		summarizeBy: sum
+		sourceColumn: IndiceTerritorialFuente2020
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NombreEstado
+		dataType: string
+		lineageTag: 8ec92af6-602c-429f-bd0e-cd8521416189
+		summarizeBy: none
+		sourceColumn: NombreEstado
+
+		annotation SummarizationSetBy = Automatic
+
+	column PoblacionMunicipio2020
+		dataType: int64
+		formatString: 0
+		lineageTag: 98108997-aa10-494b-97aa-aa30dbae19a7
+		summarizeBy: sum
+		sourceColumn: PoblacionMunicipio2020
+
+		annotation SummarizationSetBy = Automatic
+
+	column ViviendasConCaracteristicas2020
+		dataType: int64
+		formatString: 0
+		lineageTag: 6dc3abfa-bf02-4cce-968e-517235f226c1
+		summarizeBy: sum
+		sourceColumn: ViviendasConCaracteristicas2020
+
+		annotation SummarizationSetBy = Automatic
+
+	column ViviendasInternet2020
+		dataType: int64
+		formatString: 0
+		lineageTag: d2def796-251c-49e6-b52b-4ab77ff3070d
+		summarizeBy: sum
+		sourceColumn: ViviendasInternet2020
+
+		annotation SummarizationSetBy = Automatic
+
+	column PorcentajeInternetMunicipio2020
+		dataType: double
+		lineageTag: 09833b9a-a7fc-4c70-89e3-b221320a7b51
+		summarizeBy: sum
+		sourceColumn: PorcentajeInternetMunicipio2020
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CensoMunicipalDisponible
+		dataType: int64
+		formatString: 0
+		lineageTag: 46e6b736-4e73-4f98-a54c-ac330c5f794e
+		summarizeBy: sum
+		sourceColumn: CensoMunicipalDisponible
+
+		annotation SummarizationSetBy = Automatic
+
+	column DomicilioMunicipioValido
+		dataType: int64
+		formatString: 0
+		lineageTag: 12ed33d6-aa30-4ebb-b15e-57d15b6effd7
+		summarizeBy: sum
+		sourceColumn: DomicilioMunicipioValido
+
+		annotation SummarizationSetBy = Automatic
+
+	column BandaInternetMunicipio = SWITCH ( TRUE (), ISBLANK ( DimCliente[PorcentajeInternetMunicipio2020] ), "Sin dato", DimCliente[PorcentajeInternetMunicipio2020] <= 0.4, "≤40%", DimCliente[PorcentajeInternetMunicipio2020] <= 0.6, "40-60%", DimCliente[PorcentajeInternetMunicipio2020] <= 0.8, "60-80%", ">80%" )
+		lineageTag: aa471b91-a2c8-5ba3-b870-d4ef041ccf5e
+		summarizeBy: none
+		sortByColumn: OrdenBandaInternetMunicipio
+
+	column OrdenBandaInternetMunicipio = SWITCH ( TRUE (), ISBLANK ( DimCliente[PorcentajeInternetMunicipio2020] ), 5, DimCliente[PorcentajeInternetMunicipio2020] <= 0.4, 1, DimCliente[PorcentajeInternetMunicipio2020] <= 0.6, 2, DimCliente[PorcentajeInternetMunicipio2020] <= 0.8, 3, 4 )
+		dataType: int64
+		formatString: 0
+		lineageTag: 788ae0e1-5577-5a73-8af2-d8db01e6cdc8
+		summarizeBy: none
+
+	column EstadoMapaISO = SWITCH ( DimCliente[EstadoClave], "01", "MX-AGU", "02", "MX-BCN", "03", "MX-BCS", "04", "MX-CAM", "05", "MX-COA", "06", "MX-COL", "07", "MX-CHP", "08", "MX-CHH", "09", "MX-DIF", "10", "MX-DUR", "11", "MX-GUA", "12", "MX-GRO", "13", "MX-HID", "14", "MX-JAL", "15", "MX-MEX", "16", "MX-MIC", "17", "MX-MOR", "18", "MX-NAY", "19", "MX-NLE", "20", "MX-OAX", "21", "MX-PUE", "22", "MX-QUE", "23", "MX-ROO", "24", "MX-SLP", "25", "MX-SIN", "26", "MX-SON", "27", "MX-TAB", "28", "MX-TAM", "29", "MX-TLA", "30", "MX-VER", "31", "MX-YUC", "32", "MX-ZAC", BLANK () )
+		lineageTag: 25582fee-b36d-51a7-9233-9781b9ad333f
+		dataCategory: StateOrProvince
+		summarizeBy: none
+
+	column EstadoVisual = COALESCE ( DimCliente[NombreEstado], "Sin domicilio válido" )
+		lineageTag: 51c1d068-9231-5e4d-aa1c-4f7b506a0128
+		summarizeBy: none
+
+	partition DimCliente = m
+		mode: import
+		source =
+				let
+				    ArchivoSalida = "\DimCliente.csv",
+				    Origen = Csv.Document(
+				        File.Contents(pArchivo & ArchivoSalida),
+				        [Delimiter = ",", Columns = 20, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+				    ),
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    #"Vacíos como nulos" = Table.ReplaceValue(
+				        #"Encabezados promovidos", "", null, Replacer.ReplaceValue,
+				        Table.ColumnNames(#"Encabezados promovidos")
+				    ),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Vacíos como nulos",
+				        {
+				            {"ClienteKey", Int64.Type},
+				            {"EdadObservada", type number},
+				            {"MunicipioDomicilioCve", type text},
+				            {"CuentasEnMaestro", Int64.Type},
+				            {"ClienteReferencia", type text},
+				            {"SegmentoOrigenCodigo", type text},
+				            {"EdadDisponible", Int64.Type},
+				            {"EdadMayor100Revisar", Int64.Type},
+				            {"GrupoEdad", type text},
+				            {"SegmentoDisponible", Int64.Type},
+				            {"MunicipioNombre", type text},
+				            {"EstadoClave", type text},
+				            {"IndiceTerritorialFuente2020", type number},
+				            {"NombreEstado", type text},
+				            {"PoblacionMunicipio2020", Int64.Type},
+				            {"ViviendasConCaracteristicas2020", Int64.Type},
+				            {"ViviendasInternet2020", Int64.Type},
+				            {"PorcentajeInternetMunicipio2020", type number},
+				            {"CensoMunicipalDisponible", Int64.Type},
+				            {"DomicilioMunicipioValido", Int64.Type}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

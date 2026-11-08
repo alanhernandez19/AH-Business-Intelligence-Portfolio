@@ -1,0 +1,109 @@
+﻿Prueba,Resultado,Detalle
+Unicidad DimFecha,OK,731
+Unicidad DimCliente,OK,55384
+Unicidad DimProducto,OK,387150
+Unicidad DimTienda,OK,217
+Unicidad DimTiendaPreferida,OK,217
+Unicidad DimReglaAnalisis,OK,4
+Unicidad DimCorte,OK,1
+FK FactMovimientos.FechaKey,OK,Sin claves huerfanas
+FK FactMovimientos.ClienteKey,OK,Sin claves huerfanas
+FK FactMovimientos.ProductoKey,OK,Sin claves huerfanas
+FK FactMovimientos.TiendaKey,OK,Sin claves huerfanas
+FK FactClienteCorte.ClienteKey,OK,Sin claves huerfanas
+FK FactClienteCorte.TiendaPreferidaKey,OK,Sin claves huerfanas
+FK FactClienteCorte.ReglaKey,OK,Sin claves huerfanas
+FK FactClienteCorte.CorteKey,OK,Sin claves huerfanas
+Grano FactMovimientos,OK,Una linea de fuente por fila
+Grano FactClienteCorte,OK,Cliente/corte/regla
+Filas preservadas,OK,1337800
+Importes exactos preservados,OK,112707213890
+Canales desconocidos conservados,OK,4461
+Negativos conservados,OK,274063
+No falsos negativos temporales,OK,Dias validos
+Nulos correctos adopcion 30,OK,No elegible/inmaduro = nulo
+Recompra solo madura 30,OK,Ventana completa
+Nulos correctos adopcion 90,OK,No elegible/inmaduro = nulo
+Recompra solo madura 90,OK,Ventana completa
+Nulos correctos adopcion 180,OK,No elegible/inmaduro = nulo
+Recompra solo madura 180,OK,Ventana completa
+Clientes regla 1,OK,55384
+Importe snapshot regla 1,OK,112707213890
+Ventana dia 30 regla 1,OK,Candidatos con actividad fisica inicial y resultado definido
+Adopcion 31-90 regla 1,OK,Horizontes 90 menos 30
+Visitas antecedentes r1 c1,OK,Conteo independiente de fechas
+Inactividad antecedentes r1 c1,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r1 c2,OK,Conteo independiente de fechas
+Inactividad antecedentes r1 c2,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r1 c3,OK,Conteo independiente de fechas
+Inactividad antecedentes r1 c3,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r1 c4,OK,Conteo independiente de fechas
+Inactividad antecedentes r1 c4,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r1 c5,OK,Conteo independiente de fechas
+Inactividad antecedentes r1 c5,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r1 c6,OK,Conteo independiente de fechas
+Inactividad antecedentes r1 c6,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r1 c17,OK,Conteo independiente de fechas
+Inactividad antecedentes r1 c17,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r1 c56,OK,Conteo independiente de fechas
+Inactividad antecedentes r1 c56,OK,Referencia menos ultima fecha previa
+Clientes regla 2,OK,55150
+Importe snapshot regla 2,OK,117455467830
+Ventana dia 30 regla 2,OK,Candidatos con actividad fisica inicial y resultado definido
+Adopcion 31-90 regla 2,OK,Horizontes 90 menos 30
+Visitas antecedentes r2 c1,OK,Conteo independiente de fechas
+Inactividad antecedentes r2 c1,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r2 c2,OK,Conteo independiente de fechas
+Inactividad antecedentes r2 c2,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r2 c3,OK,Conteo independiente de fechas
+Inactividad antecedentes r2 c3,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r2 c4,OK,Conteo independiente de fechas
+Inactividad antecedentes r2 c4,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r2 c5,OK,Conteo independiente de fechas
+Inactividad antecedentes r2 c5,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r2 c6,OK,Conteo independiente de fechas
+Inactividad antecedentes r2 c6,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r2 c17,OK,Conteo independiente de fechas
+Inactividad antecedentes r2 c17,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r2 c56,OK,Conteo independiente de fechas
+Inactividad antecedentes r2 c56,OK,Referencia menos ultima fecha previa
+Clientes regla 3,OK,55383
+Importe snapshot regla 3,OK,105903335738
+Ventana dia 30 regla 3,OK,Candidatos con actividad fisica inicial y resultado definido
+Adopcion 31-90 regla 3,OK,Horizontes 90 menos 30
+Visitas antecedentes r3 c1,OK,Conteo independiente de fechas
+Inactividad antecedentes r3 c1,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r3 c2,OK,Conteo independiente de fechas
+Inactividad antecedentes r3 c2,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r3 c3,OK,Conteo independiente de fechas
+Inactividad antecedentes r3 c3,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r3 c4,OK,Conteo independiente de fechas
+Inactividad antecedentes r3 c4,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r3 c5,OK,Conteo independiente de fechas
+Inactividad antecedentes r3 c5,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r3 c6,OK,Conteo independiente de fechas
+Inactividad antecedentes r3 c6,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r3 c17,OK,Conteo independiente de fechas
+Inactividad antecedentes r3 c17,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r3 c56,OK,Conteo independiente de fechas
+Inactividad antecedentes r3 c56,OK,Referencia menos ultima fecha previa
+Clientes regla 4,OK,55143
+Importe snapshot regla 4,OK,107531292144
+Ventana dia 30 regla 4,OK,Candidatos con actividad fisica inicial y resultado definido
+Adopcion 31-90 regla 4,OK,Horizontes 90 menos 30
+Visitas antecedentes r4 c1,OK,Conteo independiente de fechas
+Inactividad antecedentes r4 c1,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r4 c2,OK,Conteo independiente de fechas
+Inactividad antecedentes r4 c2,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r4 c3,OK,Conteo independiente de fechas
+Inactividad antecedentes r4 c3,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r4 c4,OK,Conteo independiente de fechas
+Inactividad antecedentes r4 c4,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r4 c5,OK,Conteo independiente de fechas
+Inactividad antecedentes r4 c5,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r4 c6,OK,Conteo independiente de fechas
+Inactividad antecedentes r4 c6,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r4 c17,OK,Conteo independiente de fechas
+Inactividad antecedentes r4 c17,OK,Referencia menos ultima fecha previa
+Visitas antecedentes r4 c56,OK,Conteo independiente de fechas
+Inactividad antecedentes r4 c56,OK,Referencia menos ultima fecha previa

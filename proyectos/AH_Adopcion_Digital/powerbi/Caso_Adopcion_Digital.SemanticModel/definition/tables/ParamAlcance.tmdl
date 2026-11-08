@@ -1,0 +1,15 @@
+table ParamAlcance
+	lineageTag: 8dba206a-c799-5558-9c95-e851c6a6f412
+
+	column Alcance
+		dataType: double
+		formatString: 0%
+		lineageTag: f877dc1b-d9e4-594e-ad34-b64aa9e00b91
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Alcance]
+
+	partition ParamAlcance = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 0, 1, 0.05 ), "Alcance", [Value] )
+

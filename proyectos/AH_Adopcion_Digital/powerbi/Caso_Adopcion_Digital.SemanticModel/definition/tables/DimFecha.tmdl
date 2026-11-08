@@ -1,0 +1,109 @@
+table DimFecha
+	lineageTag: eb661211-53ee-4bca-9687-dc8e98f6c3f4
+
+	column Fecha
+		formatString: General Date
+		lineageTag: 0bf39038-efd2-4f40-8b82-5fc190da6999
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Fecha]
+
+		variation Variation
+			isDefault
+			relationship: f8b4706b-d568-4fb9-bce1-6b9cc0c731cc
+			defaultHierarchy: LocalDateTable_a0fd7ace-b738-46ec-a4cb-792991c11a63.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaKey = ```
+			
+			    YEAR ( DimFecha[Fecha] ) * 10000
+			        + MONTH ( DimFecha[Fecha] ) * 100
+			        + DAY ( DimFecha[Fecha] )
+			```
+		formatString: 0
+		lineageTag: b6ec33c2-e28e-45fb-8fe0-5786ad0192d6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Anio = YEAR ( DimFecha[Fecha] )
+		formatString: 0
+		lineageTag: 1d4d056d-2fcc-4340-9512-b55111545ce1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNumero = MONTH ( DimFecha[Fecha] )
+		formatString: 0
+		lineageTag: e7814bc5-b5ce-4b24-98c1-046b286dbd8b
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column MesNombre = FORMAT ( DimFecha[Fecha], "MMMM", "es-MX" )
+		lineageTag: 6eb058b0-cbf4-4027-bd8e-3e0a36b603e4
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column AnioMes = FORMAT ( DimFecha[Fecha], "yyyy-MM" )
+		lineageTag: 3a023571-f969-42fd-a422-880f969a8c4e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Trimestre = QUARTER ( DimFecha[Fecha] )
+		formatString: 0
+		lineageTag: 42b18127-df11-4047-b433-3e778988d607
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaSemanaNumero = WEEKDAY ( DimFecha[Fecha], 2 )
+		formatString: 0
+		lineageTag: eba219ca-dab3-4e7e-9604-a75847b514a6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsFinSemana = IF ( DimFecha[DiaSemanaNumero] >= 6, 1, 0 )
+		formatString: 0
+		lineageTag: 43143aca-245e-418e-9b5e-b8e366402439
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiaConRegistrosFuente = ```
+			
+			    IF (
+			        CONTAINS (
+			            FactMovimientos,
+			            FactMovimientos[FechaKey],
+			            DimFecha[FechaKey]
+			        ),
+			        1,
+			        0
+			    )
+			```
+		formatString: 0
+		lineageTag: ee3bb8c8-76f2-4bad-a811-d9a587f05854
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimFecha = calculated
+		mode: import
+		source = ```
+				
+				    VAR FechaMin = MIN ( FactClienteCorte[FechaPrimeraObservada] )
+				    VAR FechaMax = MAX ( FactClienteCorte[FechaUltimaObservada] )
+				    RETURN
+				        SELECTCOLUMNS (
+				            CALENDAR ( FechaMin, FechaMax ),
+				            "Fecha", [Date]
+				        )
+				```
+
+	annotation PBI_Id = e9b17f95fca44006b3b5ea9701ca22ff
+

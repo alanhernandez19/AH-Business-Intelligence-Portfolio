@@ -1,0 +1,15 @@
+table ParamTickets
+	lineageTag: 9da9675c-34dd-5bb1-aece-23ee747ae745
+
+	column Tickets
+		dataType: int64
+		formatString: #,0
+		lineageTag: dd5c84dc-6c5e-526a-9a79-14554af60d20
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Tickets]
+
+	partition ParamTickets = calculated
+		mode: import
+		source = SELECTCOLUMNS ( GENERATESERIES ( 1, 5, 1 ), "Tickets", [Value] )
+

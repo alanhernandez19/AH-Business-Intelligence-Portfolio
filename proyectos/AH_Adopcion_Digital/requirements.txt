@@ -1,0 +1,4 @@
+# Resolver versiones compatibles con el Python instalado.
+numpy>=1.21,<3
+pandas>=1.5,<4
+matplotlib>=3.3,<4

@@ -1,0 +1,718 @@
+table FactClienteCorte
+	lineageTag: 6a615604-b9ab-436b-8d39-dccebee73acc
+
+	column ClienteKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 183ef381-bb95-44bb-aa27-218a9a081de0
+		summarizeBy: none
+		sourceColumn: ClienteKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaPrimeraObservada
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 6e56023c-3b30-49f8-9e86-2cf74024fd03
+		summarizeBy: none
+		sourceColumn: FechaPrimeraObservada
+
+		variation Variation
+			isDefault
+			relationship: eadab46f-cc79-4768-bdb9-c576bbb11021
+			defaultHierarchy: LocalDateTable_480acc8f-ed8c-433b-b7c0-5c05bd6baff8.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FechaUltimaObservada
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 77608921-7dde-4530-b5eb-8d768465dc75
+		summarizeBy: none
+		sourceColumn: FechaUltimaObservada
+
+		variation Variation
+			isDefault
+			relationship: 67abb15f-575a-4ea6-a618-0f1e1cd90982
+			defaultHierarchy: LocalDateTable_2fe27bb2-428e-4ecb-b589-2096b12a0585.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LineasPeriodo
+		dataType: int64
+		formatString: 0
+		lineageTag: 00f1d91d-d12c-4cc4-ab34-2132a15d0c73
+		summarizeBy: sum
+		sourceColumn: LineasPeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column TicketsPeriodo
+		dataType: int64
+		formatString: 0
+		lineageTag: 0d91489f-3d10-4c1a-b83d-73057e55a397
+		summarizeBy: sum
+		sourceColumn: TicketsPeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitasPeriodo
+		dataType: int64
+		formatString: 0
+		lineageTag: d32d1ff0-6966-40f6-96d7-d2f54a1660ec
+		summarizeBy: sum
+		sourceColumn: VisitasPeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column CentavosPeriodo
+		dataType: int64
+		formatString: 0
+		lineageTag: 932fdf1b-1b46-426f-8f54-916b88ce3dab
+		summarizeBy: sum
+		sourceColumn: CentavosPeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnidadesPeriodo
+		dataType: double
+		lineageTag: 1d921ce8-b007-4bcc-adba-21f091692cda
+		summarizeBy: sum
+		sourceColumn: UnidadesPeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FechaPrimeraFisica
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ded47017-c25d-445f-9fcb-66de2677cb03
+		summarizeBy: none
+		sourceColumn: FechaPrimeraFisica
+
+		variation Variation
+			isDefault
+			relationship: 8113a15c-0cae-4355-97d7-dff3b87b8a2b
+			defaultHierarchy: LocalDateTable_701e9a0e-446a-4f8f-8d11-d0e3d585a4c2.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FechaPrimeraInternet
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5538981d-da48-45ee-b71a-3573065dee93
+		summarizeBy: none
+		sourceColumn: FechaPrimeraInternet
+
+		variation Variation
+			isDefault
+			relationship: 578384c2-0b9a-4d9c-bcc5-bee46263a566
+			defaultHierarchy: LocalDateTable_a0236454-5bcd-46e7-a19c-15a9c0b3b33f.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EstadoOrigen
+		dataType: string
+		lineageTag: b01f6f9d-e186-408d-b558-dff12d6b5330
+		summarizeBy: none
+		sourceColumn: EstadoOrigen
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsElegibleFisico
+		dataType: int64
+		formatString: 0
+		lineageTag: 2e8975ac-1c70-4530-93b2-de6da56e7e06
+		summarizeBy: sum
+		sourceColumn: EsElegibleFisico
+
+		annotation SummarizationSetBy = Automatic
+
+	column EsAdoptantePosterior
+		dataType: int64
+		formatString: 0
+		lineageTag: 7adf9b36-1068-4121-b72c-d562a83e2ffc
+		summarizeBy: sum
+		sourceColumn: EsAdoptantePosterior
+
+		annotation SummarizationSetBy = Automatic
+
+	column DiasHastaDigital
+		dataType: int64
+		formatString: 0
+		lineageTag: 8e5e7302-259f-4e23-95ee-6d8b30bbb70d
+		summarizeBy: sum
+		sourceColumn: DiasHastaDigital
+
+		annotation SummarizationSetBy = Automatic
+
+	column SeguimientoDias
+		dataType: int64
+		formatString: 0
+		lineageTag: 285a7fb9-c551-46af-830b-6b93935b8580
+		summarizeBy: sum
+		sourceColumn: SeguimientoDias
+
+		annotation SummarizationSetBy = Automatic
+
+	column RecenciaCorteDias
+		dataType: int64
+		formatString: 0
+		lineageTag: ca401aef-24ad-4244-8932-2f69eb425613
+		summarizeBy: sum
+		sourceColumn: RecenciaCorteDias
+
+		annotation SummarizationSetBy = Automatic
+
+	column CohorteMes
+		dataType: string
+		lineageTag: b0b5a1da-4a58-480c-a9ea-fa4b159ffdce
+		summarizeBy: none
+		sourceColumn: CohorteMes
+
+		annotation SummarizationSetBy = Automatic
+
+	column VentanaCompleta30
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d519337-7a53-4473-99ca-e00523e4c9d4
+		summarizeBy: sum
+		sourceColumn: VentanaCompleta30
+
+		annotation SummarizationSetBy = Automatic
+
+	column Adopto30
+		dataType: int64
+		formatString: 0
+		lineageTag: 0040ebc9-a9e3-4ebc-835f-b8551fe0d9fb
+		summarizeBy: sum
+		sourceColumn: Adopto30
+
+		annotation SummarizationSetBy = Automatic
+
+	column Recompra30
+		dataType: int64
+		formatString: 0
+		lineageTag: dad10635-2115-4209-a8d9-90ffc77c5c1a
+		summarizeBy: sum
+		sourceColumn: Recompra30
+
+		annotation SummarizationSetBy = Automatic
+
+	column VentanaCompleta90
+		dataType: int64
+		formatString: 0
+		lineageTag: bf95d494-642d-4255-922f-6a32c8cd82cd
+		summarizeBy: sum
+		sourceColumn: VentanaCompleta90
+
+		annotation SummarizationSetBy = Automatic
+
+	column Adopto90
+		dataType: int64
+		formatString: 0
+		lineageTag: 059f1d01-6843-4266-b9cc-d77067c5bdf1
+		summarizeBy: sum
+		sourceColumn: Adopto90
+
+		annotation SummarizationSetBy = Automatic
+
+	column Recompra90
+		dataType: int64
+		formatString: 0
+		lineageTag: 49298072-febb-44c9-9bb6-1af06cce3f32
+		summarizeBy: sum
+		sourceColumn: Recompra90
+
+		annotation SummarizationSetBy = Automatic
+
+	column VentanaCompleta180
+		dataType: int64
+		formatString: 0
+		lineageTag: 741b4037-a055-440b-97b3-db8b424c06ba
+		summarizeBy: sum
+		sourceColumn: VentanaCompleta180
+
+		annotation SummarizationSetBy = Automatic
+
+	column Adopto180
+		dataType: int64
+		formatString: 0
+		lineageTag: d85e2bca-b992-4bf5-a4cc-e1da38d5bfd2
+		summarizeBy: sum
+		sourceColumn: Adopto180
+
+		annotation SummarizationSetBy = Automatic
+
+	column Recompra180
+		dataType: int64
+		formatString: 0
+		lineageTag: aa75d51b-3551-4295-8c60-ddee71782052
+		summarizeBy: sum
+		sourceColumn: Recompra180
+
+		annotation SummarizationSetBy = Automatic
+
+	column FechaReferenciaAntecedentes
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0eb4785d-24f1-44e3-9cf7-a5d046b3a061
+		summarizeBy: none
+		sourceColumn: FechaReferenciaAntecedentes
+
+		variation Variation
+			isDefault
+			relationship: 7c68a2bf-1e7b-4b38-bc99-c52c74b9afea
+			defaultHierarchy: LocalDateTable_cc0f99fb-0637-492f-a727-7999c5814a54.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column AntiguedadReferenciaDias
+		dataType: int64
+		formatString: 0
+		lineageTag: 019bd38b-5d15-4b93-98f4-507e23d0beb8
+		summarizeBy: sum
+		sourceColumn: AntiguedadReferenciaDias
+
+		annotation SummarizationSetBy = Automatic
+
+	column VisitasAntecedentes
+		dataType: int64
+		formatString: 0
+		lineageTag: a113dba1-fad3-432d-bb6b-cd4688caa13e
+		summarizeBy: sum
+		sourceColumn: VisitasAntecedentes
+
+		annotation SummarizationSetBy = Automatic
+
+	column TicketsAntecedentes
+		dataType: int64
+		formatString: 0
+		lineageTag: a4eb86be-32a5-44ce-8814-695683d2b75e
+		summarizeBy: sum
+		sourceColumn: TicketsAntecedentes
+
+		annotation SummarizationSetBy = Automatic
+
+	column LineasAntecedentes
+		dataType: int64
+		formatString: 0
+		lineageTag: 3848df82-08b9-4cef-a2ed-f4cc335b0b2a
+		summarizeBy: sum
+		sourceColumn: LineasAntecedentes
+
+		annotation SummarizationSetBy = Automatic
+
+	column CentavosAntecedentes
+		dataType: int64
+		formatString: 0
+		lineageTag: 897490d2-b140-494f-a5bf-2c5ed2400d38
+		summarizeBy: sum
+		sourceColumn: CentavosAntecedentes
+
+		annotation SummarizationSetBy = Automatic
+
+	column UnidadesAntecedentes
+		dataType: double
+		lineageTag: cd1fc2a4-7ee1-4780-aa80-7e88cd40accd
+		summarizeBy: sum
+		sourceColumn: UnidadesAntecedentes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column FechaUltimaAntecedente
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b6511dc5-60cf-4fb8-ac71-def8e3b06223
+		summarizeBy: none
+		sourceColumn: FechaUltimaAntecedente
+
+		variation Variation
+			isDefault
+			relationship: ca30ce88-7c52-46ce-a569-7acc79f9e819
+			defaultHierarchy: LocalDateTable_904027b4-8e21-4721-8012-422a6fcecce7.'Jerarquía de fechas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column InactividadReferenciaDias
+		dataType: int64
+		formatString: 0
+		lineageTag: bfd5084a-c3ce-44c5-85a3-f06db52774ab
+		summarizeBy: sum
+		sourceColumn: InactividadReferenciaDias
+
+		annotation SummarizationSetBy = Automatic
+
+	column CentavosPositivosPeriodo
+		dataType: int64
+		formatString: 0
+		lineageTag: fa0f29e6-0c86-4538-8c57-82c9d6ca5cd5
+		summarizeBy: sum
+		sourceColumn: CentavosPositivosPeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column CentavosNegativosPeriodo
+		dataType: int64
+		formatString: 0
+		lineageTag: f7c52f4d-9c0f-42e0-9bce-8ac6fc531b74
+		summarizeBy: sum
+		sourceColumn: CentavosNegativosPeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+	column TiendaPreferidaKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 1f270166-6099-47ee-a5ca-04962c699cc4
+		summarizeBy: count
+		sourceColumn: TiendaPreferidaKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpateTiendaPreferida
+		dataType: int64
+		formatString: 0
+		lineageTag: 195a08a4-3100-4788-a90b-42dbb777697c
+		summarizeBy: sum
+		sourceColumn: EmpateTiendaPreferida
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoriaPreferidaCodigo
+		dataType: string
+		lineageTag: 2044708e-6888-476a-a08f-e218748f0513
+		summarizeBy: none
+		sourceColumn: CategoriaPreferidaCodigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column EmpateCategoriaPreferida
+		dataType: int64
+		formatString: 0
+		lineageTag: 3aa2f483-7b68-4ddd-8eb2-dc1161224a65
+		summarizeBy: sum
+		sourceColumn: EmpateCategoriaPreferida
+
+		annotation SummarizationSetBy = Automatic
+
+	column CorteKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 6f2b1b38-bbfd-43c4-ba02-4fef79197cc8
+		summarizeBy: count
+		sourceColumn: CorteKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ReglaKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 46aaf76b-8dbf-4c22-856f-5258480b8e72
+		summarizeBy: none
+		sourceColumn: ReglaKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ImportePeriodo
+		dataType: double
+		lineageTag: e5bb4666-562a-4104-8154-6c7e194fe0be
+		summarizeBy: sum
+		sourceColumn: ImportePeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ImporteAntecedentes
+		dataType: double
+		lineageTag: eb0fcde6-99f4-40a7-95d9-426da5edf669
+		summarizeBy: sum
+		sourceColumn: ImporteAntecedentes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ImportePositivosPeriodo
+		dataType: double
+		lineageTag: b481be84-bb09-4645-a20f-b7c8d2bb856e
+		summarizeBy: sum
+		sourceColumn: ImportePositivosPeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ImporteNegativosPeriodo
+		dataType: double
+		lineageTag: 55adef40-6f6a-4030-a3f7-073c201afdf7
+		summarizeBy: sum
+		sourceColumn: ImporteNegativosPeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ImportePorTicketPeriodo
+		dataType: double
+		lineageTag: d64575ca-28aa-41e2-bc79-3d46b7e56c89
+		summarizeBy: sum
+		sourceColumn: ImportePorTicketPeriodo
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column GrupoRecencia
+		dataType: string
+		lineageTag: 76f430a0-5a23-4fc6-a6b7-fff0d3b3865c
+		summarizeBy: none
+		sourceColumn: GrupoRecencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column GrupoFrecuencia
+		dataType: string
+		lineageTag: 0532717b-2992-45fd-8a27-b55ed4f99821
+		summarizeBy: none
+		sourceColumn: GrupoFrecuencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column MunicipioComercialCve
+		dataType: string
+		lineageTag: bf713451-bec6-4ac0-946d-b21239206f10
+		summarizeBy: none
+		sourceColumn: MunicipioComercialCve
+
+		annotation SummarizationSetBy = Automatic
+
+	column OrigenGeografiaComercial
+		dataType: string
+		lineageTag: af77fc61-9a29-4e8d-8091-d6b12c923df1
+		summarizeBy: none
+		sourceColumn: OrigenGeografiaComercial
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoriaPreferidaNombre
+		dataType: string
+		lineageTag: 938b6284-3015-4168-b1c8-f5208a51f6a7
+		summarizeBy: none
+		sourceColumn: CategoriaPreferidaNombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column TicketsFisicos30
+		dataType: int64
+		formatString: 0
+		lineageTag: 28d14ae4-d64a-5929-ab21-3e7933a590b3
+		summarizeBy: sum
+		sourceColumn: TicketsFisicos30
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoriasFisicas30
+		dataType: int64
+		formatString: 0
+		lineageTag: 7bf848d0-a22e-564b-bf11-a34d5523cb7d
+		summarizeBy: sum
+		sourceColumn: CategoriasFisicas30
+
+		annotation SummarizationSetBy = Automatic
+
+	column GrupoTicketsFisicos30
+		dataType: string
+		lineageTag: 4488914f-ef63-5ed1-a81f-03da9fa9c78c
+		summarizeBy: none
+		sourceColumn: GrupoTicketsFisicos30
+
+		annotation SummarizationSetBy = Automatic
+
+	column GrupoCategoriasFisicas30
+		dataType: string
+		lineageTag: 6ae0dc89-13f5-53d3-9b21-4fc8f7edbd74
+		summarizeBy: none
+		sourceColumn: GrupoCategoriasFisicas30
+
+		annotation SummarizationSetBy = Automatic
+
+	column CandidatoDia30
+		dataType: int64
+		formatString: 0
+		lineageTag: 8a69e3d2-6017-5cf3-9429-5dcd4ba5814e
+		summarizeBy: sum
+		sourceColumn: CandidatoDia30
+
+		annotation SummarizationSetBy = Automatic
+
+	column Adopto31a90
+		dataType: int64
+		formatString: 0
+		lineageTag: 34201489-6939-5ed9-a080-d13028c4dac7
+		summarizeBy: sum
+		sourceColumn: Adopto31a90
+
+		annotation SummarizationSetBy = Automatic
+
+	column GrupoVisitasPrevias = SWITCH ( TRUE (), ISBLANK ( FactClienteCorte[VisitasAntecedentes] ), "Sin dato", FactClienteCorte[VisitasAntecedentes] <= 2, "0-2", FactClienteCorte[VisitasAntecedentes] <= 5, "3-5", FactClienteCorte[VisitasAntecedentes] <= 10, "6-10", "11+" )
+		lineageTag: 04d9ea97-2d37-5904-946a-2d0a6a7b8ade
+		summarizeBy: none
+		sortByColumn: OrdenGrupoVisitasPrevias
+
+	column GrupoTicketsPrevios = SWITCH ( TRUE (), ISBLANK ( FactClienteCorte[TicketsAntecedentes] ), "Sin dato", FactClienteCorte[TicketsAntecedentes] <= 2, "0-2", FactClienteCorte[TicketsAntecedentes] <= 5, "3-5", FactClienteCorte[TicketsAntecedentes] <= 10, "6-10", "11+" )
+		lineageTag: caa21d6b-9eb3-5954-8966-6fd3b1425602
+		summarizeBy: none
+		sortByColumn: OrdenGrupoTicketsPrevios
+
+	column GrupoUnidadesPrevias = SWITCH ( TRUE (), ISBLANK ( FactClienteCorte[UnidadesAntecedentes] ), "Sin dato", FactClienteCorte[UnidadesAntecedentes] <= 5, "0-5", FactClienteCorte[UnidadesAntecedentes] <= 10, "6-10", FactClienteCorte[UnidadesAntecedentes] <= 20, "11-20", "21+" )
+		lineageTag: 7883ff91-b297-590b-b421-c5eabdf90865
+		summarizeBy: none
+		sortByColumn: OrdenGrupoUnidadesPrevias
+
+	column GrupoInactividadPrevia = SWITCH ( TRUE (), ISBLANK ( FactClienteCorte[InactividadReferenciaDias] ), "Sin dato", FactClienteCorte[InactividadReferenciaDias] <= 30, "0-30", FactClienteCorte[InactividadReferenciaDias] <= 90, "31-90", FactClienteCorte[InactividadReferenciaDias] <= 180, "91-180", "181+" )
+		lineageTag: 5ced8046-0847-5cc3-a303-ca2963a010b4
+		summarizeBy: none
+		sortByColumn: OrdenGrupoInactividadPrevia
+
+	column GrupoAntiguedadPrevia = SWITCH ( TRUE (), ISBLANK ( FactClienteCorte[AntiguedadReferenciaDias] ), "Sin dato", FactClienteCorte[AntiguedadReferenciaDias] <= 90, "0-90", FactClienteCorte[AntiguedadReferenciaDias] <= 180, "91-180", FactClienteCorte[AntiguedadReferenciaDias] <= 365, "181-365", "366+" )
+		lineageTag: e8884821-ea55-5f47-874c-8b27e5c93bf1
+		summarizeBy: none
+		sortByColumn: OrdenGrupoAntiguedadPrevia
+
+	column OrdenGrupoVisitasPrevias = SWITCH ( TRUE (), ISBLANK ( FactClienteCorte[VisitasAntecedentes] ), 5, FactClienteCorte[VisitasAntecedentes] <= 2, 1, FactClienteCorte[VisitasAntecedentes] <= 5, 2, FactClienteCorte[VisitasAntecedentes] <= 10, 3, 4 )
+		dataType: int64
+		formatString: 0
+		lineageTag: 4817213e-ad93-5d11-9cb3-329c126965cc
+		summarizeBy: none
+
+	column OrdenGrupoTicketsPrevios = SWITCH ( TRUE (), ISBLANK ( FactClienteCorte[TicketsAntecedentes] ), 5, FactClienteCorte[TicketsAntecedentes] <= 2, 1, FactClienteCorte[TicketsAntecedentes] <= 5, 2, FactClienteCorte[TicketsAntecedentes] <= 10, 3, 4 )
+		dataType: int64
+		formatString: 0
+		lineageTag: fd98060a-6f28-5d18-92d6-e593dc36b26d
+		summarizeBy: none
+
+	column OrdenGrupoUnidadesPrevias = SWITCH ( TRUE (), ISBLANK ( FactClienteCorte[UnidadesAntecedentes] ), 5, FactClienteCorte[UnidadesAntecedentes] <= 5, 1, FactClienteCorte[UnidadesAntecedentes] <= 10, 2, FactClienteCorte[UnidadesAntecedentes] <= 20, 3, 4 )
+		dataType: int64
+		formatString: 0
+		lineageTag: 519a0cac-2fe7-5f51-9839-58e74b4c06c4
+		summarizeBy: none
+
+	column OrdenGrupoInactividadPrevia = SWITCH ( TRUE (), ISBLANK ( FactClienteCorte[InactividadReferenciaDias] ), 5, FactClienteCorte[InactividadReferenciaDias] <= 30, 1, FactClienteCorte[InactividadReferenciaDias] <= 90, 2, FactClienteCorte[InactividadReferenciaDias] <= 180, 3, 4 )
+		dataType: int64
+		formatString: 0
+		lineageTag: f0dcf247-5638-510d-a1aa-4bfa38557e3d
+		summarizeBy: none
+
+	column OrdenGrupoAntiguedadPrevia = SWITCH ( TRUE (), ISBLANK ( FactClienteCorte[AntiguedadReferenciaDias] ), 5, FactClienteCorte[AntiguedadReferenciaDias] <= 90, 1, FactClienteCorte[AntiguedadReferenciaDias] <= 180, 2, FactClienteCorte[AntiguedadReferenciaDias] <= 365, 3, 4 )
+		dataType: int64
+		formatString: 0
+		lineageTag: caf2311a-0bdd-553e-a7d4-393704902cec
+		summarizeBy: none
+
+	column SegmentoSenal30 = FactClienteCorte[GrupoTicketsFisicos30] & " · " & FactClienteCorte[GrupoCategoriasFisicas30]
+		lineageTag: e8ce585c-0585-5fa4-9447-7e9af6ae64ab
+		summarizeBy: none
+
+	partition FactClienteCorte = m
+		mode: import
+		source =
+				let
+				    ArchivoSalida = "\FactClienteCorte.csv",
+				    Origen = Csv.Document(
+				        File.Contents(pArchivo & ArchivoSalida),
+				        [Delimiter = ",", Columns = 59, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+				    ),
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    #"Vacíos como nulos" = Table.ReplaceValue(
+				        #"Encabezados promovidos", "", null, Replacer.ReplaceValue,
+				        Table.ColumnNames(#"Encabezados promovidos")
+				    ),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Vacíos como nulos",
+				        {
+				            {"ClienteKey", Int64.Type},
+				            {"FechaPrimeraObservada", type date},
+				            {"FechaUltimaObservada", type date},
+				            {"LineasPeriodo", Int64.Type},
+				            {"TicketsPeriodo", Int64.Type},
+				            {"VisitasPeriodo", Int64.Type},
+				            {"CentavosPeriodo", Int64.Type},
+				            {"UnidadesPeriodo", type number},
+				            {"FechaPrimeraFisica", type date},
+				            {"FechaPrimeraInternet", type date},
+				            {"EstadoOrigen", type text},
+				            {"EsElegibleFisico", Int64.Type},
+				            {"EsAdoptantePosterior", Int64.Type},
+				            {"DiasHastaDigital", Int64.Type},
+				            {"SeguimientoDias", Int64.Type},
+				            {"RecenciaCorteDias", Int64.Type},
+				            {"CohorteMes", type text},
+				            {"VentanaCompleta30", Int64.Type},
+				            {"Adopto30", Int64.Type},
+				            {"Recompra30", Int64.Type},
+				            {"VentanaCompleta90", Int64.Type},
+				            {"Adopto90", Int64.Type},
+				            {"Recompra90", Int64.Type},
+				            {"VentanaCompleta180", Int64.Type},
+				            {"Adopto180", Int64.Type},
+				            {"Recompra180", Int64.Type},
+				            {"TicketsFisicos30", Int64.Type},
+				            {"CategoriasFisicas30", Int64.Type},
+				            {"GrupoTicketsFisicos30", type text},
+				            {"GrupoCategoriasFisicas30", type text},
+				            {"CandidatoDia30", Int64.Type},
+				            {"Adopto31a90", Int64.Type},
+				            {"FechaReferenciaAntecedentes", type date},
+				            {"AntiguedadReferenciaDias", Int64.Type},
+				            {"VisitasAntecedentes", Int64.Type},
+				            {"TicketsAntecedentes", Int64.Type},
+				            {"LineasAntecedentes", Int64.Type},
+				            {"CentavosAntecedentes", Int64.Type},
+				            {"UnidadesAntecedentes", type number},
+				            {"FechaUltimaAntecedente", type date},
+				            {"InactividadReferenciaDias", Int64.Type},
+				            {"CentavosPositivosPeriodo", Int64.Type},
+				            {"CentavosNegativosPeriodo", Int64.Type},
+				            {"TiendaPreferidaKey", Int64.Type},
+				            {"EmpateTiendaPreferida", Int64.Type},
+				            {"CategoriaPreferidaCodigo", type text},
+				            {"EmpateCategoriaPreferida", Int64.Type},
+				            {"CorteKey", Int64.Type},
+				            {"ReglaKey", Int64.Type},
+				            {"ImportePeriodo", type number},
+				            {"ImporteAntecedentes", type number},
+				            {"ImportePositivosPeriodo", type number},
+				            {"ImporteNegativosPeriodo", type number},
+				            {"ImportePorTicketPeriodo", type number},
+				            {"GrupoRecencia", type text},
+				            {"GrupoFrecuencia", type text},
+				            {"MunicipioComercialCve", type text},
+				            {"OrigenGeografiaComercial", type text},
+				            {"CategoriaPreferidaNombre", type text}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

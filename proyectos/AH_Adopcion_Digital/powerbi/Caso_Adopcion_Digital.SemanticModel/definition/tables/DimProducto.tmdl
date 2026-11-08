@@ -1,0 +1,95 @@
+table DimProducto
+	lineageTag: c6ce81c9-5ed9-4a7c-b702-a6957c129da9
+
+	column ProductoKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 2ce22b30-717f-4899-9017-f7f7d6a0a61f
+		summarizeBy: none
+		sourceColumn: ProductoKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductoCodigoFuente
+		dataType: string
+		lineageTag: 792951a4-4b24-494a-8519-c13f4e06e939
+		summarizeBy: none
+		sourceColumn: ProductoCodigoFuente
+
+		annotation SummarizationSetBy = Automatic
+
+	column MarcaCodigo
+		dataType: string
+		lineageTag: 0a850306-94a1-4ce9-ad90-e1e150aeb325
+		summarizeBy: none
+		sourceColumn: MarcaCodigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoriaCodigo
+		dataType: string
+		lineageTag: d926b130-2330-45af-886a-8342647266d3
+		summarizeBy: none
+		sourceColumn: CategoriaCodigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column ProductoEnCatalogo
+		dataType: int64
+		formatString: 0
+		lineageTag: 9f6f6f7e-7ad4-435c-a0ac-685d1b85fc84
+		summarizeBy: none
+		sourceColumn: ProductoEnCatalogo
+
+		annotation SummarizationSetBy = Automatic
+
+	column CategoriaNombre
+		dataType: string
+		lineageTag: de70f732-f317-4e88-a773-5a3b1ac64a8e
+		summarizeBy: none
+		sourceColumn: CategoriaNombre
+
+		annotation SummarizationSetBy = Automatic
+
+	column MarcaCategoriaCodigo
+		dataType: string
+		lineageTag: 7f8c11fb-5358-4db1-9916-c24fc5f433c9
+		summarizeBy: none
+		sourceColumn: MarcaCategoriaCodigo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DimProducto = m
+		mode: import
+		source =
+				let
+				    ArchivoSalida = "\DimProducto.csv",
+				    Origen = Csv.Document(
+				        File.Contents(pArchivo & ArchivoSalida),
+				        [Delimiter = ",", Columns = 7, Encoding = 65001, QuoteStyle = QuoteStyle.Csv]
+				    ),
+				    #"Encabezados promovidos" = Table.PromoteHeaders(Origen, [PromoteAllScalars = true]),
+				    #"Vacíos como nulos" = Table.ReplaceValue(
+				        #"Encabezados promovidos", "", null, Replacer.ReplaceValue,
+				        Table.ColumnNames(#"Encabezados promovidos")
+				    ),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(
+				        #"Vacíos como nulos",
+				        {
+				            {"ProductoKey", Int64.Type},
+				            {"ProductoCodigoFuente", type text},
+				            {"MarcaCodigo", type text},
+				            {"CategoriaCodigo", type text},
+				            {"ProductoEnCatalogo", Int64.Type},
+				            {"CategoriaNombre", type text},
+				            {"MarcaCategoriaCodigo", type text}
+				        },
+				        "en-US"
+				    )
+				in
+				    #"Tipo cambiado"
+
+	annotation PBI_NavigationStepName = Navegación
+
+	annotation PBI_ResultType = Table
+

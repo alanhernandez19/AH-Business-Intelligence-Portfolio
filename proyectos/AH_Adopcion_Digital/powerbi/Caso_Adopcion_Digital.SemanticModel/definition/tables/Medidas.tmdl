@@ -1,0 +1,215 @@
+table Medidas
+	lineageTag: 29d825ae-f4f8-43ed-84e3-860251b1ae37
+
+	measure '1. Clientes observados' = DISTINCTCOUNT ( FactClienteCorte[ClienteKey] )
+		formatString: #,0
+		lineageTag: 92ee99d7-b717-4db3-bde6-312e1a895533
+
+	measure '2. Elegibles 90' = COUNT ( FactClienteCorte[Adopto90] )
+		formatString: #,0
+		lineageTag: 9b1df60c-5e48-454f-9f70-a89fc40e5f03
+
+	measure '3. Adoptantes 90' = SUM ( FactClienteCorte[Adopto90] )
+		formatString: #,0
+		lineageTag: ccf21bf4-b9f4-42b2-ab10-568d94647a1e
+
+	measure '4. Tasa adopción 90' = DIVIDE ( [3. Adoptantes 90], [2. Elegibles 90] )
+		formatString: 0.00%
+		lineageTag: f3165740-5014-4a16-9947-5d5d882fb5ea
+
+	measure '5. Recurrencia 90' = AVERAGE ( FactClienteCorte[Recompra90] )
+		formatString: 0.00%
+		lineageTag: 3f1e985a-180d-48eb-b991-5f106438e90a
+
+	measure '6. Días hasta digital' = MEDIAN ( FactClienteCorte[DiasHastaDigital] )
+		formatString: #,0
+		lineageTag: 14b672c8-73af-5901-bc3c-a4d254a1d94e
+
+	measure '7. Clientes con domicilio válido' = CALCULATE ( DISTINCTCOUNT ( FactClienteCorte[ClienteKey] ), DimCliente[DomicilioMunicipioValido] = 1 )
+		formatString: #,0
+		lineageTag: d11a3221-856d-5cd5-87a3-d0b4dfe6dcd1
+
+	measure '8. Cobertura domicilio' = DIVIDE ( [7. Clientes con domicilio válido], [1. Clientes observados] )
+		formatString: 0.00%
+		lineageTag: 1570434f-058d-5c99-bcd3-92e516f63244
+
+	measure '9. Clientes con edad' = SUM ( DimCliente[EdadDisponible] )
+		formatString: #,0
+		lineageTag: c6489c61-4c3c-5e9e-b0e6-8180344f3e07
+
+	measure '10. Cobertura edad' = DIVIDE ( [9. Clientes con edad], COUNTROWS ( DimCliente ) )
+		formatString: 0.00%
+		lineageTag: d58ebea6-ec46-57bb-8797-5078b2b2e807
+
+	measure '11. Productos catalogados' = SUM ( DimProducto[ProductoEnCatalogo] )
+		formatString: #,0
+		lineageTag: ec7a7e0b-8999-5ac8-9553-781a26be21c6
+
+	measure '12. Tiendas catalogadas' = SUM ( DimTienda[TiendaEnCatalogo] )
+		formatString: #,0
+		lineageTag: 492e854f-dea4-529a-84c1-6117f868982e
+
+	measure '13. Base clientes' = CALCULATE ( DISTINCTCOUNT ( FactClienteCorte[ClienteKey] ), FactClienteCorte[ReglaKey] = 1 )
+		formatString: #,0
+		lineageTag: 1dc9052b-63dc-5e01-a394-dea66041e1a6
+
+	measure '14. Base elegibles 30' = CALCULATE ( COUNT ( FactClienteCorte[Adopto30] ), FactClienteCorte[ReglaKey] = 1 )
+		formatString: #,0
+		lineageTag: 9bd8e781-956b-5ac4-8107-292187b06104
+
+	measure '15. Base adoptantes 30' = CALCULATE ( SUM ( FactClienteCorte[Adopto30] ), FactClienteCorte[ReglaKey] = 1 )
+		formatString: #,0
+		lineageTag: 0fe485fa-9c98-5d1f-bbc6-e51bc9ed5827
+
+	measure '16. Base tasa 30' = DIVIDE ( [15. Base adoptantes 30], [14. Base elegibles 30] )
+		formatString: 0.00%
+		lineageTag: 97f1244a-eeb2-585e-ba21-d0ecfb6046a9
+
+	measure '17. Base elegibles 90' = CALCULATE ( COUNT ( FactClienteCorte[Adopto90] ), FactClienteCorte[ReglaKey] = 1 )
+		formatString: #,0
+		lineageTag: be60a42e-f416-53b9-b22d-0d9fa01f0096
+
+	measure '18. Base adoptantes 90' = CALCULATE ( SUM ( FactClienteCorte[Adopto90] ), FactClienteCorte[ReglaKey] = 1 )
+		formatString: #,0
+		lineageTag: 27139ae5-06d4-5954-bda5-3fc17b590cf0
+
+	measure '19. Base tasa 90' = DIVIDE ( [18. Base adoptantes 90], [17. Base elegibles 90] )
+		formatString: 0.00%
+		lineageTag: a63f81f2-2fce-5f2f-b302-e79a7f3c1faf
+
+	measure '20. Base elegibles 180' = CALCULATE ( COUNT ( FactClienteCorte[Adopto180] ), FactClienteCorte[ReglaKey] = 1 )
+		formatString: #,0
+		lineageTag: f26c3fe0-2648-5ec4-943a-7031b41b564c
+
+	measure '21. Base adoptantes 180' = CALCULATE ( SUM ( FactClienteCorte[Adopto180] ), FactClienteCorte[ReglaKey] = 1 )
+		formatString: #,0
+		lineageTag: 923f4864-a0bc-5cc0-b618-cdfad1a3e854
+
+	measure '22. Base tasa 180' = DIVIDE ( [21. Base adoptantes 180], [20. Base elegibles 180] )
+		formatString: 0.00%
+		lineageTag: 015eb95e-4cae-5fcc-b0dc-8e8b0f340c33
+
+	measure '23. Candidatos día 30' = CALCULATE ( SUM ( FactClienteCorte[CandidatoDia30] ), FactClienteCorte[ReglaKey] = 1 )
+		formatString: #,0
+		lineageTag: a580c5d0-c83b-5115-b16b-1ebe4633734a
+
+	measure '24. Adoptantes días 31 a 90' = CALCULATE ( SUM ( FactClienteCorte[Adopto31a90] ), FactClienteCorte[ReglaKey] = 1 )
+		formatString: #,0
+		lineageTag: fb93ffe8-7f88-5c8e-a605-f1fafdf56e99
+
+	measure '25. Tasa días 31 a 90' = DIVIDE ( [24. Adoptantes días 31 a 90], [23. Candidatos día 30] )
+		formatString: 0.00%
+		lineageTag: 60cf086b-7e46-5a88-a666-461fad18a9f0
+
+	measure '26. Tasa 90 base amplia' = IF ( [17. Base elegibles 90] >= 200, [19. Base tasa 90] )
+		formatString: 0.00%
+		lineageTag: e14701e8-4c25-5491-9dec-7922e51203b9
+
+	measure '27. Tasa 180 base amplia' = IF ( [20. Base elegibles 180] >= 200, [22. Base tasa 180] )
+		formatString: 0.00%
+		lineageTag: fd838092-90ac-5d85-8dad-5e16a0e3671f
+
+	measure '28. Tasa posterior base amplia' = IF ( [23. Candidatos día 30] >= 200, [25. Tasa días 31 a 90] )
+		formatString: 0.00%
+		lineageTag: c8cc0dbb-7cab-5b59-9ac3-455f74c34c38
+
+	measure '29. Mediana visitas previas' = CALCULATE ( MEDIAN ( FactClienteCorte[VisitasAntecedentes] ), FactClienteCorte[ReglaKey] = 1 )
+		formatString: #,0
+		lineageTag: 3553f503-01f1-5a04-baed-7a05fcd4d092
+
+	measure '30. Mediana tickets previos' = CALCULATE ( MEDIAN ( FactClienteCorte[TicketsAntecedentes] ), FactClienteCorte[ReglaKey] = 1 )
+		formatString: #,0
+		lineageTag: 2344b35b-4faa-5734-a875-69a0e94128b8
+
+	measure '31. Mediana inactividad previa' = CALCULATE ( MEDIAN ( FactClienteCorte[InactividadReferenciaDias] ), FactClienteCorte[ReglaKey] = 1 )
+		formatString: #,0
+		lineageTag: 7212c918-b72d-53cb-b5e3-9788cebac9e6
+
+	measure '32. Tickets fuente' = DISTINCTCOUNT ( FactMovimientos[TicketKey] )
+		formatString: #,0
+		lineageTag: 472b47f0-daec-50df-af29-d2c1b27a69e8
+
+	measure '33. Tickets Internet' = CALCULATE ( [32. Tickets fuente], DimTienda[Canal] = "Internet" )
+		formatString: #,0
+		lineageTag: 6b45cdd5-fc04-5c38-af14-07d8996efd80
+
+	measure '34. Participación tickets Internet' = DIVIDE ( [33. Tickets Internet], [32. Tickets fuente] )
+		formatString: 0.00%
+		lineageTag: 07489293-27c7-5ffc-8698-9240105998dd
+
+	measure '35. Importe firmado fuente' = SUM ( FactMovimientos[ImporteFirmado] )
+		formatString: #,0.00
+		lineageTag: dece7ffc-a954-5a4f-858a-6d1abf6b05e6
+
+	measure '36. Importe positivo fuente' = CALCULATE ( [35. Importe firmado fuente], FactMovimientos[ImporteFirmado] > 0 )
+		formatString: #,0.00
+		lineageTag: a5fc3c60-ab55-5f45-bc85-64daef75a695
+
+	measure '37. Importe negativo fuente' = CALCULATE ( [35. Importe firmado fuente], FactMovimientos[ImporteFirmado] < 0 )
+		formatString: #,0.00
+		lineageTag: b3e153d8-bd84-5bb9-b0f5-a71b901fa7bb
+
+	measure '38. Cobertura tiendas' = DIVIDE ( SUM ( DimTienda[TiendaEnCatalogo] ), COUNTROWS ( DimTienda ) )
+		formatString: 0.00%
+		lineageTag: ed7b4b5e-31c8-5a7d-88b1-92bd5a23daf0
+
+	measure '39. Cobertura productos' = DIVIDE ( SUM ( DimProducto[ProductoEnCatalogo] ), COUNTROWS ( DimProducto ) )
+		formatString: 0.000%
+		lineageTag: d0d3a753-ba8e-584a-b9f3-3d3439bb8965
+
+	measure '40. Alcance supuesto' = SELECTEDVALUE ( ParamAlcance[Alcance], 0.25 )
+		formatString: 0%
+		lineageTag: 08c18a3f-efc9-555e-b6b8-8c5b6f38729d
+
+	measure '41. Mejora supuesta' = SELECTEDVALUE ( ParamMejora[Mejora], 0.02 )
+		formatString: 0.0%
+		lineageTag: db603d44-0dad-5f90-954b-bf4056620aba
+
+	measure '42. Tickets por nuevo adoptante' = SELECTEDVALUE ( ParamTickets[Tickets], 2 )
+		formatString: #,0
+		lineageTag: 14ae0955-2a25-5297-91a0-5f84f401e40a
+
+	measure '43. Nuevos adoptantes ilustrativos' = ROUND ( [23. Candidatos día 30] * [40. Alcance supuesto] * [41. Mejora supuesta], 0 )
+		formatString: #,0
+		lineageTag: 48c8a899-ed3d-54bd-843b-f2aba20bd86e
+
+	measure '44. Tickets ilustrativos' = [43. Nuevos adoptantes ilustrativos] * [42. Tickets por nuevo adoptante]
+		formatString: #,0
+		lineageTag: 8e6a9136-77ac-55d7-8d61-7748093f84b4
+
+	measure '45. Elegibles por regla' = IF ( HASONEVALUE ( DimReglaAnalisis[ReglaKey] ), [2. Elegibles 90] )
+		formatString: #,0
+		lineageTag: 347fa4aa-b665-5d05-9187-0226f764158d
+
+	measure '46. Tasa por regla' = IF ( HASONEVALUE ( DimReglaAnalisis[ReglaKey] ), [4. Tasa adopción 90] )
+		formatString: 0.00%
+		lineageTag: 1049906d-a66e-54da-b057-119511b1cb42
+
+	measure '47. Tasa 30 base amplia' = IF ( [14. Base elegibles 30] >= 200, [16. Base tasa 30] )
+		formatString: 0.00%
+		lineageTag: bd0e420c-d331-568b-bf4c-42cdac3077b4
+
+	measure '48. Tasa 30 visible' = IF ( [14. Base elegibles 30] >= 200, FORMAT ( [16. Base tasa 30], "0.00%" ), "n<200" )
+		lineageTag: 95125eaf-1abe-594d-9b65-b93b49a147aa
+
+	measure '49. Tasa 90 visible' = IF ( [17. Base elegibles 90] >= 200, FORMAT ( [19. Base tasa 90], "0.00%" ), "n<200" )
+		lineageTag: 3bb5269c-f23c-5a7c-817f-13bf468a6819
+
+	measure '50. Tasa 180 visible' = IF ( [20. Base elegibles 180] >= 200, FORMAT ( [22. Base tasa 180], "0.00%" ), "n<200" )
+		lineageTag: b827363e-bd51-5eec-9d20-e77ab5243cc4
+
+	measure '51. Tasa posterior visible' = IF ( [23. Candidatos día 30] >= 200, FORMAT ( [25. Tasa días 31 a 90], "0.00%" ), "n<200" )
+		lineageTag: 0743e930-4a5d-5ab9-a95a-3c9f553e7153
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Origen = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Columna1 = _t]),
+				    #"Tipo cambiado" = Table.TransformColumnTypes(Origen,{{"Columna1", type text}}),
+				    #"Columnas quitadas" = Table.RemoveColumns(#"Tipo cambiado",{"Columna1"})
+				in
+				    #"Columnas quitadas"
+
+	annotation PBI_ResultType = Table
+

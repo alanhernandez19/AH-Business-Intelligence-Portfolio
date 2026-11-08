@@ -1,0 +1,5 @@
+﻿ReglaKey,ReglaNombre,Definicion
+1,Base observada,Operaciones tipo 1; importe firmado y todas las categorias
+2,Solo positivos,"Tipo 1 y monto > 0; sensibilidad, no correccion de devoluciones"
+3,Sin servicios,"Tipo 1, categoria conocida y distinta de SERVICIOS; sensibilidad"
+4,Positivos sin servicios,"Tipo 1, monto > 0 y categoria conocida distinta de SERVICIOS; sensibilidad"

@@ -1,0 +1,40 @@
+model Model
+	culture: es-MX
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-MX
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["FactClienteCorte","FactMovimientos","DimCliente","DimProducto","DimTienda","DimReglaAnalisis","pArchivo","Medidas"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table FactClienteCorte
+ref table DateTableTemplate_08fcbed2-3f2c-4d2d-9dc2-3284758e626c
+ref table LocalDateTable_480acc8f-ed8c-433b-b7c0-5c05bd6baff8
+ref table LocalDateTable_2fe27bb2-428e-4ecb-b589-2096b12a0585
+ref table LocalDateTable_701e9a0e-446a-4f8f-8d11-d0e3d585a4c2
+ref table LocalDateTable_a0236454-5bcd-46e7-a19c-15a9c0b3b33f
+ref table LocalDateTable_cc0f99fb-0637-492f-a727-7999c5814a54
+ref table LocalDateTable_904027b4-8e21-4721-8012-422a6fcecce7
+ref table FactMovimientos
+ref table DimCliente
+ref table DimProducto
+ref table DimTienda
+ref table DimReglaAnalisis
+ref table DimFecha
+ref table LocalDateTable_a0fd7ace-b738-46ec-a4cb-792991c11a63
+ref table DimCorte
+ref table DimTiendaPreferida
+ref table LocalDateTable_68aa20f4-14de-4c02-8080-31a090ced301
+ref table Medidas
+ref table ParamAlcance
+ref table ParamMejora
+ref table ParamTickets
+
+ref cultureInfo es-MX
+

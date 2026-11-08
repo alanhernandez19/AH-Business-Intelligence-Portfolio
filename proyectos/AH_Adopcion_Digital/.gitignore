@@ -1,0 +1,10 @@
+**/__pycache__/
+*.pyc
+**/.ipynb_checkpoints/
+**/.pbi/
+.env
+/evidencia/
+/config/proyecto.local.json
+/powerbi/*.pbix
+/output/.etl.lock
+/output/_build_*/

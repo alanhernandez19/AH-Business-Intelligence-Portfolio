@@ -1,0 +1,288 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "63d08291c22a55ebb0a2",
+  "position": {
+    "x": 42,
+    "y": 401,
+    "z": 8100,
+    "height": 588,
+    "width": 908,
+    "tabOrder": 110
+  },
+  "visual": {
+    "visualType": "shapeMap",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimCliente"
+                    }
+                  },
+                  "Property": "EstadoMapaISO"
+                }
+              },
+              "queryRef": "DimCliente.EstadoMapaISO",
+              "nativeQueryRef": "EstadoMapaISO",
+              "active": true,
+              "displayName": "Estado"
+            }
+          ]
+        },
+        "ColorSaturation": {
+          "projections": []
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimCliente"
+                    }
+                  },
+                  "Property": "EstadoVisual"
+                }
+              },
+              "queryRef": "DimCliente.EstadoVisual",
+              "nativeQueryRef": "EstadoVisual",
+              "active": true,
+              "displayName": "Estado"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "17. Base elegibles 90"
+                }
+              },
+              "queryRef": "Medidas.17. Base elegibles 90",
+              "nativeQueryRef": "17. Base elegibles 90",
+              "active": true,
+              "displayName": "Elegibles 90"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "18. Base adoptantes 90"
+                }
+              },
+              "queryRef": "Medidas.18. Base adoptantes 90",
+              "nativeQueryRef": "18. Base adoptantes 90",
+              "active": true,
+              "displayName": "Adoptantes 90"
+            }
+          ]
+        },
+        "Value": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Medidas"
+                    }
+                  },
+                  "Property": "26. Tasa 90 base amplia"
+                }
+              },
+              "queryRef": "Medidas.26. Tasa 90 base amplia",
+              "nativeQueryRef": "26. Tasa 90 base amplia",
+              "displayName": "Adopción 90"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "shape": [
+        {
+          "properties": {
+            "datasourceType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'file_upload'"
+                }
+              }
+            },
+            "map": {
+              "geoJson": {
+                "type": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'shared'"
+                    }
+                  }
+                },
+                "name": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'mexico.states.topo'"
+                    }
+                  }
+                },
+                "content": {
+                  "expr": {
+                    "ResourcePackageItem": {
+                      "PackageName": "ShapeMap",
+                      "PackageType": 2,
+                      "ItemName": "mexico.states.topo"
+                    }
+                  }
+                }
+              }
+            },
+            "projectionEnum": {
+              "expr": {
+                "Literal": {
+                  "Value": "'albersUsa'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fillRule": {
+              "linearGradient2": {
+                "min": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'#DCEEFF'"
+                      }
+                    }
+                  }
+                },
+                "max": {
+                  "color": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'#0A5FA8'"
+                      }
+                    }
+                  }
+                },
+                "nullColoringStrategy": {
+                  "strategy": {
+                    "expr": {
+                      "Literal": {
+                        "Value": "'asZero'"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f151652d77728212dc1e",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimCliente"
+              }
+            },
+            "Property": "EstadoMapaISO"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f5ac7b2ed06800147330",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DimCliente"
+              }
+            },
+            "Property": "EstadoVisual"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2fa51e861b9acb581cdc",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "17. Base elegibles 90"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "ae60085808ae700ad613",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Medidas"
+              }
+            },
+            "Property": "18. Base adoptantes 90"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
