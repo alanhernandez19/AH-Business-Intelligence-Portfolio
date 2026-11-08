@@ -8,7 +8,6 @@ Los siguientes proyectos reúnen investigación, preparación de datos, modelos 
 | --- | --- | --- |
 | **[Analítica de Clientes](AH_Analitica_Clientes/)** | Comprender el abandono de clientes, identificar segmentos prioritarios y evaluar posibles acciones de retención. | Exploración Python/Jupyter, ETL, segmentación, KPI, radar de perfiles, simulador de escenarios y Power BI. |
 | **[Integración y Reporting](AH_Integracion_Reporting/)** | Integrar visitas digitales de distintas fuentes y producir indicadores consistentes con trazabilidad de cargas. | ETL incremental Python, control SHA-256, conciliaciones, normalización, modelo de reporting y RLS en Power BI. |
-
 | **[Adopción Digital y Analítica Comercial](AH_Adopcion_Digital/)** | Comprender la adopción digital posterior a la compra física y priorizar hipótesis y pilotos comerciales. | Cohortes, señales de los primeros 30 días, enriquecimiento municipal INEGI, sensibilidad de reglas, escenarios, Jupyter y Power BI. |
 
 ## Cómo explorar los proyectos
