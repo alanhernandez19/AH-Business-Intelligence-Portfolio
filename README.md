@@ -70,7 +70,6 @@ Los casos de analítica se abordan con identidad propia, objetivos empresariales
 
 - **[Analítica de Clientes](proyectos/AH_Analitica_Clientes/)** — análisis de abandono, segmentación, radar de perfiles y escenarios de retención; incluye Jupyter, datos, modelo Power BI y reporte ejecutivo.
 - **[Integración y Reporting](proyectos/AH_Integracion_Reporting/)** — integración incremental de visitas digitales, controles de calidad, trazabilidad y reporting; incluye Jupyter, datos de muestra con identificadores ficticios, Power BI y reporte ejecutivo.
-
 - **[Adopción Digital y Analítica Comercial](proyectos/AH_Adopcion_Digital/)** — cohortes de adopción, señales tempranas de compra, contexto municipal y escenarios de planeación; incluye notebooks Jupyter, datos, controles, Power BI y reporte ejecutivo.
 
 ## Contacto
