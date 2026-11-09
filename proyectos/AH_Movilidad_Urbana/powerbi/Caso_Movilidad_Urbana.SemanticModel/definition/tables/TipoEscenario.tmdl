@@ -1,0 +1,20 @@
+table TipoEscenario
+	lineageTag: 59633ec8-6ebd-57de-a118-4e33b8f52d1b
+
+	column Escenario
+		dataType: string
+		lineageTag: d2bb977c-8c8e-5bea-b17d-d2714164854f
+		summarizeBy: none
+		sourceColumn: [Escenario]
+		sortByColumn: Orden
+
+	column Orden
+		dataType: int64
+		lineageTag: 5d720961-7a77-5aa8-ba55-e7ac9bafe8ae
+		summarizeBy: none
+		sourceColumn: [Orden]
+
+	partition TipoEscenario = calculated
+		mode: import
+		source = DATATABLE("Escenario", STRING, "Orden", INTEGER, {{"Base",1},{"Supuesto",2}})
+

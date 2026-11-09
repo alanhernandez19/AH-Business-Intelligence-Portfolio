@@ -1,0 +1,32 @@
+table DimUsuarioAno
+	lineageTag: 7b07957f-083a-587f-94cf-6a4cbaf08375
+
+	column UsuarioAnoKey
+		dataType: int64
+		isHidden
+		lineageTag: 051da7b6-1be2-5367-8a32-9daf2eb5b9ed
+		summarizeBy: none
+		sourceColumn: [UsuarioAnoKey]
+
+	column GrupoEdad
+		dataType: string
+		lineageTag: 3e0771f9-8ea6-58d9-882d-c0b7199da03f
+		summarizeBy: none
+		sourceColumn: [GrupoEdad]
+
+	column GeneroAlta
+		dataType: string
+		lineageTag: 80a9cc5a-8e19-52ce-8afa-196ada90eca0
+		summarizeBy: none
+		sourceColumn: [GeneroAlta]
+
+	column GrupoFrecuencia
+		dataType: string
+		lineageTag: 819efd79-8719-5ec6-b5f7-1058e58c7b37
+		summarizeBy: none
+		sourceColumn: [GrupoFrecuencia]
+
+	partition DimUsuarioAno = calculated
+		mode: import
+		source = SELECTCOLUMNS(FactUsuarioAno, "UsuarioAnoKey", FactUsuarioAno[UsuarioAnoKey], "GrupoEdad", FactUsuarioAno[GrupoEdad], "GeneroAlta", FactUsuarioAno[GeneroAlta], "GrupoFrecuencia", FactUsuarioAno[GrupoFrecuencia])
+

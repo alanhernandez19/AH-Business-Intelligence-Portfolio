@@ -1,0 +1,18 @@
+# Fuentes voluminosas de descarga oficial
+input/*.zip
+
+# Archivos locales de ejecución
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+.pbi/
+*.log
+.DS_Store
+Thumbs.db
+
+# Compilación local del visual
+node_modules/
+.tmp/
+dist/
+webpack.statistics*.html

@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "powerbi-visuals-api": "5.11.1",
+    "powerbi-visuals-tools": "7.2.1",
+    "typescript": "5.9.3"
+  },
+  "name": "ah-conexiones-urbanas",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node build.mjs"
+  }
+}

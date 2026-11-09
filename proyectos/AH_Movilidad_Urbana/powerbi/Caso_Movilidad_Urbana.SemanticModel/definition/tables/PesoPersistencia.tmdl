@@ -1,0 +1,14 @@
+table PesoPersistencia
+	lineageTag: 579b956b-b4b6-5904-8c26-ef29e34b3e8c
+
+	column Value
+		dataType: int64
+		formatString: 0.##
+		lineageTag: 7f9cd9f2-0a84-59df-ac14-bd02e8948f4e
+		summarizeBy: none
+		sourceColumn: [Value]
+
+	partition PesoPersistencia = calculated
+		mode: import
+		source = GENERATESERIES(0, 100, 10)
+

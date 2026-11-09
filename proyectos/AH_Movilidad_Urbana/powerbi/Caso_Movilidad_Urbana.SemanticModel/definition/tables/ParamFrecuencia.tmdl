@@ -1,0 +1,14 @@
+table ParamFrecuencia
+	lineageTag: 1438b026-3e6c-5e64-924a-a2b6d66b1bbe
+
+	column Value
+		dataType: double
+		formatString: 0.##
+		lineageTag: d10fe7e0-c513-55aa-a1f7-e021f2985bea
+		summarizeBy: none
+		sourceColumn: [Value]
+
+	partition ParamFrecuencia = calculated
+		mode: import
+		source = GENERATESERIES(0, 3, 0.25)
+

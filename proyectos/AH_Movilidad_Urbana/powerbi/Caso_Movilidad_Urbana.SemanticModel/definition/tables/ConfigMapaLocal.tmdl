@@ -1,0 +1,17 @@
+table ConfigMapaLocal
+	lineageTag: ca72a8cd-3d3b-55ac-b4ff-e5a2aa6b1a2f
+
+	column SvgBase
+		dataType: string
+		lineageTag: f07e56e3-969b-532c-82ea-49fef385697e
+		summarizeBy: none
+		sourceColumn: SvgBase
+
+	partition ConfigMapaLocal = m
+		mode: import
+		source =
+				let
+				    Svg = Text.FromBinary(File.Contents(pArchivo & "\..\assets\mapa_base_corredores.svg"), TextEncoding.Utf8)
+				in
+				    #table(type table [SvgBase=text], {{Svg}})
+

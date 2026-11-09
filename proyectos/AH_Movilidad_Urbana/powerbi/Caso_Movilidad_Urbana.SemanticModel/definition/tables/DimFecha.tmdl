@@ -1,0 +1,70 @@
+table DimFecha
+	lineageTag: 110ca8a9-2936-595c-84a8-54cd0cd566df
+
+	column Fecha
+		dataType: dateTime
+		isKey
+		formatString: dd/MM/yyyy
+		lineageTag: 8ecea38b-de6a-5f33-b3ba-eb0a95ddb586
+		summarizeBy: none
+		sourceColumn: [Fecha]
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Ano = YEAR(DimFecha[Fecha])
+		dataType: int64
+		formatString: 0
+		lineageTag: 13318353-7bfe-5cf9-8302-ffeda47b2ffb
+		summarizeBy: none
+
+	column MesNumero = MONTH(DimFecha[Fecha])
+		dataType: int64
+		formatString: 0
+		lineageTag: 0a82e7b7-c02f-59ea-a845-61a862620f96
+		summarizeBy: none
+
+	column Mes = FORMAT(DimFecha[Fecha], "mmm", "es-ES")
+		dataType: string
+		lineageTag: 79bb7579-bb1d-5157-9ab8-d286711857a1
+		summarizeBy: none
+		sortByColumn: MesNumero
+
+	column AnoMes = FORMAT(DimFecha[Fecha], "yyyy-MM")
+		dataType: string
+		lineageTag: 2f363a58-bcf8-51ac-9def-e7724be5b874
+		summarizeBy: none
+
+	column DiaSemanaNumero = WEEKDAY(DimFecha[Fecha], 2)
+		dataType: int64
+		formatString: 0
+		lineageTag: bfb8cc5c-cacc-57c8-9ed9-437ac6598271
+		summarizeBy: none
+
+	column DiaSemana = FORMAT(DimFecha[Fecha], "ddd", "es-ES")
+		dataType: string
+		lineageTag: 436e79dc-75e1-5afe-97fc-15da1c96f488
+		summarizeBy: none
+		sortByColumn: DiaSemanaNumero
+
+	column TipoSemana = IF(DimFecha[DiaSemanaNumero] < 6, "Lunes–viernes", "Fin de semana")
+		dataType: string
+		lineageTag: 7ada533d-472b-58f1-ad76-b74bd21c5e12
+		summarizeBy: none
+
+	column TipoCalendario = LOOKUPVALUE(FactContextoDiario[TipoDiaEspecial], FactContextoDiario[Fecha], DimFecha[Fecha])
+		dataType: string
+		lineageTag: 5a245fbf-f598-55e5-aedd-7c6484960d25
+		summarizeBy: none
+
+	column TipoClima = COALESCE(LOOKUPVALUE(FactContextoDiario[TipoClima], FactContextoDiario[Fecha], DimFecha[Fecha]), "Sin clima")
+		dataType: string
+		lineageTag: cb5b95e1-4ea9-51c8-93a4-73eb6cd53012
+		summarizeBy: none
+
+	partition DimFecha = calculated
+		mode: import
+		source =
+				VAR Minima = MIN(FactViajes[FechaOrigen])
+				VAR Maxima = MAX(FactViajes[FechaDestino])
+				RETURN SELECTCOLUMNS(CALENDAR(Minima, Maxima), "Fecha", [Date])
+

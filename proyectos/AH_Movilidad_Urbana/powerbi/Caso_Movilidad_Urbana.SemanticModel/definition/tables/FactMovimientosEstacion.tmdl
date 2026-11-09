@@ -1,0 +1,64 @@
+table FactMovimientosEstacion
+	lineageTag: e34e3452-7c27-520c-974e-964204686772
+
+	column EstacionUbicacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c547bfd9-b9ca-5b52-8468-2046f16df811
+		summarizeBy: none
+		sourceColumn: EstacionUbicacionKey
+
+	column Fecha
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: d303ea81-1a29-5080-8734-438c51013de6
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Hora
+		dataType: int64
+		formatString: 0
+		lineageTag: 9aca6a37-1d4d-5575-9b01-3fa64fe272f1
+		summarizeBy: none
+		sourceColumn: Hora
+
+	column Salidas
+		dataType: int64
+		formatString: 0
+		lineageTag: fca3b96f-dc36-5e95-8c31-1e6a60123f10
+		summarizeBy: none
+		sourceColumn: Salidas
+
+	column Llegadas
+		dataType: int64
+		formatString: 0
+		lineageTag: b7eea566-d9ce-5faa-ad3f-cf78492fb209
+		summarizeBy: none
+		sourceColumn: Llegadas
+
+	column Saldo
+		dataType: int64
+		formatString: 0
+		lineageTag: c2c1daad-a2ae-51f3-acbe-1a0413d4bcab
+		summarizeBy: none
+		sourceColumn: Saldo
+
+	partition FactMovimientosEstacion = m
+		mode: import
+		source =
+				let
+				    Origen = fxCsv("FactMovimientosEstacion.csv.gz", {"EstacionUbicacionKey", "Fecha", "Hora", "Salidas", "Llegadas", "Saldo"}),
+				    Tipos = Table.TransformColumnTypes(Origen, {
+				{"EstacionUbicacionKey", Int64.Type},
+				{"Fecha", type date},
+				{"Hora", Int64.Type},
+				{"Salidas", Int64.Type},
+				{"Llegadas", Int64.Type},
+				{"Saldo", Int64.Type}
+				}, "en-US")
+				in
+				    Tipos
+

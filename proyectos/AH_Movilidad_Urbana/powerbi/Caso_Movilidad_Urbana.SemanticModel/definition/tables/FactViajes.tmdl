@@ -1,0 +1,204 @@
+table FactViajes
+	lineageTag: fc2399b1-469f-54c1-ba7a-750d2159ec74
+
+	column ViajeKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a267d350-27d2-515c-9e23-0e78aa045fa3
+		summarizeBy: none
+		sourceColumn: ViajeKey
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 8dc1dd82-459a-5c6f-bfdd-d1c4afb23c4c
+		summarizeBy: none
+		sourceColumn: Ano
+
+	column FilaFuente
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: fa733849-68e5-55de-a7f6-6f72e186ac39
+		summarizeBy: none
+		sourceColumn: FilaFuente
+
+	column UsuarioAnoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: e861b104-bfc0-5d20-b23e-e2c69c97d9bf
+		summarizeBy: none
+		sourceColumn: UsuarioAnoKey
+
+	column FechaOrigen
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: cf8b40b6-3060-5b77-bb9d-1be3610f343b
+		summarizeBy: none
+		sourceColumn: FechaOrigen
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column HoraOrigen
+		dataType: int64
+		formatString: 0
+		lineageTag: f4f8f335-e6e7-57b5-8621-6048b11dbead
+		summarizeBy: none
+		sourceColumn: HoraOrigen
+
+	column FechaDestino
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: ef49335e-e5ec-5e03-a14e-80f6f6486072
+		summarizeBy: none
+		sourceColumn: FechaDestino
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column HoraDestino
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f8a1a4a-ef1e-59d2-8a49-8d19a376b370
+		summarizeBy: none
+		sourceColumn: HoraDestino
+
+	column EstacionOrigenUbicacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 54b150f1-3bf1-533a-a8d8-96ca73c30bfe
+		summarizeBy: none
+		sourceColumn: EstacionOrigenUbicacionKey
+
+	column EstacionDestinoUbicacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 939d51ad-f9b4-5bf7-9398-2ea3b91c5fdc
+		summarizeBy: none
+		sourceColumn: EstacionDestinoUbicacionKey
+
+	column DuracionDeclaradaSegundos
+		dataType: int64
+		formatString: 0
+		lineageTag: fbad76c2-cc13-5e93-96f3-07c76592ab1c
+		summarizeBy: none
+		sourceColumn: DuracionDeclaradaSegundos
+
+	column DuracionAnaliticaSegundos
+		dataType: int64
+		formatString: 0
+		lineageTag: 37949bb5-6de0-5877-8822-5ea3a5346b1f
+		summarizeBy: none
+		sourceColumn: DuracionAnaliticaSegundos
+
+	column DistanciaDirectaKm
+		dataType: double
+		formatString: #,0
+		lineageTag: 88df4448-1ab5-5877-a5bc-9a5d12657d0d
+		summarizeBy: none
+		sourceColumn: DistanciaDirectaKm
+
+	column ModeloReportado
+		dataType: string
+		lineageTag: 861227b3-4ceb-5c69-a116-f355cbec8256
+		summarizeBy: none
+		sourceColumn: ModeloReportado
+
+	column GeneroReportado
+		dataType: string
+		lineageTag: bc3877b6-88bf-5790-9a2f-cc69fe3c738a
+		summarizeBy: none
+		sourceColumn: GeneroReportado
+
+	column EsObservado
+		dataType: int64
+		formatString: 0
+		lineageTag: dd9615e2-4ebf-57d4-9e28-20c944419cfd
+		summarizeBy: none
+		sourceColumn: EsObservado
+
+	column EsCompleto
+		dataType: int64
+		formatString: 0
+		lineageTag: 77865957-fa76-5bc1-b951-a35cf6217276
+		summarizeBy: none
+		sourceColumn: EsCompleto
+
+	column EsViajeElegible
+		dataType: int64
+		formatString: 0
+		lineageTag: 8874045d-4a2b-5312-a661-c13c527fd014
+		summarizeBy: none
+		sourceColumn: EsViajeElegible
+
+	column EsDuracionConciliada
+		dataType: int64
+		formatString: 0
+		lineageTag: a3569dcc-c48c-5303-8a2a-a29abdd9f830
+		summarizeBy: none
+		sourceColumn: EsDuracionConciliada
+
+	column EsDuracionNoPositiva
+		dataType: int64
+		formatString: 0
+		lineageTag: cf71a727-545e-506d-998e-e600f55083b3
+		summarizeBy: none
+		sourceColumn: EsDuracionNoPositiva
+
+	column EsDuracionMayor24h
+		dataType: int64
+		formatString: 0
+		lineageTag: 184dbef8-91ce-5fd2-8b0e-18c2cacd6652
+		summarizeBy: none
+		sourceColumn: EsDuracionMayor24h
+
+	column EsMismaEstacion
+		dataType: int64
+		formatString: 0
+		lineageTag: 60f5d969-5d5f-5a3c-8200-e5165a49919c
+		summarizeBy: none
+		sourceColumn: EsMismaEstacion
+
+	column EsRazonDistanciaTiempoAlta
+		dataType: int64
+		formatString: 0
+		lineageTag: f8e4137c-82c9-5beb-8aa3-c106ada487c6
+		summarizeBy: none
+		sourceColumn: EsRazonDistanciaTiempoAlta
+
+	partition FactViajes = m
+		mode: import
+		source =
+				let
+				    Origen = Table.Combine(List.Transform(List.Sort(Table.SelectRows(Folder.Contents(pArchivo), each Text.StartsWith([Name], "FactViajes_") and Text.EndsWith([Name], ".csv.gz"))[Name]), each fxCsv(_, {"ViajeKey", "Ano", "FilaFuente", "UsuarioAnoKey", "FechaOrigen", "HoraOrigen", "FechaDestino", "HoraDestino", "EstacionOrigenUbicacionKey", "EstacionDestinoUbicacionKey", "DuracionDeclaradaSegundos", "DuracionAnaliticaSegundos", "DistanciaDirectaKm", "ModeloReportado", "GeneroReportado", "EsObservado", "EsCompleto", "EsViajeElegible", "EsDuracionConciliada", "EsDuracionNoPositiva", "EsDuracionMayor24h", "EsMismaEstacion", "EsRazonDistanciaTiempoAlta"}))),
+				    Tipos = Table.TransformColumnTypes(Origen, {
+				{"ViajeKey", Int64.Type},
+				{"Ano", Int64.Type},
+				{"FilaFuente", Int64.Type},
+				{"UsuarioAnoKey", Int64.Type},
+				{"FechaOrigen", type date},
+				{"HoraOrigen", Int64.Type},
+				{"FechaDestino", type date},
+				{"HoraDestino", Int64.Type},
+				{"EstacionOrigenUbicacionKey", Int64.Type},
+				{"EstacionDestinoUbicacionKey", Int64.Type},
+				{"DuracionDeclaradaSegundos", Int64.Type},
+				{"DuracionAnaliticaSegundos", Int64.Type},
+				{"DistanciaDirectaKm", type number},
+				{"ModeloReportado", type text},
+				{"GeneroReportado", type text},
+				{"EsObservado", Int64.Type},
+				{"EsCompleto", Int64.Type},
+				{"EsViajeElegible", Int64.Type},
+				{"EsDuracionConciliada", Int64.Type},
+				{"EsDuracionNoPositiva", Int64.Type},
+				{"EsDuracionMayor24h", Int64.Type},
+				{"EsMismaEstacion", Int64.Type},
+				{"EsRazonDistanciaTiempoAlta", Int64.Type}
+				}, "en-US")
+				in
+				    Tipos
+

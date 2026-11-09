@@ -1,0 +1,20 @@
+table FactorVariacion
+	lineageTag: be947e59-1407-50ae-93b0-0a6cd63348c8
+
+	column Factor
+		dataType: string
+		lineageTag: f39d1397-8264-5598-b74e-f4d24e1c1d05
+		summarizeBy: none
+		sourceColumn: [Factor]
+		sortByColumn: Orden
+
+	column Orden
+		dataType: int64
+		lineageTag: e38b6ce4-f234-5094-88c7-21b9086064fd
+		summarizeBy: none
+		sourceColumn: [Orden]
+
+	partition FactorVariacion = calculated
+		mode: import
+		source = DATATABLE("Factor", STRING, "Orden", INTEGER, {{"Usuarios",1},{"Frecuencia",2}})
+

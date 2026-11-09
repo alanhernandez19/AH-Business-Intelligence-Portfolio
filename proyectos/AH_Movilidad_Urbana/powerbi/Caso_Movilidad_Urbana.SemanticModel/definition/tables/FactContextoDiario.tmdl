@@ -1,0 +1,86 @@
+table FactContextoDiario
+	lineageTag: a3cd786c-caa6-5514-935a-312fe881358d
+
+	column Fecha
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: 17ffaae0-a7de-5677-b5de-7aba43142389
+		summarizeBy: none
+		sourceColumn: Fecha
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column TemperaturaMediaC
+		dataType: double
+		lineageTag: 15b5df72-5a4b-5faa-84b8-cbdacc40ca4e
+		summarizeBy: none
+		sourceColumn: TemperaturaMediaC
+
+	column PrecipitacionMm
+		dataType: double
+		lineageTag: 13f76305-7c9c-586d-b538-9a33c3e6bb5f
+		summarizeBy: none
+		sourceColumn: PrecipitacionMm
+
+	column VientoMaximoKmh
+		dataType: double
+		lineageTag: b61f25a8-e131-56fc-b669-4819124d6f93
+		summarizeBy: none
+		sourceColumn: VientoMaximoKmh
+
+	column TipoDiaEspecial
+		dataType: string
+		lineageTag: 2f0fb09c-b6c5-51b1-aba9-236305bc822b
+		summarizeBy: none
+		sourceColumn: TipoDiaEspecial
+
+	column NombreDiaEspecial
+		dataType: string
+		lineageTag: 4164888a-faa5-5e9f-8c20-7a932599b7c9
+		summarizeBy: none
+		sourceColumn: NombreDiaEspecial
+
+	column LatitudReferencia
+		dataType: double
+		lineageTag: 1f2f5174-d778-5e55-929c-de9e3b8f5506
+		summarizeBy: none
+		sourceColumn: LatitudReferencia
+
+	column LongitudReferencia
+		dataType: double
+		lineageTag: 5074eeca-8460-5479-996f-9435e46dd9b4
+		summarizeBy: none
+		sourceColumn: LongitudReferencia
+
+	column ModeloClima
+		dataType: string
+		lineageTag: 12f562f6-3982-59aa-9518-24bed336aa15
+		summarizeBy: none
+		sourceColumn: ModeloClima
+
+	column TipoClima
+		dataType: string
+		lineageTag: f29ebfa6-932f-56dc-9c7d-590ebbf0a234
+		summarizeBy: none
+		sourceColumn: TipoClima
+
+	partition FactContextoDiario = m
+		mode: import
+		source =
+				let
+				    Origen = fxCsv("FactContextoDiario.csv", {"Fecha", "TemperaturaMediaC", "PrecipitacionMm", "VientoMaximoKmh", "TipoDiaEspecial", "NombreDiaEspecial", "LatitudReferencia", "LongitudReferencia", "ModeloClima", "TipoClima"}),
+				    Tipos = Table.TransformColumnTypes(Origen, {
+				{"Fecha", type date},
+				{"TemperaturaMediaC", type number},
+				{"PrecipitacionMm", type number},
+				{"VientoMaximoKmh", type number},
+				{"TipoDiaEspecial", type text},
+				{"NombreDiaEspecial", type text},
+				{"LatitudReferencia", type number},
+				{"LongitudReferencia", type number},
+				{"ModeloClima", type text},
+				{"TipoClima", type text}
+				}, "en-US")
+				in
+				    Tipos
+

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "moduleResolution": "node",
+    "outDir": ".tmp/build",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "sourceMap": false,
+    "declaration": false,
+    "strict": false,
+    "skipLibCheck": true
+  },
+  "files": [
+    "src/visual.ts",
+    "src/map.ts"
+  ]
+}

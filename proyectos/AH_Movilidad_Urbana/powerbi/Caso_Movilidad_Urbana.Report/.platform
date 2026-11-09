@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Caso_Movilidad_Urbana"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6d507e07-80e5-5a63-81cf-0a6980f8fc58"
+  }
+}

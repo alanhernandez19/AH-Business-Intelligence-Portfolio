@@ -1,0 +1,108 @@
+table PuntosCorredor
+	lineageTag: d0b5c2e7-be5d-5274-92a3-b7b3e656584a
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 3fefbbbb-871d-5acd-956a-52a4ac526740
+		summarizeBy: none
+		sourceColumn: Ano
+
+	column RutaKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: af1def9c-ee9b-586d-806f-53d9323853c1
+		summarizeBy: none
+		sourceColumn: RutaKey
+
+	column Ruta
+		dataType: string
+		lineageTag: b8c450b1-01d0-573b-92f3-ba1f53d14b79
+		summarizeBy: none
+		sourceColumn: Ruta
+
+	column Orden
+		dataType: int64
+		formatString: 0
+		lineageTag: a56a0a7a-0e5c-5fc4-863b-47c784789f9e
+		summarizeBy: none
+		sourceColumn: Orden
+
+	column Latitud
+		dataType: double
+		lineageTag: 982b66f0-e54e-5235-992a-1e04a85ddf8b
+		dataCategory: Latitude
+		summarizeBy: none
+		sourceColumn: Latitud
+
+	column Longitud
+		dataType: double
+		lineageTag: 03a170f7-8b80-566d-bd1d-dfa2a4ab6278
+		dataCategory: Longitude
+		summarizeBy: none
+		sourceColumn: Longitud
+
+	column Viajes
+		dataType: int64
+		formatString: 0
+		lineageTag: 6e86b3b6-69ae-51b3-881a-c2c105b96177
+		summarizeBy: none
+		sourceColumn: Viajes
+
+	column Origen
+		dataType: string
+		lineageTag: 6d7e4a9d-a476-5be4-9f1b-3f3a499d0f99
+		summarizeBy: none
+		sourceColumn: Origen
+
+	column Destino
+		dataType: string
+		lineageTag: 0b038893-f1a0-58a0-a463-f39a6f100134
+		summarizeBy: none
+		sourceColumn: Destino
+
+	column EstacionOrigenUbicacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1e3d9d0e-b79d-5ec7-9cdf-02f31113f035
+		summarizeBy: none
+		sourceColumn: EstacionOrigenUbicacionKey
+
+	column EstacionDestinoUbicacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ff70b317-28dd-54c0-8920-13baa752442d
+		summarizeBy: none
+		sourceColumn: EstacionDestinoUbicacionKey
+
+	column TrazoSVG
+		dataType: string
+		lineageTag: 6cc99e4e-7897-57cf-9734-458e6342b06c
+		summarizeBy: none
+		sourceColumn: TrazoSVG
+
+	partition PuntosCorredor = m
+		mode: import
+		source =
+				let
+				    Origen = fxCsv("PuntosCorredor.csv", {"Ano", "RutaKey", "Ruta", "Orden", "Latitud", "Longitud", "Viajes", "Origen", "Destino", "EstacionOrigenUbicacionKey", "EstacionDestinoUbicacionKey", "TrazoSVG"}),
+				    Tipos = Table.TransformColumnTypes(Origen, {
+				{"Ano", Int64.Type},
+				{"RutaKey", Int64.Type},
+				{"Ruta", type text},
+				{"Orden", Int64.Type},
+				{"Latitud", type number},
+				{"Longitud", type number},
+				{"Viajes", Int64.Type},
+				{"Origen", type text},
+				{"Destino", type text},
+				{"EstacionOrigenUbicacionKey", Int64.Type},
+				{"EstacionDestinoUbicacionKey", Int64.Type},
+				{"TrazoSVG", type text}
+				}, "en-US")
+				in
+				    Tipos
+

@@ -1,0 +1,81 @@
+{
+  "fuentes": [
+    {
+      "ruta": "input/recorridos_2024.zip",
+      "url": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/bicicletas-publicas/recorridos-realizados-2024.zip",
+      "bytes": 176287971,
+      "sha256": "5bda973be30996f27bb7ce2d3794e42037bd4b4ef8500bf112e12f7a307875c7",
+      "modificacion_servidor": "Sat, 01 Mar 2025 13:07:50 GMT"
+    },
+    {
+      "ruta": "input/recorridos_2025.zip",
+      "url": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/bicicletas-publicas/recorridos-realizados-2025.zip",
+      "bytes": 207752882,
+      "sha256": "d044e693e7692509c1598e4ed954561b02e243e1c357f0a23ba6bbd51e7485b8",
+      "modificacion_servidor": "Wed, 14 Jan 2026 14:13:14 GMT"
+    },
+    {
+      "ruta": "catalogos/estaciones_bicicletas_fuente.csv",
+      "url": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/estaciones-bicicletas-publicas/nuevas-estaciones-bicicletas-publicas.csv",
+      "bytes": 31059,
+      "sha256": "a41f942446658d818adc568a441db1f63cd64dc6827f3dbe89cc2d53604af107",
+      "modificacion_servidor": "Sat, 01 Mar 2025 13:02:03 GMT"
+    },
+    {
+      "ruta": "catalogos/ciclovias_fuente.geojson",
+      "url": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/ciclovias/ciclovias.geojson",
+      "bytes": 960315,
+      "sha256": "babbbd2a6090fbc960823c3bb7eb2363563e0702354373ea8772e0405ae6edc2",
+      "modificacion_servidor": "Sun, 01 Nov 2026 19:01:33 GMT"
+    },
+    {
+      "ruta": "catalogos/barrios_fuente.geojson",
+      "url": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/ministerio-de-educacion/barrios/barrios.geojson",
+      "bytes": 740597,
+      "sha256": "21e052e070808dd476364c765b40542699ae40ebfb8cdb86436107066d76d562",
+      "modificacion_servidor": "Mon, 18 Aug 2025 15:09:56 GMT"
+    },
+    {
+      "ruta": "catalogos/estaciones_subte_fuente.geojson",
+      "url": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/sbase/subte-estaciones/estaciones_de_subte.geojson",
+      "bytes": 17133,
+      "sha256": "e392abf0d923e5ea7cebc1c463f9b7471f062ad22527fb628fe0f480d2f32cc3",
+      "modificacion_servidor": "Sun, 01 Nov 2026 16:02:03 GMT",
+      "consulta_utc": "2026-11-08T08:01:13.119244+00:00"
+    },
+    {
+      "ruta": "catalogos/clima_diario_era5_fuente.json",
+      "url": "https://archive-api.open-meteo.com/v1/archive?latitude=-34.60029&longitude=-58.43874&start_date=2024-01-01&end_date=2025-12-31&daily=temperature_2m_mean%2Cprecipitation_sum%2Cwind_speed_10m_max&models=era5&timezone=America%2FArgentina%2FBuenos_Aires",
+      "bytes": 20848,
+      "sha256": "72999ed5349889027eaede7bdd55ca943679d0c5a1f2d736150a827814db47f8",
+      "modificacion_servidor": null,
+      "consulta_utc": "2026-11-08T08:01:13.120723+00:00"
+    },
+    {
+      "ruta": "catalogos/calendario_especial_2024_2025.csv",
+      "tipo": "Compilación documentada de calendario nacional general",
+      "urls": [
+        "https://www.argentina.gob.ar/node/413320",
+        "https://www.argentina.gob.ar/node/453962",
+        "https://www.argentina.gob.ar/noticias/el-gobierno-habilito-el-traslado-del-feriado-para-un-nuevo-fin-de-semana-largo"
+      ],
+      "bytes": 3607,
+      "sha256": "9877f5b3e902dbade7b88c6b098cd5dda6f8965bda70484978f5d8bb8acda162",
+      "alcance": "Feriados nacionales y días no laborables generales. No incluye asuetos sectoriales ni festividades de aplicación restringida."
+    },
+    {
+      "ruta": "catalogos/usuarios_ecobici_2024.csv",
+      "url": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/bicicletas-publicas/usuarios_ecobici_2024.csv",
+      "bytes": 7282639,
+      "sha256": "f0e51f8daab94447a6f52617e6908f72b2f20393ba3c8db5f1140b2df191ec23",
+      "consulta_utc": "2026-11-08T20:40:56.464190+00:00"
+    },
+    {
+      "ruta": "catalogos/usuarios_ecobici_2025.csv",
+      "url": "https://cdn.buenosaires.gob.ar/datosabiertos/datasets/transporte-y-obras-publicas/bicicletas-publicas/usuarios_ecobici_2025.csv",
+      "bytes": 8060765,
+      "sha256": "3f2bda20f2c3d369828d5e3f42e5cb4786ee5e45e2bba1635ad5b0fb986e95cf",
+      "consulta_utc": "2026-11-08T20:40:56.524200+00:00"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+expression pArchivo = "C:\RUTA_DEL_PROYECTO_AH\output" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+
+expression fxCsv =
+		(Nombre as text, Columnas as list) as table =>
+		let
+		    Binario = File.Contents(pArchivo & "\" & Nombre),
+		    Contenido = if Text.EndsWith(Nombre, ".gz") then Binary.Decompress(Binario, Compression.GZip) else Binario,
+		    Csv = Csv.Document(Contenido, [Delimiter=",", Columns=Columnas, Encoding=65001, QuoteStyle=QuoteStyle.Csv, ExtraValues=ExtraValues.Error]),
+		    Cabecera = Record.FieldValues(Table.First(Csv)),
+		    Datos = if Cabecera = Columnas then Table.Skip(Csv, 1) else error "La cabecera no coincide con el contrato de columnas: " & Nombre,
+		    Nulos = Table.ReplaceValue(Datos, "", null, Replacer.ReplaceValue, Columnas)
+		in
+		    Nulos
+

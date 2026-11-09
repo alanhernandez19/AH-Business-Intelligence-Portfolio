@@ -1,0 +1,25 @@
+{
+  "visual": {
+    "name": "AHCorredores",
+    "displayName": "AH · Conexiones urbanas",
+    "guid": "AHCorredoresA7D18F820E164C73",
+    "visualClassName": "Visual",
+    "version": "1.0.0.0",
+    "description": "Mapa local interactivo de conexiones observadas; sin servicios externos.",
+    "supportUrl": "https://github.com/alanhernandez19",
+    "gitHubUrl": "https://github.com/alanhernandez19"
+  },
+  "apiVersion": "5.11.1",
+  "author": {
+    "name": "Alan Arturo Hernández Gutiérrez",
+    "email": "26527589+alanhernandez19@users.noreply.github.com"
+  },
+  "assets": {
+    "icon": "assets/icon.png"
+  },
+  "externalJS": [],
+  "style": "style/visual.less",
+  "capabilities": "capabilities.json",
+  "dependencies": null,
+  "stringResources": []
+}

@@ -1,0 +1,39 @@
+model Model
+	culture: es-ES
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table FactViajes
+ref table FactMovimientosEstacion
+ref table FactUsuarioAno
+ref table FactContextoDiario
+ref table DimEstacionUbicacion
+ref table PuntosCorredor
+ref table DimFecha
+ref table DimAno
+ref table DimHora
+ref table DimOrigen
+ref table DimDestino
+ref table DimEstacion
+ref table DimUsuarioAno
+ref table DimCohorteAlta
+ref table DimCohorteObservada
+ref table ParamRetorno
+ref table ParamFrecuencia
+ref table ParamActivacion
+ref table PesoVolumen
+ref table PesoDireccion
+ref table PesoPersistencia
+ref table ParamProximidad
+ref table EtapaActivacion
+ref table FactorVariacion
+ref table TipoEscenario
+ref table ConfigMapaLocal
+ref table Medidas
+

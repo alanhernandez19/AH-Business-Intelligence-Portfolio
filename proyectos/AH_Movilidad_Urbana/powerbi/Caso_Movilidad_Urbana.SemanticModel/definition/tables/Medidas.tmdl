@@ -1,0 +1,498 @@
+table Medidas
+	lineageTag: 27f8da85-af18-578c-b493-1203c87e8701
+
+	measure '1. Registros observados' = COALESCE(SUM(FactViajes[EsObservado]),0)
+		formatString: #,0
+		displayFolder: Actividad
+		lineageTag: 5f8e86c5-8e89-5240-b349-fd77d9287fee
+
+	measure '2. Viajes elegibles' = COALESCE(SUM(FactViajes[EsViajeElegible]),0)
+		formatString: #,0
+		displayFolder: Actividad
+		lineageTag: f997075b-d712-5770-ae82-06a80c725c26
+
+	measure '3. Usuarios con actividad' = COALESCE(SUM(FactUsuarioAno[TieneViajeElegible]),0)
+		formatString: #,0
+		displayFolder: Actividad
+		lineageTag: 25cb6253-58a1-51b3-9df4-924abb204645
+
+	measure '4. Viajes por usuario' = DIVIDE(SUM(FactUsuarioAno[ViajesElegibles]), [3. Usuarios con actividad])
+		formatString: 0.00
+		displayFolder: Actividad
+		lineageTag: 8771fa09-0b6c-5476-aa0a-4326746fc612
+
+	measure '5. Mediana minutos' = DIVIDE(MEDIAN(FactViajes[DuracionAnaliticaSegundos]), 60)
+		formatString: 0.0
+		displayFolder: Actividad
+		lineageTag: f1802d65-6c5e-53bc-b5bb-c5d8ee73cb8b
+
+	measure '6. Viajes elegibles porcentaje' = DIVIDE([2. Viajes elegibles], [1. Registros observados])
+		formatString: 0.0%
+		displayFolder: Actividad
+		lineageTag: e13ce28a-b353-5f22-af26-ce761f2bfe03
+
+	measure '7. Viajes año anterior' =
+			VAR Anterior = SELECTEDVALUE(DimAno[Ano], MAX(DimAno[Ano])) - 1
+			RETURN CALCULATE(SUM(FactViajes[EsViajeElegible]), REMOVEFILTERS(DimAno), DimAno[Ano] = Anterior)
+		formatString: #,0
+		displayFolder: Actividad
+		lineageTag: 73a6d276-e601-5ae2-a2f6-dedc066021a8
+
+	measure '8. Variación viajes' = DIVIDE([2. Viajes elegibles] - [7. Viajes año anterior], [7. Viajes año anterior])
+		formatString: 0.0%
+		displayFolder: Actividad
+		lineageTag: 5cae69f8-3189-58c4-bdc7-a3c55250bd82
+
+	measure '9. Altas reales' = SUM(FactUsuarioAno[EsAltaObservada])
+		formatString: #,0
+		displayFolder: Activación
+		lineageTag: 15a374d8-1ddc-505f-9100-cdf1a9a9ae8b
+
+	measure '10. Altas elegibles 30' = SUM(FactUsuarioAno[ElegibleActivacion30])
+		formatString: #,0
+		displayFolder: Activación
+		lineageTag: 18c08f82-f41f-5ab8-bf9a-9e700e2e656a
+
+	measure '11. Activadas 30' = SUM(FactUsuarioAno[Activacion30])
+		formatString: #,0
+		displayFolder: Activación
+		lineageTag: ba7d958f-83c8-55cb-af05-90534a529121
+
+	measure '12. Activación 30' = DIVIDE([11. Activadas 30], [10. Altas elegibles 30])
+		formatString: 0.0%
+		displayFolder: Activación
+		lineageTag: 17472cfc-0363-5aae-a19c-c4108379fe5d
+
+	measure '13. Elegibles retorno 30' = SUM(FactUsuarioAno[ElegibleRetorno30])
+		formatString: #,0
+		displayFolder: Recurrencia
+		lineageTag: 23967cbd-274a-5d27-833e-50981bf05910
+
+	measure '14. Retornaron 30' = SUM(FactUsuarioAno[Retorno30])
+		formatString: #,0
+		displayFolder: Recurrencia
+		lineageTag: f1717363-4f56-51b0-803e-7d11f20bc65d
+
+	measure '15. Retorno 30' = DIVIDE([14. Retornaron 30], [13. Elegibles retorno 30])
+		formatString: 0.0%
+		displayFolder: Recurrencia
+		lineageTag: 96f0f830-c7d3-5d8b-a59b-e8860360433f
+
+	measure '16. Retorno 90' = DIVIDE(SUM(FactUsuarioAno[Retorno90]), SUM(FactUsuarioAno[ElegibleRetorno90]))
+		formatString: 0.0%
+		displayFolder: Recurrencia
+		lineageTag: 2c3475d3-b51f-5d3a-8171-dbbdee90aa71
+
+	measure '17. Retorno 180' = DIVIDE(SUM(FactUsuarioAno[Retorno180]), SUM(FactUsuarioAno[ElegibleRetorno180]))
+		formatString: 0.0%
+		displayFolder: Recurrencia
+		lineageTag: 9a2c35e1-39ce-5339-b253-02cd03ef3db8
+
+	measure '18. Elegibles horizonte' = SWITCH(SELECTEDVALUE(ParamRetorno[Dias],30), 30, SUM(FactUsuarioAno[ElegibleRetorno30]), 90, SUM(FactUsuarioAno[ElegibleRetorno90]), 180, SUM(FactUsuarioAno[ElegibleRetorno180]))
+		formatString: #,0
+		displayFolder: Recurrencia
+		lineageTag: d8877772-faad-5b1b-b02c-86b4046dadd1
+
+	measure '19. Retorno horizonte' = SWITCH(SELECTEDVALUE(ParamRetorno[Dias],30), 30, DIVIDE(SUM(FactUsuarioAno[Retorno30]), SUM(FactUsuarioAno[ElegibleRetorno30])), 90, DIVIDE(SUM(FactUsuarioAno[Retorno90]), SUM(FactUsuarioAno[ElegibleRetorno90])), 180, DIVIDE(SUM(FactUsuarioAno[Retorno180]), SUM(FactUsuarioAno[ElegibleRetorno180])))
+		formatString: 0.0%
+		displayFolder: Recurrencia
+		lineageTag: 52e751cf-904a-5f18-9527-5683ae06037e
+
+	measure '20. Salidas' = COALESCE(SUM(FactMovimientosEstacion[Salidas]),0)
+		formatString: #,0
+		displayFolder: Estaciones
+		lineageTag: 17b75542-ba72-5de0-b5b7-8f0e2b81bd24
+
+	measure '21. Llegadas' = COALESCE(SUM(FactMovimientosEstacion[Llegadas]),0)
+		formatString: #,0
+		displayFolder: Estaciones
+		lineageTag: 64138e6e-4410-5103-99d1-a83a5d518f53
+
+	measure '22. Saldo' = [21. Llegadas] - [20. Salidas]
+		formatString: #,0
+		displayFolder: Estaciones
+		lineageTag: a53a7fdc-a43e-518b-bf07-0f221c36d440
+
+	measure '23. Movimientos' = [20. Salidas] + [21. Llegadas]
+		formatString: #,0
+		displayFolder: Estaciones
+		lineageTag: a2d0a2ed-41c3-5884-8c51-a4b5844ebff3
+
+	measure '24. Desequilibrio' = DIVIDE(ABS([22. Saldo]), [23. Movimientos])
+		formatString: 0.0%
+		displayFolder: Estaciones
+		lineageTag: 0132324d-2389-5e8b-b43a-0760d8ef5b52
+
+	measure '25. Estaciones activas' = COUNTROWS(SUMMARIZE(FactMovimientosEstacion, DimEstacion[EstacionKey]))
+		formatString: #,0
+		displayFolder: Estaciones
+		lineageTag: fffd98cb-764f-59d8-b2c1-0980522cfcad
+
+	measure '26. Circulares' = CALCULATE([2. Viajes elegibles], FactViajes[EsMismaEstacion] = 1)
+		formatString: #,0
+		displayFolder: Flujos
+		lineageTag: 5919f743-bfe5-5177-94f6-fe7732ed68dd
+
+	measure '27. Circulares porcentaje' = DIVIDE([26. Circulares], [2. Viajes elegibles])
+		formatString: 0.0%
+		displayFolder: Flujos
+		lineageTag: 10d41489-154a-5766-886d-0ffa949a08a4
+
+	measure '28. Usuarios año anterior' =
+			VAR Anterior = SELECTEDVALUE(DimAno[Ano], MAX(DimAno[Ano])) - 1
+			RETURN CALCULATE([3. Usuarios con actividad], REMOVEFILTERS(DimAno), DimAno[Ano] = Anterior)
+		formatString: #,0
+		displayFolder: Actividad
+		lineageTag: 2ba8605c-342b-5da3-9d1c-3271b63eadae
+
+	measure '29. Frecuencia año anterior' =
+			VAR Anterior = SELECTEDVALUE(DimAno[Ano], MAX(DimAno[Ano])) - 1
+			RETURN CALCULATE([4. Viajes por usuario], REMOVEFILTERS(DimAno), DimAno[Ano] = Anterior)
+		formatString: 0.00
+		displayFolder: Actividad
+		lineageTag: faa85efd-3cdc-5017-a1ba-4a95b6e74419
+
+	measure '30. Efecto usuarios' = ([3. Usuarios con actividad] - [28. Usuarios año anterior]) * ([4. Viajes por usuario] + [29. Frecuencia año anterior]) / 2
+		formatString: #,0
+		displayFolder: Actividad
+		lineageTag: 9b957e7f-0313-5f4c-a528-74822f1a88fa
+
+	measure '31. Efecto frecuencia' = ([4. Viajes por usuario] - [29. Frecuencia año anterior]) * ([3. Usuarios con actividad] + [28. Usuarios año anterior]) / 2
+		formatString: #,0
+		displayFolder: Actividad
+		lineageTag: a095ba1b-6c2f-51ae-b110-adb426a2b024
+
+	measure '32. Variación por factor' = SWITCH(SELECTEDVALUE(FactorVariacion[Orden]), 1, [30. Efecto usuarios], 2, [31. Efecto frecuencia])
+		formatString: #,0
+		displayFolder: Actividad
+		lineageTag: 212e27e4-7eb2-5833-b88b-d88f7a0bbd52
+
+	measure '33. Embudo altas' = CALCULATE([9. Altas reales], FactUsuarioAno[EsElegibleEmbudo]=1)
+		formatString: #,0
+		displayFolder: Activación
+		lineageTag: 6094afeb-b89c-5dcb-acd4-eda878d21978
+
+	measure '34. Embudo activadas' = CALCULATE([9. Altas reales], FactUsuarioAno[EsElegibleEmbudo]=1, FactUsuarioAno[Activacion30]=1)
+		formatString: #,0
+		displayFolder: Activación
+		lineageTag: a1bd9334-f488-560a-ad67-1eab86cb19c7
+
+	measure '35. Embudo recurrentes' = CALCULATE([9. Altas reales], FactUsuarioAno[EsElegibleEmbudo]=1, FactUsuarioAno[Activacion30]=1, FactUsuarioAno[Retorno90]=1)
+		formatString: #,0
+		displayFolder: Activación
+		lineageTag: eabf1688-8bbc-5d08-b32c-f7688013a0bd
+
+	measure '36. Embudo etapa' = SWITCH(SELECTEDVALUE(EtapaActivacion[Orden]), 1,[33. Embudo altas],2,[34. Embudo activadas],3,[35. Embudo recurrentes])
+		formatString: #,0
+		displayFolder: Activación
+		lineageTag: 50bb856a-91fa-5351-87cb-294147dacb37
+
+	measure '37. Activación 7' = DIVIDE(SUM(FactUsuarioAno[Activacion7]), SUM(FactUsuarioAno[ElegibleActivacion7]))
+		formatString: 0.0%
+		displayFolder: Activación
+		lineageTag: ec9a51e9-2d53-5525-9474-e201e034b29b
+
+	measure '38. Activación 90' = DIVIDE(SUM(FactUsuarioAno[Activacion90]), SUM(FactUsuarioAno[ElegibleActivacion90]))
+		formatString: 0.0%
+		displayFolder: Activación
+		lineageTag: 151dcc7d-20e3-5de0-8c7b-63d2e5150b2b
+
+	measure '39. Meses activos' = COUNTROWS(FILTER(VALUES(DimFecha[AnoMes]), [23. Movimientos] > 0))
+		formatString: #,0
+		displayFolder: Prioridades
+		lineageTag: b8f81876-3774-5ecd-baf6-b9fbd35098f2
+
+	measure '40. Meses receptores' = COUNTROWS(FILTER(VALUES(DimFecha[AnoMes]), [22. Saldo] > 0))
+		formatString: #,0
+		displayFolder: Prioridades
+		lineageTag: beee0e7f-49e1-5e9c-ab02-b335f98e54ba
+
+	measure '41. Meses emisores' = COUNTROWS(FILTER(VALUES(DimFecha[AnoMes]), [22. Saldo] < 0))
+		formatString: #,0
+		displayFolder: Prioridades
+		lineageTag: db748daa-0e62-59f0-8afb-ecdab163ab8d
+
+	measure '42. Persistencia' = DIVIDE(MAX([40. Meses receptores],[41. Meses emisores]), [39. Meses activos])
+		formatString: 0.0%
+		displayFolder: Prioridades
+		lineageTag: a10f849e-d238-5b78-a953-37c8c321bd75
+
+	measure '43. Rango volumen' =
+			VAR Estaciones = FILTER(ALLSELECTED(DimEstacion[EtiquetaEstacion]), [23. Movimientos] > 0)
+			VAR Valores = DISTINCT(SELECTCOLUMNS(Estaciones, "Valor", [23. Movimientos]))
+			RETURN DIVIDE(RANKX(Estaciones, [23. Movimientos],,ASC,Dense) - 1, COUNTROWS(Valores) - 1, 0)
+		formatString: 0.00
+		displayFolder: Prioridades
+		lineageTag: 5d91ff29-6034-50b9-99e3-17a164805ffc
+
+	measure '44. Rango dirección' =
+			VAR Estaciones = FILTER(ALLSELECTED(DimEstacion[EtiquetaEstacion]), [23. Movimientos] > 0)
+			VAR Valores = DISTINCT(SELECTCOLUMNS(Estaciones, "Valor", [24. Desequilibrio]))
+			RETURN DIVIDE(RANKX(Estaciones, [24. Desequilibrio],,ASC,Dense) - 1, COUNTROWS(Valores) - 1, 0)
+		formatString: 0.00
+		displayFolder: Prioridades
+		lineageTag: 91bfffd0-0686-5c3b-969b-9db069f757fb
+
+	measure '45. Rango persistencia' =
+			VAR Estaciones = FILTER(ALLSELECTED(DimEstacion[EtiquetaEstacion]), [23. Movimientos] > 0)
+			VAR Valores = DISTINCT(SELECTCOLUMNS(Estaciones, "Valor", [42. Persistencia]))
+			RETURN DIVIDE(RANKX(Estaciones, [42. Persistencia],,ASC,Dense) - 1, COUNTROWS(Valores) - 1, 0)
+		formatString: 0.00
+		displayFolder: Prioridades
+		lineageTag: 6881e108-327d-5113-bcbc-f92f33c8a959
+
+	measure '46. Prioridad' =
+			VAR V=SELECTEDVALUE(PesoVolumen[Value],60)
+			VAR D=SELECTEDVALUE(PesoDireccion[Value],20)
+			VAR P=SELECTEDVALUE(PesoPersistencia[Value],20)
+			RETURN IF([23. Movimientos] > 0, DIVIDE([43. Rango volumen]*V + [44. Rango dirección]*D + [45. Rango persistencia]*P, V+D+P))
+		formatString: 0.000
+		displayFolder: Prioridades
+		lineageTag: 2438d30c-f086-5687-9726-42e231c45006
+
+	measure '47. Incremento frecuencia' = SELECTEDVALUE(ParamFrecuencia[Value], 1)
+		formatString: 0.00
+		displayFolder: Escenarios
+		lineageTag: 86162b2c-b05f-5c4c-9c3e-c8bf710edb4c
+
+	measure '48. Viajes adicionales supuesto' = [3. Usuarios con actividad] * [47. Incremento frecuencia]
+		formatString: #,0
+		displayFolder: Escenarios
+		lineageTag: 2f03720b-7fa2-5229-ade0-1e2037f6b834
+
+	measure '49. Viajes escenario' = SUM(FactUsuarioAno[ViajesElegibles]) + [48. Viajes adicionales supuesto]
+		formatString: #,0
+		displayFolder: Escenarios
+		lineageTag: 1cbcdc04-623b-5b21-9722-82707c8c1dbc
+
+	measure '50. Mejora activación puntos' = SELECTEDVALUE(ParamActivacion[Value], 5)
+		formatString: 0.0
+		displayFolder: Escenarios
+		lineageTag: 24cce19f-05a1-5ce4-990b-086f4531527a
+
+	measure '51. Altas adicionales supuesto' = [10. Altas elegibles 30] * MIN(DIVIDE([50. Mejora activación puntos],100), 1-[12. Activación 30])
+		formatString: #,0
+		displayFolder: Escenarios
+		lineageTag: b703abe8-64ee-5069-a445-d62367985829
+
+	measure '52. Activadas escenario' = [11. Activadas 30] + [51. Altas adicionales supuesto]
+		formatString: #,0
+		displayFolder: Escenarios
+		lineageTag: c86be29a-04ea-5019-84e1-945c163f3725
+
+	measure '53. Comparación frecuencia' = SWITCH(SELECTEDVALUE(TipoEscenario[Orden]),1,SUM(FactUsuarioAno[ViajesElegibles]),2,[49. Viajes escenario])
+		formatString: #,0
+		displayFolder: Escenarios
+		lineageTag: 36e784cc-fbbc-56ca-8726-4942094a0229
+
+	measure '54. Comparación activación' = SWITCH(SELECTEDVALUE(TipoEscenario[Orden]),1,[11. Activadas 30],2,[52. Activadas escenario])
+		formatString: #,0
+		displayFolder: Escenarios
+		lineageTag: 2520fce7-19db-5a25-8c34-1f6f9db46f8b
+
+	measure '55. Precipitación' = MAX(FactContextoDiario[PrecipitacionMm])
+		formatString: 0.0
+		displayFolder: Contexto
+		lineageTag: 62e93f9a-fefd-595a-8e4b-4b102cb01274
+
+	measure '56. Temperatura' = AVERAGE(FactContextoDiario[TemperaturaMediaC])
+		formatString: 0.0
+		displayFolder: Contexto
+		lineageTag: ad9e19b2-9272-5ae8-b5f6-1dd98e96fae6
+
+	measure '57. Viajes por día' = AVERAGEX(VALUES(DimFecha[Fecha]), [2. Viajes elegibles])
+		formatString: #,0
+		displayFolder: Contexto
+		lineageTag: 65dd5654-070f-54e4-8928-26daabde9d38
+
+	measure '58. Viajes corredor' = MAX(PuntosCorredor[Viajes])
+		formatString: #,0
+		displayFolder: Flujos
+		lineageTag: d93b8737-9d78-5109-9bde-1b3a0f67929d
+
+	measure '59. Corredores mostrados' = DISTINCTCOUNT(PuntosCorredor[RutaKey])
+		formatString: #,0
+		displayFolder: Flujos
+		lineageTag: af816353-4f63-5a50-81d1-9b2fb34b46b2
+
+	measure '60. Activación año anterior' =
+			VAR Anterior = SELECTEDVALUE(DimAno[Ano], MAX(DimAno[Ano])) - 1
+			RETURN CALCULATE([12. Activación 30], REMOVEFILTERS(DimAno), DimAno[Ano] = Anterior)
+		formatString: 0.0%
+		displayFolder: Hipótesis
+		lineageTag: 83e338b4-3679-5672-afba-8ae4cdc3401f
+
+	measure '61. Retorno año anterior' =
+			VAR Anterior = SELECTEDVALUE(DimAno[Ano], MAX(DimAno[Ano])) - 1
+			RETURN CALCULATE([15. Retorno 30], REMOVEFILTERS(DimAno), DimAno[Ano] = Anterior)
+		formatString: 0.0%
+		displayFolder: Hipótesis
+		lineageTag: 4006645d-49a7-586d-86ae-6a8fc87ec77b
+
+	measure '62. Diferencia activación' = IF(NOT ISBLANK([12. Activación 30]) && NOT ISBLANK([60. Activación año anterior]), 100 * ([12. Activación 30] - [60. Activación año anterior]))
+		formatString: +0.0 "pp";-0.0 "pp";0.0 "pp"
+		displayFolder: Hipótesis
+		lineageTag: a12589ad-be2d-5fc9-adcc-7929a829956a
+
+	measure '63. Diferencia retorno' = IF(NOT ISBLANK([15. Retorno 30]) && NOT ISBLANK([61. Retorno año anterior]), 100 * ([15. Retorno 30] - [61. Retorno año anterior]))
+		formatString: +0.0 "pp";-0.0 "pp";0.0 "pp"
+		displayFolder: Hipótesis
+		lineageTag: 4bcd59e7-e9da-53ad-a314-9c965a5a8fa5
+
+	measure '64. Color ritmo' =
+			VAR V=[2. Viajes elegibles]
+			RETURN SWITCH(TRUE(),ISBLANK(V),"#F3F7FC",V<5000,"#E7F1FA",V<15000,"#B8D9F5",V<30000,"#6CB3EB",V<60000,"#248CDD","#174A79")
+		displayFolder: Formato
+		lineageTag: 8a9ffb6e-119a-5c30-966b-33d02033f93b
+
+	measure '65. Color cohorte' =
+			VAR V=[19. Retorno horizonte]
+			RETURN SWITCH(TRUE(),ISBLANK(V),"#F3F7FC",V<0.3,"#E7F1FA",V<0.45,"#B8D9F5",V<0.6,"#6CB3EB","#174A79")
+		displayFolder: Formato
+		lineageTag: 91d8ad40-f56d-5025-ac98-72789c223e52
+
+	measure '66. Alertas duración' = CALCULATE([1. Registros observados], FactViajes[EsDuracionNoPositiva]=1)
+		formatString: #,0
+		displayFolder: Calidad
+		lineageTag: 57ae8fa4-bb61-5a44-8fa6-2963f0d24b1e
+
+	measure '67. Viajes sin duración conciliada' = [1. Registros observados] - CALCULATE([1. Registros observados], FactViajes[EsDuracionConciliada]=1)
+		formatString: #,0
+		displayFolder: Calidad
+		lineageTag: 4d1f3eea-7b9f-5171-bb84-bd5e465d9c22
+
+	measure '68. Participación movimiento' = DIVIDE([23. Movimientos], CALCULATE([23. Movimientos], REMOVEFILTERS(DimEstacion[EtiquetaEstacion])))
+		formatString: 0.0%
+		displayFolder: Estaciones
+		lineageTag: e3a1fd8d-c65f-5dd2-9467-1e57a2778b82
+
+	measure '69. Peso total' = SELECTEDVALUE(PesoVolumen[Value],60) + SELECTEDVALUE(PesoDireccion[Value],20) + SELECTEDVALUE(PesoPersistencia[Value],20)
+		formatString: 0
+		displayFolder: Prioridades
+		lineageTag: 796d0a32-4244-547c-944d-729760efc452
+
+	measure '70. Color activación' =
+			VAR V=[12. Activación 30]
+			RETURN SWITCH(TRUE(),ISBLANK(V),"#F3F7FC",V<0.4,"#E7F1FA",V<0.55,"#B8D9F5",V<0.7,"#6CB3EB","#174A79")
+		displayFolder: Formato
+		lineageTag: 50b18f31-d3a8-57d2-a4b0-cd57699c1fed
+
+	measure '71. Usuarios un solo día' = CALCULATE([3. Usuarios con actividad], FactUsuarioAno[DiasActivos]=1)
+		formatString: #,0
+		displayFolder: Recurrencia
+		lineageTag: 36d42593-fad6-56c0-93ac-f6cd1c6fad39
+
+	measure '72. Un solo día porcentaje' = DIVIDE([71. Usuarios un solo día], [3. Usuarios con actividad])
+		formatString: 0.0%
+		displayFolder: Recurrencia
+		lineageTag: 78199368-4da5-5a7c-8d9c-c9d3c8a1680d
+
+	measure '73. Variación etiqueta' = IF(ISBLANK([7. Viajes año anterior]), "Sin período anterior", FORMAT([8. Variación viajes],"0.0%","es-MX"))
+		displayFolder: Formato
+		lineageTag: 59f0d48f-2e49-55a6-b42f-a3211b38f2a6
+
+	measure '74. Activación etiqueta' = IF([10. Altas elegibles 30]>0, FORMAT([12. Activación 30],"0.0%","es-MX"), "Sin base elegible")
+		displayFolder: Formato
+		lineageTag: a1bf99a1-8d59-585d-b31e-1dc75b349ce9
+
+	measure '75. Retorno etiqueta' = IF([18. Elegibles horizonte]>0, FORMAT([19. Retorno horizonte],"0.0%","es-MX"), "Sin ventana completa")
+		displayFolder: Formato
+		lineageTag: f73c2e00-48ff-5e6a-945f-0611c03d3017
+
+	measure '76. Viajes miles' = DIVIDE([2. Viajes elegibles],1000)
+		formatString: 0.0
+		displayFolder: Formato
+		lineageTag: f4b25f60-1ebe-5f47-a616-e42c67af63fb
+
+	measure '77. Texto ritmo' = IF([2. Viajes elegibles]>=30000,"#FFFFFF","#12263E")
+		displayFolder: Formato
+		lineageTag: 0ebab506-83e9-5da3-99c8-a55b9edfb009
+
+	measure '78. Texto cohorte' = IF([19. Retorno horizonte]>=0.6,"#FFFFFF","#12263E")
+		displayFolder: Formato
+		lineageTag: 85834a1f-bc28-5086-8686-188ca0776c7e
+
+	measure '79. Texto activación' = IF([12. Activación 30]>=0.7,"#FFFFFF","#12263E")
+		displayFolder: Formato
+		lineageTag: 7a2d9d4c-2da3-54f2-a0bf-e6cebe6c8c4f
+
+	measure '80. Base mapa corredores' = MAX(ConfigMapaLocal[SvgBase])
+		displayFolder: Presentación
+		lineageTag: 3e15d41f-1680-5a8d-8893-fc94fc36d893
+
+	measure '81. Activación base común' = DIVIDE([34. Embudo activadas], [33. Embudo altas])
+		formatString: 0.0%
+		displayFolder: Hipótesis
+		lineageTag: 5c89799d-32a7-5e39-8b67-97298fe7601b
+
+	measure '82. Continuidad tras activar' = DIVIDE([35. Embudo recurrentes], [34. Embudo activadas])
+		formatString: 0.0%
+		displayFolder: Hipótesis
+		lineageTag: 23b049cd-4de9-537d-8938-ee105e8de6c9
+
+	measure '83. Peso mayores flujos' =
+			VAR Rutas = TOPN(25, SUMMARIZE(PuntosCorredor, PuntosCorredor[RutaKey], "Volumen", MAX(PuntosCorredor[Viajes])), [Volumen], DESC, PuntosCorredor[RutaKey], ASC)
+			RETURN DIVIDE(SUMX(Rutas, [Volumen]), [2. Viajes elegibles])
+		formatString: 0.0%
+		displayFolder: Flujos
+		lineageTag: 286f2837-5126-56ab-b1e6-6517eddc0151
+
+	measure '84. Radio proximidad' = SELECTEDVALUE(ParamProximidad[Metros], 500)
+		formatString: 0
+		displayFolder: Contexto
+		lineageTag: 73207002-1d6a-587c-9cb6-b8f1b24ccd2c
+
+	measure '85. Estaciones cerca de subte' =
+			VAR Radio = [84. Radio proximidad]
+			RETURN COUNTROWS(FILTER(VALUES(DimEstacion[EstacionKey]),
+			 VAR Ubicaciones = CALCULATETABLE(VALUES(FactMovimientosEstacion[EstacionUbicacionKey]))
+			 VAR Distancia = CALCULATE(MIN(DimEstacion[DistanciaSubteActualM]), TREATAS(Ubicaciones, DimEstacion[EstacionUbicacionKey]))
+			 RETURN [23. Movimientos] > 0 && NOT ISBLANK(Distancia) && Distancia <= Radio))
+		formatString: #,0
+		displayFolder: Contexto
+		lineageTag: c30b9d24-ff54-5efb-b0d1-aec0be936f0e
+
+	measure '86. Estaciones cerca de ciclovía' =
+			VAR Radio = [84. Radio proximidad]
+			RETURN COUNTROWS(FILTER(VALUES(DimEstacion[EstacionKey]),
+			 VAR Ubicaciones = CALCULATETABLE(VALUES(FactMovimientosEstacion[EstacionUbicacionKey]))
+			 VAR Distancia = CALCULATE(MIN(DimEstacion[DistanciaCicloviaActualM]), TREATAS(Ubicaciones, DimEstacion[EstacionUbicacionKey]))
+			 RETURN [23. Movimientos] > 0 && NOT ISBLANK(Distancia) && Distancia <= Radio))
+		formatString: #,0
+		displayFolder: Contexto
+		lineageTag: 72b6ab98-a9b1-578c-83cc-f4d51ab51f9f
+
+	measure '87. Cercanía subte porcentaje' = DIVIDE([85. Estaciones cerca de subte], [25. Estaciones activas])
+		formatString: 0.0%
+		displayFolder: Contexto
+		lineageTag: 003b44be-40d8-5701-a617-7129525b85f7
+
+	measure '88. Cercanía ciclovía porcentaje' = DIVIDE([86. Estaciones cerca de ciclovía], [25. Estaciones activas])
+		formatString: 0.0%
+		displayFolder: Contexto
+		lineageTag: b1b70882-74ba-5eee-a4e5-e63396e08b92
+
+	measure '89. Persistencia mediana estación' = MEDIANX(FILTER(VALUES(DimEstacion[EstacionKey]), [23. Movimientos] > 0), [42. Persistencia])
+		formatString: 0.0%
+		displayFolder: Prioridades
+		lineageTag: 75344b6b-0bc6-55ff-acd0-8b0a19aa9ec5
+
+	measure '90. Cambio activación etiqueta' = IF(ISBLANK([12. Activación 30]), "Sin base elegible", IF(ISBLANK([60. Activación año anterior]), "Sin año anterior", FORMAT([62. Diferencia activación], "+0.0;-0.0;0.0", "es-MX") & " pp"))
+		displayFolder: Formato
+		lineageTag: 2a796cc9-ad1d-5b6d-848c-d6f9e5617854
+
+	measure '91. Cambio retorno etiqueta' = IF(ISBLANK([15. Retorno 30]), "Sin ventana completa", IF(ISBLANK([61. Retorno año anterior]), "Sin año anterior", FORMAT([63. Diferencia retorno], "+0.0;-0.0;0.0", "es-MX") & " pp"))
+		displayFolder: Formato
+		lineageTag: 8a31a49d-dbdf-5b59-9bd1-e3105421e076
+
+	column Contenedor
+		dataType: int64
+		isHidden
+		lineageTag: 19dec945-74cf-5447-82a0-4170b2598eb3
+		summarizeBy: none
+		sourceColumn: [Contenedor]
+
+	partition Medidas = calculated
+		mode: import
+		source = DATATABLE("Contenedor",INTEGER,{{1}})
+

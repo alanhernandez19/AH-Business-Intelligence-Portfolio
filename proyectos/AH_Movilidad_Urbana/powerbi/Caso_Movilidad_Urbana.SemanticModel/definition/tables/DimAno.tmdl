@@ -1,0 +1,14 @@
+table DimAno
+	lineageTag: 88d4ac16-c8ec-5929-b0cc-cca0e7aa44c2
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 04c47972-3af4-55c7-87ed-b86cf4b49ff7
+		summarizeBy: none
+		sourceColumn: [Ano]
+
+	partition DimAno = calculated
+		mode: import
+		source = DISTINCT(SELECTCOLUMNS(DimFecha, "Ano", DimFecha[Ano]))
+

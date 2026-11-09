@@ -1,0 +1,19 @@
+table DimHora
+	lineageTag: 2fd6d9c9-f272-52ae-a5de-6b1ba9af54c2
+
+	column Hora
+		dataType: int64
+		formatString: 00
+		lineageTag: fdfae234-3fd2-5b3c-8ea2-5422a00a0027
+		summarizeBy: none
+		sourceColumn: [Hora]
+
+	column Franja = SWITCH(TRUE(), DimHora[Hora]<6, "00–05", DimHora[Hora]<10, "06–09", DimHora[Hora]<16, "10–15", DimHora[Hora]<20, "16–19", "20–23")
+		dataType: string
+		lineageTag: 847617c1-ef99-540a-b153-688fc0d6b253
+		summarizeBy: none
+
+	partition DimHora = calculated
+		mode: import
+		source = SELECTCOLUMNS(GENERATESERIES(MIN(FactViajes[HoraOrigen]), MAX(FactViajes[HoraOrigen]), 1), "Hora", [Value])
+

@@ -1,0 +1,319 @@
+table FactUsuarioAno
+	lineageTag: 03e45571-7fe6-5c21-96ea-e5b23906b9e0
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 6d6530ea-d86f-5fc8-b612-287be5c0b7ca
+		summarizeBy: none
+		sourceColumn: Ano
+
+	column UsuarioAnoKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 45d6af13-8fcc-51d5-9007-31a2c06c1ae5
+		summarizeBy: none
+		sourceColumn: UsuarioAnoKey
+
+	column FechaPrimeraObservada
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: 8dbb9c7b-547c-5a53-829b-180422413971
+		summarizeBy: none
+		sourceColumn: FechaPrimeraObservada
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FechaUltimaObservada
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: 51fc2ad1-63d4-5e42-8cbe-e845b8b6440f
+		summarizeBy: none
+		sourceColumn: FechaUltimaObservada
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ViajesElegibles
+		dataType: int64
+		formatString: 0
+		lineageTag: 1dd7c692-d60b-517d-9d8b-83c750e10589
+		summarizeBy: none
+		sourceColumn: ViajesElegibles
+
+	column DiasActivos
+		dataType: int64
+		formatString: 0
+		lineageTag: 8f1ad98b-f5af-556d-9088-decbceb68b47
+		summarizeBy: none
+		sourceColumn: DiasActivos
+
+	column EstacionesOrigenDistintas
+		dataType: int64
+		formatString: 0
+		lineageTag: cf0a8145-4841-5dc9-9580-305f9a1b0a1b
+		summarizeBy: none
+		sourceColumn: EstacionesOrigenDistintas
+
+	column FechaAlta
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: aa29cb8b-3b52-5a62-8011-454fa3d0179c
+		summarizeBy: none
+		sourceColumn: FechaAlta
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column EdadReportada
+		dataType: int64
+		formatString: 0
+		lineageTag: 1b69f03a-908b-59f9-bad0-80462b73bdc7
+		summarizeBy: none
+		sourceColumn: EdadReportada
+
+	column GeneroAlta
+		dataType: string
+		lineageTag: 9109061b-f2f5-5dbe-8813-d48033d42755
+		summarizeBy: none
+		sourceColumn: GeneroAlta
+
+	column ViajesObservados
+		dataType: int64
+		formatString: 0
+		lineageTag: 0bfb577b-a6b5-5bf6-b94c-a74394084654
+		summarizeBy: none
+		sourceColumn: ViajesObservados
+
+	column EsAltaObservada
+		dataType: int64
+		formatString: 0
+		lineageTag: fc5f22e0-e3f6-54b5-aae2-39677c8fadce
+		summarizeBy: none
+		sourceColumn: EsAltaObservada
+
+	column TieneViajeObservado
+		dataType: int64
+		formatString: 0
+		lineageTag: 7cb62bd2-b1ed-5f53-922a-fe40a3b1ca35
+		summarizeBy: none
+		sourceColumn: TieneViajeObservado
+
+	column TieneViajeElegible
+		dataType: int64
+		formatString: 0
+		lineageTag: 491df53c-09ce-5860-be15-76c67f19d300
+		summarizeBy: none
+		sourceColumn: TieneViajeElegible
+
+	column FechaCorte
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: c03d14db-eb49-5b48-a471-21384995df17
+		summarizeBy: none
+		sourceColumn: FechaCorte
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column RecenciaCierreDias
+		dataType: int64
+		formatString: 0
+		lineageTag: 471aa2f8-d707-5e6d-b0e9-775a5b73d1b5
+		summarizeBy: none
+		sourceColumn: RecenciaCierreDias
+
+	column SeguimientoObservadoDias
+		dataType: int64
+		formatString: 0
+		lineageTag: 29ae98b8-c737-50a1-9fbd-1a39203a29ff
+		summarizeBy: none
+		sourceColumn: SeguimientoObservadoDias
+
+	column DiasHastaActivacion
+		dataType: int64
+		formatString: 0
+		lineageTag: 27fbd253-cc7c-5877-a263-f38df3241484
+		summarizeBy: none
+		sourceColumn: DiasHastaActivacion
+
+	column EsCronologiaContradictoria
+		dataType: int64
+		formatString: 0
+		lineageTag: 4378a4eb-c997-51c9-bb80-aa6aaa757946
+		summarizeBy: none
+		sourceColumn: EsCronologiaContradictoria
+
+	column ElegibleRetorno30
+		dataType: int64
+		formatString: 0
+		lineageTag: f1df8164-63ac-5adb-b245-c34c3c33f313
+		summarizeBy: none
+		sourceColumn: ElegibleRetorno30
+
+	column Retorno30
+		dataType: int64
+		formatString: 0
+		lineageTag: eb7f9c10-a893-59a5-8f24-8a896f5c0d43
+		summarizeBy: none
+		sourceColumn: Retorno30
+
+	column ElegibleRetorno90
+		dataType: int64
+		formatString: 0
+		lineageTag: 0ab25009-578f-5ede-87da-46f1b7f83f89
+		summarizeBy: none
+		sourceColumn: ElegibleRetorno90
+
+	column Retorno90
+		dataType: int64
+		formatString: 0
+		lineageTag: 93b1116c-70dd-5443-9563-0aa96feea2c6
+		summarizeBy: none
+		sourceColumn: Retorno90
+
+	column ElegibleRetorno180
+		dataType: int64
+		formatString: 0
+		lineageTag: 52c490c7-e937-5e7b-af52-ee35d40645ab
+		summarizeBy: none
+		sourceColumn: ElegibleRetorno180
+
+	column Retorno180
+		dataType: int64
+		formatString: 0
+		lineageTag: 978eba41-36c8-54f8-babc-6db6c03699c1
+		summarizeBy: none
+		sourceColumn: Retorno180
+
+	column ElegibleActivacion7
+		dataType: int64
+		formatString: 0
+		lineageTag: ae5fd60a-0ece-5e27-9bad-2c116bc96832
+		summarizeBy: none
+		sourceColumn: ElegibleActivacion7
+
+	column Activacion7
+		dataType: int64
+		formatString: 0
+		lineageTag: 75284097-43ce-58b1-8600-f0eb2e1fd3bc
+		summarizeBy: none
+		sourceColumn: Activacion7
+
+	column ElegibleActivacion30
+		dataType: int64
+		formatString: 0
+		lineageTag: 4b7408c7-b775-54f5-9f95-f06173f5e623
+		summarizeBy: none
+		sourceColumn: ElegibleActivacion30
+
+	column Activacion30
+		dataType: int64
+		formatString: 0
+		lineageTag: 97e0fa71-f528-5daf-b4b4-b39521eaf78a
+		summarizeBy: none
+		sourceColumn: Activacion30
+
+	column ElegibleActivacion90
+		dataType: int64
+		formatString: 0
+		lineageTag: 8290f45e-16c5-5ead-9c93-0dd9fc7759ab
+		summarizeBy: none
+		sourceColumn: ElegibleActivacion90
+
+	column Activacion90
+		dataType: int64
+		formatString: 0
+		lineageTag: cc4b5f2c-b988-55aa-8101-33a56c499620
+		summarizeBy: none
+		sourceColumn: Activacion90
+
+	column EdadAnalitica
+		dataType: int64
+		formatString: 0
+		lineageTag: 3bd40ebb-4276-5517-9137-731f1808a45c
+		summarizeBy: none
+		sourceColumn: EdadAnalitica
+
+	column GrupoEdad
+		dataType: string
+		lineageTag: 55413710-db8c-5a12-bbc5-62d5f3f57f7c
+		summarizeBy: none
+		sourceColumn: GrupoEdad
+
+	column CohorteObservada
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: d458cc4b-342e-5218-814b-541e4c138e62
+		summarizeBy: none
+		sourceColumn: CohorteObservada
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CohorteAlta
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: 80e55da0-bdd7-57b2-89db-6c6d4ba546d3
+		summarizeBy: none
+		sourceColumn: CohorteAlta
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column GrupoFrecuencia
+		dataType: string
+		lineageTag: 72a8b7fa-a9ca-5bef-a3f4-12ec9d11deea
+		summarizeBy: none
+		sourceColumn: GrupoFrecuencia
+
+	column EsElegibleEmbudo
+		dataType: int64
+		formatString: 0
+		lineageTag: 34fe8204-ddc4-5db2-9489-5a38eccae261
+		summarizeBy: none
+		sourceColumn: EsElegibleEmbudo
+
+	partition FactUsuarioAno = m
+		mode: import
+		source =
+				let
+				    Origen = fxCsv("FactUsuarioAno.csv.gz", {"Ano", "UsuarioAnoKey", "FechaPrimeraObservada", "FechaUltimaObservada", "ViajesElegibles", "DiasActivos", "EstacionesOrigenDistintas", "FechaAlta", "EdadReportada", "GeneroAlta", "ViajesObservados", "EsAltaObservada", "TieneViajeObservado", "TieneViajeElegible", "FechaCorte", "RecenciaCierreDias", "SeguimientoObservadoDias", "DiasHastaActivacion", "EsCronologiaContradictoria", "ElegibleRetorno30", "Retorno30", "ElegibleRetorno90", "Retorno90", "ElegibleRetorno180", "Retorno180", "ElegibleActivacion7", "Activacion7", "ElegibleActivacion30", "Activacion30", "ElegibleActivacion90", "Activacion90", "EdadAnalitica", "GrupoEdad", "CohorteObservada", "CohorteAlta", "GrupoFrecuencia", "EsElegibleEmbudo"}),
+				    Tipos = Table.TransformColumnTypes(Origen, {
+				{"Ano", Int64.Type},
+				{"UsuarioAnoKey", Int64.Type},
+				{"FechaPrimeraObservada", type date},
+				{"FechaUltimaObservada", type date},
+				{"ViajesElegibles", Int64.Type},
+				{"DiasActivos", Int64.Type},
+				{"EstacionesOrigenDistintas", Int64.Type},
+				{"FechaAlta", type date},
+				{"EdadReportada", Int64.Type},
+				{"GeneroAlta", type text},
+				{"ViajesObservados", Int64.Type},
+				{"EsAltaObservada", Int64.Type},
+				{"TieneViajeObservado", Int64.Type},
+				{"TieneViajeElegible", Int64.Type},
+				{"FechaCorte", type date},
+				{"RecenciaCierreDias", Int64.Type},
+				{"SeguimientoObservadoDias", Int64.Type},
+				{"DiasHastaActivacion", Int64.Type},
+				{"EsCronologiaContradictoria", Int64.Type},
+				{"ElegibleRetorno30", Int64.Type},
+				{"Retorno30", Int64.Type},
+				{"ElegibleRetorno90", Int64.Type},
+				{"Retorno90", Int64.Type},
+				{"ElegibleRetorno180", Int64.Type},
+				{"Retorno180", Int64.Type},
+				{"ElegibleActivacion7", Int64.Type},
+				{"Activacion7", Int64.Type},
+				{"ElegibleActivacion30", Int64.Type},
+				{"Activacion30", Int64.Type},
+				{"ElegibleActivacion90", Int64.Type},
+				{"Activacion90", Int64.Type},
+				{"EdadAnalitica", Int64.Type},
+				{"GrupoEdad", type text},
+				{"CohorteObservada", type date},
+				{"CohorteAlta", type date},
+				{"GrupoFrecuencia", type text},
+				{"EsElegibleEmbudo", Int64.Type}
+				}, "en-US")
+				in
+				    Tipos
+

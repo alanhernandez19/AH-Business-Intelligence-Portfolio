@@ -1,0 +1,127 @@
+{
+  "dataRoles": [
+    {
+      "name": "routeKey",
+      "displayName": "Clave conexión",
+      "kind": "Grouping"
+    },
+    {
+      "name": "routeLabel",
+      "displayName": "Conexión",
+      "kind": "Grouping"
+    },
+    {
+      "name": "path",
+      "displayName": "Geometría ETL",
+      "kind": "Grouping"
+    },
+    {
+      "name": "origin",
+      "displayName": "Origen",
+      "kind": "Grouping"
+    },
+    {
+      "name": "destination",
+      "displayName": "Destino",
+      "kind": "Grouping"
+    },
+    {
+      "name": "value",
+      "displayName": "Viajes",
+      "kind": "Measure"
+    },
+    {
+      "name": "background",
+      "displayName": "Base geográfica",
+      "kind": "Measure"
+    }
+  ],
+  "dataViewMappings": [
+    {
+      "conditions": [
+        {
+          "routeKey": {
+            "max": 1
+          },
+          "routeLabel": {
+            "max": 1
+          },
+          "path": {
+            "max": 1
+          },
+          "origin": {
+            "max": 1
+          },
+          "destination": {
+            "max": 1
+          },
+          "value": {
+            "max": 1
+          },
+          "background": {
+            "max": 1
+          }
+        }
+      ],
+      "table": {
+        "rows": {
+          "select": [
+            {
+              "for": {
+                "in": "routeKey"
+              }
+            },
+            {
+              "for": {
+                "in": "routeLabel"
+              }
+            },
+            {
+              "for": {
+                "in": "path"
+              }
+            },
+            {
+              "for": {
+                "in": "origin"
+              }
+            },
+            {
+              "for": {
+                "in": "destination"
+              }
+            },
+            {
+              "for": {
+                "in": "value"
+              }
+            },
+            {
+              "for": {
+                "in": "background"
+              }
+            }
+          ],
+          "dataReductionAlgorithm": {
+            "top": {
+              "count": 1000
+            }
+          }
+        }
+      }
+    }
+  ],
+  "objects": {},
+  "supportsHighlight": false,
+  "supportsKeyboardFocus": true,
+  "supportsSynchronizingFilterState": true,
+  "supportsMultiVisualSelection": true,
+  "supportsEmptyDataView": true,
+  "tooltips": {
+    "supportedTypes": {
+      "default": true,
+      "canvas": true
+    }
+  },
+  "privileges": []
+}

@@ -1,0 +1,121 @@
+table DimEstacionUbicacion
+	isHidden
+	lineageTag: 53f341da-d46c-51b6-89e8-eb1eab405d4f
+
+	column EstacionUbicacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 5dbe701d-eba0-5b90-aafc-502d95335436
+		summarizeBy: none
+		sourceColumn: EstacionUbicacionKey
+
+	column Longitud
+		dataType: double
+		lineageTag: 392741e5-5c25-598d-a82e-cd43ccd7aeb1
+		dataCategory: Longitude
+		summarizeBy: none
+		sourceColumn: Longitud
+
+	column Latitud
+		dataType: double
+		lineageTag: 46f41a05-67f4-55b5-b94b-cf91b696697e
+		dataCategory: Latitude
+		summarizeBy: none
+		sourceColumn: Latitud
+
+	column NombreEstacion
+		dataType: string
+		lineageTag: 3e0d529b-6f66-54bd-9d31-642961a759e1
+		summarizeBy: none
+		sourceColumn: NombreEstacion
+
+	column NumeroPublico
+		dataType: int64
+		formatString: 0
+		lineageTag: 523be8a4-d8b9-5028-b371-db834540f153
+		summarizeBy: none
+		sourceColumn: NumeroPublico
+
+	column EstacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 7948ab18-a7bb-5cad-a823-4637d7faf7a6
+		summarizeBy: none
+		sourceColumn: EstacionKey
+
+	column EtiquetaEstacion
+		dataType: string
+		lineageTag: df6daa14-132a-5053-b965-f33f364c0c11
+		summarizeBy: none
+		sourceColumn: EtiquetaEstacion
+
+	column AliasObservados
+		dataType: string
+		lineageTag: dfa08b96-fa6a-5748-bc25-97364c8e4832
+		summarizeBy: none
+		sourceColumn: AliasObservados
+
+	column Barrio
+		dataType: string
+		lineageTag: 55e2d60c-b1aa-5991-90ad-5302f9e8b149
+		summarizeBy: none
+		sourceColumn: Barrio
+
+	column Comuna
+		dataType: string
+		lineageTag: 8f77d79b-37e5-5dfd-b603-003611c65cfb
+		summarizeBy: none
+		sourceColumn: Comuna
+
+	column EstadoGeografia
+		dataType: string
+		lineageTag: f9476714-769d-5968-a1eb-838231a811e7
+		summarizeBy: none
+		sourceColumn: EstadoGeografia
+
+	column DistanciaSubteActualM
+		dataType: double
+		formatString: #,0
+		lineageTag: ec933d19-9968-5718-8c46-9c731c1bfa29
+		summarizeBy: none
+		sourceColumn: DistanciaSubteActualM
+
+	column SubteActualMasCercano
+		dataType: string
+		lineageTag: 9a419608-6023-57dd-9e34-107bdb6f80d2
+		summarizeBy: none
+		sourceColumn: SubteActualMasCercano
+
+	column DistanciaCicloviaActualM
+		dataType: double
+		formatString: #,0
+		lineageTag: 65df8968-94d3-5019-be52-9cf945c5a99c
+		summarizeBy: none
+		sourceColumn: DistanciaCicloviaActualM
+
+	partition DimEstacionUbicacion = m
+		mode: import
+		source =
+				let
+				    Origen = fxCsv("DimEstacionUbicacion.csv", {"EstacionUbicacionKey", "Longitud", "Latitud", "NombreEstacion", "NumeroPublico", "EstacionKey", "EtiquetaEstacion", "AliasObservados", "Barrio", "Comuna", "EstadoGeografia", "DistanciaSubteActualM", "SubteActualMasCercano", "DistanciaCicloviaActualM"}),
+				    Tipos = Table.TransformColumnTypes(Origen, {
+				{"EstacionUbicacionKey", Int64.Type},
+				{"Longitud", type number},
+				{"Latitud", type number},
+				{"NombreEstacion", type text},
+				{"NumeroPublico", Int64.Type},
+				{"EstacionKey", Int64.Type},
+				{"EtiquetaEstacion", type text},
+				{"AliasObservados", type text},
+				{"Barrio", type text},
+				{"Comuna", type text},
+				{"EstadoGeografia", type text},
+				{"DistanciaSubteActualM", type number},
+				{"SubteActualMasCercano", type text},
+				{"DistanciaCicloviaActualM", type number}
+				}, "en-US")
+				in
+				    Tipos
+

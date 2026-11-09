@@ -1,0 +1,20 @@
+table EtapaActivacion
+	lineageTag: 50ed2546-293b-5210-b665-8db071ac7cc7
+
+	column Etapa
+		dataType: string
+		lineageTag: 8538f218-98a6-536e-9911-12af8198cab8
+		summarizeBy: none
+		sourceColumn: [Etapa]
+		sortByColumn: Orden
+
+	column Orden
+		dataType: int64
+		lineageTag: d3f9702b-ed9c-56fd-a6e2-853cef3db4dc
+		summarizeBy: none
+		sourceColumn: [Orden]
+
+	partition EtapaActivacion = calculated
+		mode: import
+		source = DATATABLE("Etapa", STRING, "Orden", INTEGER, {{"Altas elegibles",1},{"Activaron ≤30 d",2},{"Retornaron ≤90 d",3}})
+

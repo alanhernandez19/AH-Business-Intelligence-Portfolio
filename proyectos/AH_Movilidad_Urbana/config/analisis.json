@@ -1,0 +1,21 @@
+{
+  "version_esquema": 1,
+  "ventanas_activacion_dias": [
+    7,
+    30,
+    90
+  ],
+  "ventanas_retorno_dias": [
+    30,
+    90,
+    180
+  ],
+  "embudo": {
+    "activacion_dias": 30,
+    "retorno_dias": 90
+  },
+  "umbral_lluvia_mm": 1,
+  "periodo_corredores": "anual",
+  "corredores_visibles": 25,
+  "max_filas_particion_viajes": 4000000
+}

@@ -1,0 +1,30 @@
+table DimCohorteObservada
+	lineageTag: 420f673e-b2bf-52df-a6f3-856a53888c34
+
+	column CohorteObservada
+		dataType: dateTime
+		formatString: dd/MM/yyyy
+		lineageTag: 433c5520-4e6d-5432-b1a7-24bcceb4e3c8
+		summarizeBy: none
+		sourceColumn: [CohorteObservada]
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MesNumero = MONTH(DimCohorteObservada[CohorteObservada])
+		dataType: int64
+		formatString: 0
+		lineageTag: 92713ccf-4a3f-5a6a-abbb-631c5475c284
+		summarizeBy: none
+
+	column Mes = FORMAT(DimCohorteObservada[CohorteObservada], "mmm", "es-ES")
+		dataType: string
+		lineageTag: 11993812-04b4-5955-bc5a-02d9817812ed
+		summarizeBy: none
+		sortByColumn: MesNumero
+
+	partition DimCohorteObservada = calculated
+		mode: import
+		source =
+				VAR Fechas = DISTINCT(SELECTCOLUMNS(FactUsuarioAno, "CohorteObservada", FactUsuarioAno[CohorteObservada]))
+				RETURN FILTER(Fechas, NOT ISBLANK([CohorteObservada]))
+

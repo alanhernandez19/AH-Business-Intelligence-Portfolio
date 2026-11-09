@@ -1,0 +1,14 @@
+table ParamActivacion
+	lineageTag: 660f91f7-711c-52a7-b8fc-fa606aec75f6
+
+	column Value
+		dataType: double
+		formatString: 0.##
+		lineageTag: 40b49b35-c4f8-5e1d-8994-bae0699f8b7f
+		summarizeBy: none
+		sourceColumn: [Value]
+
+	partition ParamActivacion = calculated
+		mode: import
+		source = GENERATESERIES(0, 10, 0.5)
+

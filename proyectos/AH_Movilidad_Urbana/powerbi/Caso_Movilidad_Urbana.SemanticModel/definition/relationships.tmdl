@@ -1,0 +1,68 @@
+relationship 0783e0e6-51fc-5fe2-9714-5b4ce0cbcb6a
+	fromColumn: FactUsuarioAno.CohorteAlta
+	toColumn: DimCohorteAlta.CohorteAlta
+
+relationship 466101d7-f44b-5b23-baed-44b3294dd4ae
+	fromColumn: FactUsuarioAno.CohorteObservada
+	toColumn: DimCohorteObservada.CohorteObservada
+
+relationship baf042d1-a2fa-5b17-9458-2f21492d1bf2
+	fromColumn: DimFecha.Ano
+	toColumn: DimAno.Ano
+
+relationship 9827484f-c489-5721-a0e8-022f0b802143
+	fromColumn: FactUsuarioAno.Ano
+	toColumn: DimAno.Ano
+
+relationship 72d9980b-9154-568d-b247-6735b27eb9a1
+	fromColumn: FactViajes.FechaOrigen
+	toColumn: DimFecha.Fecha
+
+relationship 78a681f9-1a10-59ad-b388-bea27827cd7c
+	fromColumn: FactMovimientosEstacion.Fecha
+	toColumn: DimFecha.Fecha
+
+relationship 655f99bc-0ddd-5537-a89a-1852a537749b
+	fromColumn: FactContextoDiario.Fecha
+	toColumn: DimFecha.Fecha
+
+relationship fb633685-59c2-5c20-ac0f-813aeb2cad40
+	fromColumn: FactViajes.HoraOrigen
+	toColumn: DimHora.Hora
+
+relationship 24e5c28c-db87-5ac5-a9b8-d4804183d542
+	fromColumn: FactMovimientosEstacion.Hora
+	toColumn: DimHora.Hora
+
+relationship 143bb1f0-644f-5a8f-a26e-b990f53dc87d
+	fromColumn: FactViajes.EstacionOrigenUbicacionKey
+	toColumn: DimOrigen.EstacionUbicacionKey
+
+relationship 39012bd8-8f12-58f9-ba8c-39dc39d470f6
+	fromColumn: FactViajes.EstacionDestinoUbicacionKey
+	toColumn: DimDestino.EstacionUbicacionKey
+
+relationship d366a365-d6bd-5f0f-a30c-05dfefac52f8
+	fromColumn: FactMovimientosEstacion.EstacionUbicacionKey
+	toColumn: DimEstacion.EstacionUbicacionKey
+
+relationship ebcde8d1-977d-5b7c-acdf-bb1fc424dd98
+	fromColumn: FactViajes.UsuarioAnoKey
+	toColumn: DimUsuarioAno.UsuarioAnoKey
+
+relationship f26e557e-36f7-5088-b823-c03b5e786780
+	fromColumn: FactUsuarioAno.UsuarioAnoKey
+	toColumn: DimUsuarioAno.UsuarioAnoKey
+
+relationship 974e1c21-ebb1-5b9f-aaa0-41a11f477cd9
+	fromColumn: PuntosCorredor.Ano
+	toColumn: DimAno.Ano
+
+relationship 6fe08bea-697f-517d-8424-e22211906adf
+	fromColumn: PuntosCorredor.EstacionOrigenUbicacionKey
+	toColumn: DimOrigen.EstacionUbicacionKey
+
+relationship ba769d51-ebf6-5630-8e4d-f9f0a617ab48
+	fromColumn: PuntosCorredor.EstacionDestinoUbicacionKey
+	toColumn: DimDestino.EstacionUbicacionKey
+

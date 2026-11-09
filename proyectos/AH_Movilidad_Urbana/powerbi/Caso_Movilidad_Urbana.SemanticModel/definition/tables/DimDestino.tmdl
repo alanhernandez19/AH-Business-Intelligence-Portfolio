@@ -1,0 +1,93 @@
+table DimDestino
+	lineageTag: 754fa9f2-8722-5c6d-b0c2-68c46b4609dd
+
+	column EstacionUbicacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 4d6f5ccc-1df6-56f9-b47d-5db5e7cb8372
+		summarizeBy: none
+		sourceColumn: [EstacionUbicacionKey]
+
+	column EstacionKey
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 491e62fa-613b-552a-ab90-a6864f9da864
+		summarizeBy: none
+		sourceColumn: [EstacionKey]
+
+	column EtiquetaEstacion
+		dataType: string
+		lineageTag: 937bd926-76a7-5d12-9b68-eaa2c2a9ca6c
+		summarizeBy: none
+		sourceColumn: [EtiquetaEstacion]
+
+	column NombreEstacion
+		dataType: string
+		lineageTag: c5c9302a-5e5f-574e-828e-a0deacb9122a
+		summarizeBy: none
+		sourceColumn: [NombreEstacion]
+
+	column Barrio
+		dataType: string
+		lineageTag: 2ad61fa4-4405-53f6-9262-b179c825c78e
+		summarizeBy: none
+		sourceColumn: [Barrio]
+
+	column Comuna
+		dataType: string
+		lineageTag: 572eb9ae-7682-5deb-9a78-155fc440f966
+		summarizeBy: none
+		sourceColumn: [Comuna]
+
+	column Latitud
+		dataType: double
+		lineageTag: ca1bfd44-4023-5aa3-8710-4d22b4fea0eb
+		dataCategory: Latitude
+		summarizeBy: none
+		sourceColumn: [Latitud]
+
+	column Longitud
+		dataType: double
+		lineageTag: 5f859fea-7cff-5200-8fa6-2c7dd116b4d7
+		dataCategory: Longitude
+		summarizeBy: none
+		sourceColumn: [Longitud]
+
+	column EstadoGeografia
+		dataType: string
+		lineageTag: d75c6c21-fc83-524a-ab87-0460332c50bb
+		summarizeBy: none
+		sourceColumn: [EstadoGeografia]
+
+	column DistanciaSubteActualM
+		dataType: double
+		formatString: #,0
+		lineageTag: 9de17e8e-76fb-597c-8c99-3b43af7a97c0
+		summarizeBy: none
+		sourceColumn: [DistanciaSubteActualM]
+
+	column DistanciaCicloviaActualM
+		dataType: double
+		formatString: #,0
+		lineageTag: 459090ac-b767-51df-9217-1a8429d6f960
+		summarizeBy: none
+		sourceColumn: [DistanciaCicloviaActualM]
+
+	partition DimDestino = calculated
+		mode: import
+		source =
+				SELECTCOLUMNS(DimEstacionUbicacion,
+				"EstacionUbicacionKey", DimEstacionUbicacion[EstacionUbicacionKey],
+				"EstacionKey", DimEstacionUbicacion[EstacionKey],
+				"EtiquetaEstacion", DimEstacionUbicacion[EtiquetaEstacion],
+				"NombreEstacion", DimEstacionUbicacion[NombreEstacion],
+				"Barrio", DimEstacionUbicacion[Barrio],
+				"Comuna", DimEstacionUbicacion[Comuna],
+				"Latitud", DimEstacionUbicacion[Latitud],
+				"Longitud", DimEstacionUbicacion[Longitud],
+				"EstadoGeografia", DimEstacionUbicacion[EstadoGeografia],
+				"DistanciaSubteActualM", DimEstacionUbicacion[DistanciaSubteActualM],
+				"DistanciaCicloviaActualM", DimEstacionUbicacion[DistanciaCicloviaActualM])
+

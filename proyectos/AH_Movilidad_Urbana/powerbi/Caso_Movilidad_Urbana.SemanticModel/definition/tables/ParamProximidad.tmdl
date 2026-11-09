@@ -1,0 +1,14 @@
+table ParamProximidad
+	lineageTag: 8937fd74-566b-5a32-aea8-4129ba76e326
+
+	column Metros
+		dataType: int64
+		formatString: 0
+		lineageTag: 23374141-f5ff-58da-a154-3a4b11ef8e59
+		summarizeBy: none
+		sourceColumn: [Metros]
+
+	partition ParamProximidad = calculated
+		mode: import
+		source = DATATABLE("Metros", INTEGER, {{300},{500},{750}})
+

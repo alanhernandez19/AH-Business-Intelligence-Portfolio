@@ -1,0 +1,17 @@
+{
+		"version": "1.0.0.0",
+		"author": {"name":"Alan Arturo Hernández Gutiérrez","email":"26527589+alanhernandez19@users.noreply.github.com"},
+		"resources": [
+			{
+				"resourceId": "rId0",
+				"sourceType": 5,
+				"file": "resources/AHCorredoresA7D18F820E164C73.pbiviz.json"
+			}
+		],
+		"visual": {"name":"AHCorredores","displayName":"AH · Conexiones urbanas","guid":"AHCorredoresA7D18F820E164C73","visualClassName":"Visual","version":"1.0.0.0","description":"Mapa local interactivo de conexiones observadas; sin servicios externos.","supportUrl":"https://github.com/alanhernandez19","gitHubUrl":"https://github.com/alanhernandez19"},
+		"metadata": {
+			"pbivizjson": {
+				"resourceId": "rId0"
+			}
+		}
+	}

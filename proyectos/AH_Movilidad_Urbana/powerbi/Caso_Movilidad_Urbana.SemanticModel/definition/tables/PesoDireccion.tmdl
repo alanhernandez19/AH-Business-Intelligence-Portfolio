@@ -1,0 +1,14 @@
+table PesoDireccion
+	lineageTag: 872210cb-1c29-5d52-b5ba-32c248ce4259
+
+	column Value
+		dataType: int64
+		formatString: 0.##
+		lineageTag: 583b164a-dc0d-5ad7-a82a-25174ce6fb87
+		summarizeBy: none
+		sourceColumn: [Value]
+
+	partition PesoDireccion = calculated
+		mode: import
+		source = GENERATESERIES(0, 100, 10)
+

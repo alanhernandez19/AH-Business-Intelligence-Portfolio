@@ -1,0 +1,14 @@
+table PesoVolumen
+	lineageTag: f824eece-1f92-5634-9168-e85746c19711
+
+	column Value
+		dataType: int64
+		formatString: 0.##
+		lineageTag: eac447e3-a1cb-58c8-b628-0583378bf649
+		summarizeBy: none
+		sourceColumn: [Value]
+
+	partition PesoVolumen = calculated
+		mode: import
+		source = GENERATESERIES(0, 100, 10)
+
